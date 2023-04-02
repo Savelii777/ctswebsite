@@ -2,6 +2,8 @@
 
 @section('content')
     @include('partials.header')
+   
+
     <section id="structure" class="account">
         <div class="container">
             <div style="margin-left:0; margin-right:0" class="row account-block">
