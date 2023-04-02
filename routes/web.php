@@ -51,6 +51,7 @@ Route::get('/test/{test}', [UserTestController::class, 'test'])->name('test'); /
 Route::get('/test/result/{attempt}', [UserTestController::class, 'testResult'])->name('test.result');
 Route::post('/start-test/{test}', [UserTestController::class, 'startTest'])->name('start.test');
 Route::post('/validatate-test-result/{attempt}', [UserTestController::class, 'validatateTestResult'])->name('validatate.test.result');
+Route::post('/test/check', [UserTestController::class, 'check']);
 
 Route::get('/test/template', [HomeController::class, 'test'])->name('test.template'); // Версия для разработки
 Route::get('/testshow', [HomeController::class, 'testShow'])->name('test.show');
