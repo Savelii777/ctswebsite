@@ -11258,6 +11258,7 @@ footer .logotip {
 }
 
 .account {
+  color: #999999;
   background: #f5f5f5;
 }
 .account h2 {
@@ -11282,11 +11283,11 @@ footer .logotip {
   border-top: 1px solid #eeeeee;
 }
 .menu a:hover, .menu a:active {
-  background-color: #00bfff;
+  background-color: #9ca324;
   color: #fff;
 }
 .menu a.menu_active_tab {
-  background-color: #00bfff;
+  background-color: #3c421a;
   color: #fff;
 }
 
@@ -11308,20 +11309,20 @@ footer .logotip {
   border-radius: 4px;
 }
 .setting__img .setting__elem .download {
-  background-color: #edfaff;
-  color: deepskyblue;
+  background-color: #edffed;
+  color: #9ca324;
   margin: 40px 0 5px;
 }
 .setting__img .setting__elem .download:hover {
-  background-color: #00bfff;
+  background-color: #9ca324;
   color: white;
 }
 .setting__img .setting__elem .remove {
   background-color: #f7f7f7;
 }
 .setting__img .setting__elem .remove:hover {
-  background-color: #edfaff;
-  color: deepskyblue;
+  background-color: #9ca324;
+  color: white;
 }
 .setting__img .setting__elem img.user__image {
   width: 130px;
@@ -11360,7 +11361,7 @@ footer .logotip {
   transform: scale(1);
 }
 .radio input:checked + label::before {
-  border-color: #00bfff;
+  border-color: #9ca324;
 }
 .radio label {
   font-size: 16px;
@@ -11389,7 +11390,7 @@ footer .logotip {
   border-radius: 2px;
   width: 10px;
   height: 10px;
-  background: #00bfff;
+  background: #9ca324;
   transform: scale(0);
 }
 .radio label:last-child {
@@ -11412,7 +11413,7 @@ footer .logotip {
   color: white;
 }
 .form-btn:hover {
-  background-color: #1ac6ff;
+  background-color: #9ca324;
 }
 
 .setting-form p {

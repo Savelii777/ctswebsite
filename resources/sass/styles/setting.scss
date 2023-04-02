@@ -22,6 +22,7 @@
     }
 }
 .account {
+    color: #999999;
     background: #f5f5f5;
     h2 {
         padding: 25px 0 40px;
@@ -47,11 +48,11 @@
         border-top: 1px solid #eeeeee;
         &:hover,
         &:active {
-            background-color: #00bfff;
+            background-color: #9ca324;
             color: #fff;
         }
         &.menu_active_tab {
-            background-color: #00bfff;
+            background-color: #3c421a;
             color: #fff;
         }
     }
@@ -73,19 +74,19 @@
             border-radius: 4px;
         }
         .download {
-            background-color: rgb(237, 250, 255);
-            color: rgb(0, 191, 255);
+            background-color: rgb(237, 255, 237);
+            color: #9ca324;
             margin: 40px 0 5px;
             &:hover {
-                background-color: #00bfff;
+                background-color: #9ca324;
                 color: rgb(255, 255, 255);
             }
         }
         .remove {
             background-color: #f7f7f7;
             &:hover {
-                background-color: #edfaff;
-                color: rgb(0, 191, 255);
+                background-color: #9ca324;
+                color: rgb(255, 255, 255);
             }
         }
         img.user__image {
@@ -124,7 +125,7 @@
             transform: scale(1);
         }
         &:checked + label::before {
-            border-color: #00bfff;
+            border-color: #9ca324;
         }
     }
 
@@ -154,7 +155,7 @@
             border-radius: 2px;
             width: 10px;
             height: 10px;
-            background: #00bfff;
+            background: #9ca324;
             transform: scale(0);
         }
         &:last-child {
@@ -177,7 +178,7 @@
         color: rgb(255, 255, 255);
     }
     &:hover {
-        background-color: rgb(26, 198, 255);
+        background-color: #9ca324;
         //color: #00bfff;
     }
 }
