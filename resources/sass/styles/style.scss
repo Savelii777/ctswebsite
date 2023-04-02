@@ -1,0 +1,521 @@
+body {
+    font-family: "Fira Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #fff;
+    text-align: left;
+    background-color: #3c421a;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+footer {
+    flex: 1 0 auto;
+}
+
+ul,
+li,
+a,
+span,
+p {
+    display: block;
+    padding: 0px;
+    margin: 0px;
+}
+
+a,
+a:hover,
+a:active,
+a:focus,
+button,
+input,
+button:hover,
+button:active,
+button:focus,
+input:focus,
+input:active {
+    text-decoration: none;
+    outline: none;
+}
+
+.container {
+    position: relative;
+}
+
+section {
+    padding: 50px 0px;
+}
+
+//  HEADER
+header {
+    max-height: 90px;
+    padding: 25px 0;
+
+    .row {
+        min-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    a {
+        p {
+            color: #fff;
+            margin-right: 8px;
+            transition: 0s;
+        }
+
+        img {
+            max-height: 16px;
+        }
+
+        span {
+            display: inline;
+            transition: 0s;
+        }
+    }
+
+    .btn-active:hover {
+        background: #9ca324;
+        transition: 0s;
+
+        p {
+            color: rgb(255, 255, 255);
+        }
+
+        svg {
+            fill: rgb(255, 255, 255);
+        }
+    }
+
+    svg {
+        width: 16px;
+        height: 16px;
+        fill: #9ca324;
+        transition: 0s;
+        margin-left: -8px;
+    }
+
+    .btn-exit {
+        svg {
+            transform: scaleX(-1);
+        }
+    }
+}
+
+.btn-active {
+    border: 1px solid #9ca324;
+    border-radius: 4px;
+    height: auto;
+    width: 218px;
+    background: transparent;
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logotip {
+    display: flex;
+    align-items: center;
+    padding: 0;
+
+    p {
+        font-weight: 300;
+        font-size: 14px;
+        margin-left: 5px;
+    }
+
+    span {
+        color: #9ca324;
+    }
+
+    img {
+        max-height: 10px;
+    }
+}
+
+//  HEADER
+
+// МАКЕТ 01
+#first {
+    padding: 150px 215px;
+    color: #fff;
+    background: url(https://u.9111s.ru/uploads/202202/16/d0f63a6463917eb40cbc8bce42fd9e1e.png) no-repeat center/cover;
+    text-align: center;
+    // position: relative;
+    button {
+        margin-top: 32px;
+        font-size: 16px;
+        color: rgb(255, 255, 255);
+        line-height: 1.375;
+        text-align: center;
+        border-radius: 4px;
+        background-color: #9ca324;
+        width: 270px;
+        height: 60px;
+    }
+}
+
+h1 {
+    font-size: 48px;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    text-align: center;
+
+    span {
+        font-size: 36px;
+        line-height: 2.5;
+        font-weight: 300;
+    }
+}
+
+.first__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 160px 0 -210px;
+    // position: relative;
+}
+
+.first__item {
+    margin: 0 15px;
+    padding: 0;
+    height: 130px;
+    -webkit-box-shadow: 0px 7px 18px -6px rgba(156, 163, 36, 0.6);
+    -moz-box-shadow: 0px 7px 18px -6px rgba(156, 163, 36, 0.6);
+    box-shadow: 0px 7px 18px -6px rgba(156, 163, 36, 0.6);
+    font-size: 20px;
+    color: rgb(51, 51, 51);
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: 4px;
+    background-color: #fff;
+    align-items: center;
+
+    div {
+        background-color: #9ca324;
+        // width: 215px;
+        font-size: 48px;
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+        line-height: 0.667;
+        text-align: center;
+        padding: 49px 28px;
+        max-width: 130px;
+    }
+
+    p {
+        // width: 340px;
+        text-align: left;
+        font-size: 20px;
+        line-height: 1.4;
+        padding-left: 30px;
+        font-weight: 300;
+    }
+}
+
+.about__img {
+    float: left;
+}
+
+.about__block_l {
+    margin: 60px 0 0;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+     //background: #ffffff url(../images/man.png) no-repeat;
+    .about__text {
+        // padding: 0 0 65px;
+        span {
+            color: #9ca324;
+            font-size: 50px;
+            margin-bottom: 45px;
+        }
+
+        p {
+            margin-bottom: 45px;
+        }
+
+        a {
+            font-size: 18px;
+            color: rgb(255, 255, 255);
+            line-height: 1.333;
+            width: 153px;
+            height: 33px;
+            padding: 5px 0;
+            text-align: center;
+            border-radius: 4px;
+            margin: 0 auto;
+            background-color: #9ca324;
+            box-shadow: 0px 15px 43px 0px rgba(156, 163, 36, 0.22);
+        }
+
+        a:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        .about__prg {
+            color: rgb(119, 119, 119);
+            font-style: italic;
+
+            float: right;
+            //margin: 15px 70px;
+            margin-top: 15px;
+            margin-right: 40px;
+        }
+    }
+}
+
+.about__block_r {
+    background: url(../images/rocket.png) no-repeat;
+    background-size: cover;
+    padding: 55px 0;
+
+    .about__text {
+        max-width: 500px;
+
+        h3 {
+            font-size: 30px;
+            line-height: 1.267;
+        }
+
+        p {
+            color: rgb(119, 119, 119);
+
+            padding: 24px 0;
+        }
+
+        // img {
+        //    display: none;
+        // }
+    }
+
+    .about__text_small {
+        img {
+            float: left;
+        }
+
+        p {
+            padding: 10px 55px 0;
+            font-style: italic;
+            color: rgb(51, 51, 51);
+        }
+
+        div {
+            padding: 0 0 0 55px;
+            font-weight: 300;
+        }
+    }
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.389;
+    margin-bottom: 40px;
+}
+
+.plan__block {
+    justify-content: space-between;
+    margin-top: 80px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.plan__subtitle {
+    margin: 35px 0;
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.plan-curriculum__list {
+    div {
+        font-size: 70px;
+        color: #9ca324;
+        font-weight: 700;
+        line-height: 0.457;
+        text-align: center;
+        padding: 28px 0 0 0;
+
+        &:first-child {
+            border-right: 2px solid #9ca324;
+        }
+    }
+
+    p {
+        color: #fff;
+        // width: 379px;
+        // height: 81px;
+        padding: 20px;
+        border-radius: 4px;
+
+        &:last-child {
+            background-color: #9ca324;
+            box-shadow: 0px 15px 43px 0px rgba(156, 163, 36, 0.22);
+            color: #fff;
+        }
+    }
+}
+
+.plan__elem_l {
+    padding: 0;
+    background:  url(../images/back1.jpg) no-repeat center / cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.plan__elem_r {
+    padding: 0;
+    background:  url(../images/back2.jpg) no-repeat center / cover;
+    border-radius: 4px;
+    margin-left: 15px;
+}
+
+.plan__elem {
+    color: rgb(255, 255, 255);
+    padding: 55px;
+    border-radius: 4px;
+    background: rgba(156, 163, 36, 0.5);;
+}
+
+.plan__caption {
+    opacity: 1;
+    font-size: 36px;
+    line-height: 1.389;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.plan__item {
+    font-weight: 300;
+    margin-bottom: 30px;
+    display: flex;
+
+    img {
+        max-height: 24px;
+        margin-right: 15px;
+    }
+}
+
+.merit__subtitle {
+    font-size: 36px;
+    color: #9ca324;
+    line-height: 1.389;
+    font-weight: 700;
+    padding-bottom: 55px;
+}
+
+.merit__list {
+    opacity: 1;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.merit__item {
+    border: 1px solid rgba(156, 163, 36, 0.4);
+    border-radius: 4px;
+    // margin: 0 15px;
+    // height: 270px;
+    padding: 40px 37px 20px;
+
+    p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 30px 0 12px;
+    }
+
+    div {
+        color: #fff;
+    }
+}
+
+// МАКЕТ 01 - end
+
+// FOOTER
+footer {
+    padding: 50px 0;
+
+    .logotip {
+        color: #fff;
+        margin-bottom: 50px;
+    }
+}
+
+.footer__links {
+    color: rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(156, 163, 36, 0.4);
+    margin-right: 40px;
+    height: fit-content;
+
+    &:hover {
+        color: rgb(255, 255, 255);
+        border-color: rgb(255, 255, 255);
+    }
+}
+
+.footer__link-active {
+    display: none;
+}
+
+.footer__prg {
+    color: rgb(255, 255, 255);
+}
+
+.footer__link {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    line-height: 1.2;
+    border-bottom: 1px solid #9ca324;
+    margin: 0 0 0 auto;
+    width: fit-content;
+    height: fit-content;
+
+    &:hover {
+        color: #9ca324;
+        border-color: #9ca324;
+    }
+
+    &_border {
+        max-height: 50px;
+        padding: 8px;
+        color: #9ca324;
+        border: 1px solid #9ca324;
+        transition: .3s;
+        margin-left: auto;
+
+        .footer__link_mobile-text {
+            display: none;
+        }
+
+        &:hover {
+            color: rgba(0, 191, 255, 0.45);
+            border-color: rgba(0, 191, 255, 0.45);
+        }
+
+        @media (max-width: 1200px) {
+            .footer__link_desktop-text {
+                display: none;
+
+            }
+
+            .footer__link_mobile-text {
+                display: block;
+            }
+        }
+        @media (max-width: 992px) {
+            margin: 15px auto 0;
+        }
+    }
+}
+
+// FOOTER - end
