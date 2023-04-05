@@ -25,6 +25,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
         $courses = Course::all();
@@ -33,12 +34,12 @@ class HomeController extends Controller
 
     public function getPhoto($userId, $photoName){
         $path = storage_path('app/public/images/users/'.$userId."/".$photoName);
-        return response()->download($path);
+        return response()->file($path);
     }
 
     public function getFiles($chapterId, $fileName){
         $path = storage_path('app/public/files/chapters/'.$chapterId."/".$fileName);
-        return response()->download($path);
+        return response()->file($path);
     }
 
     public function course($id)
