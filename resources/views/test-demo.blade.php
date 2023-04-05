@@ -120,7 +120,7 @@
     </ul>
     <?php $questionNumber++; ?>
     @endforeach
-    <button type="submit">Завершить тест</button>
+    <button type="submit">Завершить тест</button>я
 </form>
 </div>
 
