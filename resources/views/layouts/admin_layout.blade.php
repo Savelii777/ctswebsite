@@ -96,7 +96,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                   <!-- <li class="nav-item">
                         <a href="{{ route('application.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-address-card"></i>
                             @if (DB::table('applications')->where('status', 'новая')->count() > 0)
@@ -107,7 +107,7 @@
                                 Заявки
                             </p>
                         </a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a href="{{ route('course.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-book-open"></i>
