@@ -97,11 +97,9 @@
                   <div class="courses__expert expert row">
                      <div class="expert__txt">
                         <div>
-                           эксперт
+                           Администратор
                         </div>
-                        <p>
-                           Андрей Реутов
-                        </p>
+                         
                      </div>
                      <img src="{{ ('images/expert.png') }}" alt="courses">
                   </div>

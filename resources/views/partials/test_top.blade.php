@@ -42,10 +42,10 @@
         <p class="exp-prg">
             {{ $chapter->course->hours }} часов <br>обучения
         </p>
-        <div class="courses__expert expert row">
+          <div class="courses__expert expert row">
             <div class="expert__txt">
                 <div>
-                    эксперт
+                    Администратор
                 </div>
                 <p>
                     {{ $chapter->course->user->name }}

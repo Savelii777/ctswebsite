@@ -52,7 +52,7 @@
                                 <input value="{{ old('title') }}" name="title" type="text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputStatus">Эксперт</label>
+                                <label for="inputStatus">Администратор</label>
                                 <select name="user_id" id="inputStatus" class="form-control custom-select">
                                     @foreach ($experts as $expert)
                                     <option value="{{$expert->id}}">{{$expert->name}}</option>

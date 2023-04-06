@@ -39,7 +39,7 @@
                             @sortablelink('title', 'Название')
                         </th>
                         <th>
-                            @sortablelink('user_id', 'Эксперт')
+                            @sortablelink('user_id', 'Администратор')
                         </th>
                         <th>
                             Главы

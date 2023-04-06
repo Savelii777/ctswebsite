@@ -52,7 +52,7 @@
                     <div class="courses__expert expert row">
                         <div class="expert__txt">
                             <div>
-                                эксперт
+                                Администратор
                             </div>
                             <p>
                                 {{ $course->user->name }}
