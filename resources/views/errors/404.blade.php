@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="{{ asset('icons/title.png') }}" type="image/png">
+        <link rel="shortcut icon" href="{{ asset('icons/logo.png') }}" type="image/png">
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
@@ -73,48 +73,17 @@
                </p>
             </div>
             <div class="row mistake-img">
-               <img src="{{ ('images/404.png') }}" alt="courses" class="img-responsive mx-auto d-block">
+               <img style="width: 1000px" src="{{ ('images/404.png') }}" alt="courses" class="img-responsive mx-auto d-block">
             </div>
             <div class="row">
-               <button class="btn-active test-button mistake-btn">
+               <button style="background-color: #9ca324" class="btn-active test-button mistake-btn">
                   <a href="/">На главную</a>
                </button>
             </div>
          </div>
       </section>
       <footer>
-         <div class="container">
-            <div class="row footer__logo">
-               <div class="logotip col-6">
-{{--                  <img src="{{ ('icons/logo-white.png') }}" alt="logo">--}}
-{{--                  <p>Система дистанционного мобучения доктора Реутова</p>--}}
-               </div>
-               <div class="col-6">
-                  <a class="footer__link footer__link-active">
-{{--                     info@reutov.ru--}}
-                      example@gmail.com
 
-                  </a>
-               </div>
-
-            </div>
-            <div class="row">
-               <a href="#" class="footer__links">
-                  Политика конфидициальности
-               </a>
-               <a href="#" class="footer__links">
-                  Правила пользования сайтом
-               </a>
-               <p class="footer__prg">
-                  Все права защищены © 2021
-               </p>
-               <a class="footer__link">
-{{--                  info@reutov.ru--}}
-                   example@gmail.com
-
-               </a>
-            </div>
-         </div>
       </footer>
       <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script>
       <script src="{{mix('/js/app.js')}}"></script>

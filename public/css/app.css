@@ -9968,7 +9968,7 @@ body {
   font-size: 14px;
   font-weight: 400;
   line-height: 1.571;
-  color: #fff;
+  color: #999999;
   text-align: left;
   background-color: #3c421a;
   margin: 0;
@@ -10753,7 +10753,7 @@ footer .logotip {
 .account__btn svg {
   width: 9px;
   height: 20px;
-  fill: #00bfff;
+  fill: #9ca324;
   transition: 0s;
   margin-left: -8px;
   transform: rotate(90deg);
@@ -10769,7 +10769,7 @@ footer .logotip {
 }
 .progress .line {
   height: 100%;
-  background: #00bfff;
+  background: #9ca324;
 }
 
 #person {
@@ -10807,7 +10807,7 @@ footer .logotip {
 
 .person__btn {
   border: 1px solid #9ca324;
-  color: deepskyblue;
+  color: #9ca324;
   text-align: center;
   border-radius: 4px;
   background-color: #3c421a;
@@ -10838,7 +10838,7 @@ footer .logotip {
   background-color: #fff;
 }
 .courses__block .btn-hide {
-  border: 1px solid #00bfff;
+  border: 1px solid #9ca324;
 }
 .courses__block .btn-hide div {
   color: black;
@@ -10846,7 +10846,7 @@ footer .logotip {
   justify-content: center;
 }
 .courses__block .btn-hide span {
-  color: #00bfff;
+  color: #9ca324;
 }
 .courses__block .btn-hide:hover {
   background-color: white;
@@ -10868,7 +10868,7 @@ footer .logotip {
   color: #333333;
 }
 .courses__elem-up .courses__title:hover {
-  color: #00bfff;
+  color: #9ca324;
 }
 .courses__elem-up .courses__txt {
   font-family: "Myriad Pro";
@@ -10879,7 +10879,7 @@ footer .logotip {
 
 .courses__percent div {
   font-size: 48px;
-  color: deepskyblue;
+  color: #9ca324;
   font-weight: 700;
   line-height: 0.667;
   text-align: center;
@@ -10904,7 +10904,7 @@ footer .logotip {
 
 .exp-span {
   font-size: 30px;
-  color: #00bfff;
+  color: #9ca324;
 }
 
 .exp-prg {
@@ -10949,7 +10949,7 @@ footer .logotip {
 
 .extra__link {
   font-size: 12px;
-  color: deepskyblue;
+  color: #9ca324;
   line-height: 1.833;
   text-align: center;
   border-radius: 4px;
@@ -10985,12 +10985,12 @@ footer .logotip {
   border-radius: 50%;
   width: 80px;
   height: 80px;
-  color: #00bfff;
+  color: #9ca324;
   background-color: rgba(0, 191, 255, 0.071);
 }
 .extra-add__item button:hover {
   color: #fff;
-  background-color: #00bfff;
+  background-color: #9ca324;
 }
 .extra-add__item p {
   font-size: 16px;
@@ -11252,7 +11252,7 @@ footer .logotip {
   align-items: center;
 }
 .account__btn span {
-  color: deepskyblue;
+  color: #9ca324;
   font-size: 16px;
   display: inline-block;
   padding: 1px 10px 0 0;
@@ -11283,11 +11283,11 @@ footer .logotip {
   border-top: 1px solid #eeeeee;
 }
 .menu a:hover, .menu a:active {
-  background-color: #00bfff;
+  background-color: #3c421a;
   color: #fff;
 }
 .menu a.menu_active_tab {
-  background-color: #00bfff;
+  background-color: #9ca324;
   color: #fff;
 }
 
@@ -11309,20 +11309,21 @@ footer .logotip {
   border-radius: 4px;
 }
 .setting__img .setting__elem .download {
-  background-color: #edfaff;
-  color: deepskyblue;
+  background-color: #f7f7f7;
+  color: #9ca324;
   margin: 40px 0 5px;
 }
 .setting__img .setting__elem .download:hover {
-  background-color: #00bfff;
-  color: white;
+  background-color: #edffed;
+  color: #3c421a;
 }
 .setting__img .setting__elem .remove {
   background-color: #f7f7f7;
+  color: #9ca324;
 }
 .setting__img .setting__elem .remove:hover {
-  background-color: #edfaff;
-  color: deepskyblue;
+  background-color: #edffed;
+  color: #3c421a;
 }
 .setting__img .setting__elem img.user__image {
   width: 130px;
@@ -11361,7 +11362,7 @@ footer .logotip {
   transform: scale(1);
 }
 .radio input:checked + label::before {
-  border-color: #00bfff;
+  border-color: #9ca324;
 }
 .radio label {
   font-size: 16px;
@@ -11390,7 +11391,7 @@ footer .logotip {
   border-radius: 2px;
   width: 10px;
   height: 10px;
-  background: #00bfff;
+  background: #9ca324;
   transform: scale(0);
 }
 .radio label:last-child {
@@ -11399,7 +11400,7 @@ footer .logotip {
 
 .form-btn {
   border-radius: 4px;
-  background-color: #3c421a;
+  background-color: #9ca324;
   width: 170px;
   height: 60px;
   line-height: 1.375;
@@ -11413,7 +11414,7 @@ footer .logotip {
   color: white;
 }
 .form-btn:hover {
-  background-color: #1ac6ff;
+  background-color: #3c421a;
 }
 
 .setting-form p {
@@ -11863,7 +11864,7 @@ footer {
   display: none;
 }
 .chapter-accordion .trigger-elem .checkbox-img-passed {
-  background-color: deepskyblue;
+  background-color: #fff;
 }
 .chapter-accordion .trigger-elem .checkbox-img-passed img:last-child {
   display: block;
@@ -11940,11 +11941,11 @@ footer {
 }
 .chapter-accordion .content-test p {
   font-size: 16px;
-  color: deepskyblue;
+  color: #9ca324;
   font-weight: 500;
 }
 .chapter-accordion .content-test button {
-  background-color: #00bfff;
+  background-color: #9ca324;
   max-width: 120px;
   width: 120px;
   text-align: center;
@@ -15927,12 +15928,12 @@ img.incorrect {
   margin: 30px 0;
 }
 .pass-tests .tests-item {
-  border-left: 3px solid #00bfff;
+  border-left: 3px solid #9ca324;
   padding: 0 5px;
 }
 .pass-tests .tests-item::before {
   content: "";
-  background-color: deepskyblue;
+  background-color: #9ca324;
   width: 3px;
   height: 32px;
 }
@@ -15946,7 +15947,7 @@ img.incorrect {
 }
 
 .test-button {
-  background-color: deepskyblue;
+  background-color: #9ca324;
   width: 190px;
   height: 60px;
 }

@@ -196,7 +196,7 @@
         }
 
         .checkbox-img-passed {
-            background-color: rgb(0, 191, 255);
+            background-color: #fff;
             img {
                 &:last-child {
                     display: block;
@@ -276,11 +276,11 @@
         flex-wrap: wrap;
         p {
             font-size: 16px;
-            color: rgb(0, 191, 255);
+            color: #9ca324;
             font-weight: 500;
         }
         button {
-            background-color: #00bfff;
+            background-color: #9ca324;
             max-width: 120px;
             width: 120px;
             text-align: center;

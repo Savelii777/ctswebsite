@@ -6,13 +6,13 @@
             </div>
             @guest
                 <div class="header__btns col-md-7 col-sm-6  row col-6">
-                    <a style="max-height: 50px; margin: 1.5px;" href="{{ url('/') }}"
+                    <a style="max-height: 50px;" href="{{ url('/') }}"
                        class="btn-active text-center col-sm-6 col-md-5">
                         <p>
                             На главную
                         </p>
                     </a>
-                    <a style="max-height: 50px; margin: 1.5px;" href="{{ route('login') }}"
+                    <a style="max-height: 50px;" href="{{ route('login') }}"
                        class="btn-active text-center col-sm-6 col-md-5">
                         <p>
                             Вход <span>в личный кабинет</span>
@@ -35,7 +35,14 @@
                     </a>
                 </div>
             @else
-                <a style="max-height: 50px" class="btn-active text-center btn-exit col-lg-3 col-4"
+                <div class="header__btns col-md-7 col-sm-6  row col-6">
+                <a class="btn-active text-center btn-exit col-sm-6 col-md-5" style="max-height: 50px;" href="{{ url('/') }}"
+                   class="btn-active text-center col-sm-6 col-md-5">
+                    <p>
+                        На главную
+                    </p>
+                </a>
+                <a style="max-height: 50px" class="btn-active text-center btn-exit col-sm-6 col-md-5"
                    href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -58,7 +65,7 @@
                         </svg>
                     </svg>
                 </a>
-
+            <div/>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
