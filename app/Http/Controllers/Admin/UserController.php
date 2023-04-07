@@ -112,7 +112,7 @@ class UserController extends Controller
         $user->syncRoles($request->get('roles'));
 
         $data = array('login' => $request->get('login'), 'password' => $request->get('password'));
-        Mail::to($user->email)->send(new WelcomeMail($data, 'Заявка принята!'));
+        //Mail::to($user->email)->send(new WelcomeMail($data, 'Заявка принята!'));
 
         return redirect()
             ->route('user.index')
