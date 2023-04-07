@@ -10027,6 +10027,7 @@ header .row {
   display: flex;
   justify-content: space-between;
   margin: 0;
+  flex-direction: row;
 }
 header a p {
   color: #fff;
@@ -10238,7 +10239,7 @@ h2 {
 
 .plan__block {
   justify-content: space-between;
-  margin-top: 80px;
+  margin-top: -50px;
   margin-right: 15px;
   margin-left: 15px;
 }
@@ -10341,7 +10342,7 @@ h2 {
 }
 
 footer {
-  padding: 50px 0;
+  padding: 10px 0;
 }
 footer .logotip {
   color: #fff;
