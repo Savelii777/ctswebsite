@@ -28,7 +28,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $experts = User::role('expert')->get();
+        $experts = User::role('admin')->get();
 
         return view('admin.course.create', [
             'experts' => $experts
@@ -92,7 +92,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $experts = User::role('expert')->get();
+        $experts = User::role('admin')->get();
 
         return view('admin.course.edit', [
             'course' => $course,
