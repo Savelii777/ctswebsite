@@ -47,24 +47,26 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="form-group">
-                                <label>ФИО</label>
-                                <input value="{{ old('name') }}" name="name" type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Логин</label>
-                                <input value="{{ old('login') }}" name="login" type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>e-mail</label>
-                                <input value="{{ old('email') }}" name="email" type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Пароль</label>
-                                <input id="password_input" name="password" class="form-control">
-                                <button type="button" onclick="generatePassword()" id="generate_password" class="btn btn-success float-right mt-2">Сгенерировать пароль</button>
-                            </div>
-                        </div>
+    <div class="form-group">
+        <label>ФИО</label>
+        <input value="{{ old('name') }}" name="name" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Логин</label>
+        <input value="{{ old('login') }}" name="login" type="text" class="form-control" placeholder="Автоматическая генерация">
+    </div>
+    <div class="form-group">
+        <label>e-mail</label>
+        <input value="{{ old('email') }}" name="email" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Пароль</label>
+        <input id="password_input" name="password" class="form-control" placeholder="Автоматическая генерация">
+        <button type="button" onclick="generateUser()" id="generate_user" class="btn btn-success float-right mt-2">Сгенерировать пользователя</button>
+    </div>
+</div>
+
+
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
