@@ -1,21 +1,5 @@
 <section id="about">
    <div class="container">
-      <div class="about__block_l row">
-         <img style="max-height: 400px; width: 50vw" src="{{ ('images/noname.png') }}" alt="courses" class="img-responsive mx-auto d-block">
-         <div class="about__text">
-            <span>
-               <i class="fa fa-quote-right"></i>
-            </span>
-            <p>
-                Советский и российский государственный деятель, российский военный. Министр обороны Российской Федерации с 6 ноября 2012 года. Генерал армии. Герой Российской Федерации. Заслуженный спасатель Российской Федерации. Кавалер ордена Святого апостола Андрея Первозванного с мечами. Член Высшего совета политической партии «Единая Россия»            </p>
-            <a>
-               Сергей Соловьев
-            </a>
-            <p class="about__prg">
-                Российский военный деятель
-            </p>
-         </div>
-      </div>
       <div class="about__block_r">
          <div class="about__text">
             <h3>

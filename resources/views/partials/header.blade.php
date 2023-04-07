@@ -1,17 +1,15 @@
 <header>
     <div class="container">
         <div class="row">
-            <div style="cursor:pointer" onclick="location.href='{{ url('/') }}'"
+            <div class="home" style="cursor:pointer" onclick="location.href='{{ url('/') }}'"
                  class="logotip col-md-5 col-sm-6 col-6">
-{{--                <img src="{{ asset('icons/logo-white.png') }}" alt="logo">--}}
-{{--                <p>Система дистанционного обучения доктора Реутова</p>--}}
             </div>
             @guest
                 <div class="header__btns col-md-7 col-sm-6  row col-6">
-                    <a style="max-height: 50px; margin: 1.5px;" href="{{ route('application.create.guest') }}"
+                    <a style="max-height: 50px; margin: 1.5px;" href="{{ url('/') }}"
                        class="btn-active text-center col-sm-6 col-md-5">
                         <p>
-                            Подать заявку <span>на обучение</span>
+                            На главную
                         </p>
                     </a>
                     <a style="max-height: 50px; margin: 1.5px;" href="{{ route('login') }}"
