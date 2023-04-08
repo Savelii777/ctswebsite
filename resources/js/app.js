@@ -9,6 +9,7 @@ require("./bootstrap");
 
 window.Vue = require("vue");
 
+
 import VueDragDrop from "vue-drag-drop";
 
 Vue.use(VueDragDrop);
@@ -148,7 +149,30 @@ $('button[id*="button_hide_course_info_"]').each(function (index) {
             .toggleClass("profile_visibity");
     });
 });
+$(document).ready(function() {
+    $('div[id*="materials-item"]').each(function (index) {
+        // Путь к PDF-файлу на сервере
+            const pdfUrl = 'http://127.0.0.1:8000/storage/files/chapters/1/Тема%2001%20Бал.pdf';
 
+        // Получаем контейнер для PDF-документа
+        const container = document.getElementById('materials-item');
+
+        // Загружаем и отображаем PDF-документ
+        pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+            for (let i = 1; i <= pdf.numPages; i++) {
+                pdf.getPage(i).then(page => {
+                    const canvas = document.createElement('canvas');
+                    container.appendChild(canvas);
+                    const viewport = page.getViewport({ scale: 1 });
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    page.render({ canvasContext: canvas.getContext('2d'), viewport });
+                });
+            }
+        });
+
+    });
+});
 
 var swiper = new Swiper(".test-swiper", {
     autoHeight: true,
@@ -158,4 +182,5 @@ var swiper = new Swiper(".test-swiper", {
         prevEl: ".test-button-prev",
     },
 });
+
 
