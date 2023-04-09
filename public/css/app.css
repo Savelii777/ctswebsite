@@ -15903,6 +15903,7 @@ img.incorrect {
 }
 
 .pass-menu {
+  max-width: 25%;
   padding: 0;
 }
 .pass-menu .menu-title {

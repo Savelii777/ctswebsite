@@ -149,31 +149,46 @@ $('button[id*="button_hide_course_info_"]').each(function (index) {
             .toggleClass("profile_visibity");
     });
 });
+
 $(document).ready(function() {
-    $('div[id*="materials-item"]').each(function (index) {
-        // Путь к PDF-файлу на сервере
-            const pdfUrl = 'http://127.0.0.1:8000/storage/files/chapters/1/Тема%2001%20Бал.pdf';
+    const items = $('div[id*="materials-item"]');
+    const lengthPdf = items.length;
+    let index = 0;
 
-        // Получаем контейнер для PDF-документа
-        const container = document.getElementById('materials-item');
+    function processItem() {
+        if (index >= lengthPdf) {
+            return;
+        }
 
-        // Загружаем и отображаем PDF-документ
+        const item = items[index];
+        const str = item.querySelector('.link-pdf').textContent;
+        const regex = /\d+/;
+        const match = str.match(regex);
+        const digit = match ? match[0] : null;
+        const container = item;
+        const pdfUrl = item.querySelector('.link-pdf').href;
+
+        // item.textContent = pdfUrl;
+
         pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
             for (let i = 1; i <= pdf.numPages; i++) {
                 pdf.getPage(i).then(page => {
                     const canvas = document.createElement('canvas');
                     container.appendChild(canvas);
-                    const viewport = page.getViewport({ scale: 1 });
+                    const viewport = page.getViewport({ scale: 1.5 });
                     canvas.height = viewport.height;
                     canvas.width = viewport.width;
                     page.render({ canvasContext: canvas.getContext('2d'), viewport });
                 });
             }
+
+            index++;
+            processItem();
         });
+    }
 
-    });
+    processItem();
 });
-
 var swiper = new Swiper(".test-swiper", {
     autoHeight: true,
     allowTouchMove: false,
