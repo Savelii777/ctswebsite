@@ -10019,7 +10019,9 @@ section {
 }
 
 header {
-  max-height: 90px;
+  max-height: -webkit-max-content;
+  max-height: -moz-max-content;
+  max-height: max-content;
   padding: 25px 0;
 }
 header .row {
@@ -10072,6 +10074,15 @@ header .btn-exit svg {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.btn-active-admin {
+  margin-top: 10px;
+  color: #fff;
+}
+
+.btn-active-admin:hover {
+  color: #fff;
 }
 
 .logotip {

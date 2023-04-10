@@ -37,7 +37,7 @@
             @else
                 <div class="header__btns col-md-7 col-sm-6  row col-6">
                 <a class="btn-active text-center btn-exit col-sm-6 col-md-5" style="max-height: 50px;" href="{{ url('/') }}"
-                   class="btn-active text-center col-sm-6 col-md-5">
+                   class="btn-active text-center btn-exit col-sm-6 col-md-5">
                     <p>
                         На главную
                     </p>

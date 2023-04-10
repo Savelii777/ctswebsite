@@ -55,7 +55,7 @@ section {
 
 //  HEADER
 header {
-    max-height: 90px;
+    max-height: max-content;
     padding: 25px 0;
 
     .row {
@@ -123,6 +123,13 @@ header {
     align-items: center;
 }
 
+.btn-active-admin {
+    margin-top: 10px;
+    color: #fff;
+}
+.btn-active-admin:hover {
+    color: #fff;
+}
 .logotip {
     display: flex;
     align-items: center;
