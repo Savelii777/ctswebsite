@@ -17,9 +17,9 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->foreignId('test_id')->constrained()->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->json('settings'); // ?
+            //$table->json('settings'); // ?
             $table->json('data'); // вопрос и варианты ответа
-            $table->json('correct'); // правильный ответ
+            //$table->json('correct'); // правильный ответ
             $table->timestamps();
         });
     }

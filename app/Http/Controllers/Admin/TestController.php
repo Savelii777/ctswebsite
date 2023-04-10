@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Test;
 use App\Models\Chapter;
 use Illuminate\Http\Request;
+use App\Models\Question;
 
 class TestController extends Controller
 {
@@ -16,7 +17,9 @@ class TestController extends Controller
      */
     public function index()
     {
-        //
+        //      <!-- <a href="{{ //route('questions.create', $test->id) }}" class="small-box-footer">Перейти <i class="fas fa-arrow-circle-right"></i></a>
+        $questions = Question::all();
+        return view('admin.test.index', ['questions' => $questions]);
     }
 
     /**
@@ -24,13 +27,48 @@ class TestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function create() //Добавить вопросы в базу
     {
-        //
+        //Получить из базы список глав.
+        return view('admin.quetions.create');
+        // Пример сохранения вопросов в таблицу
+
+    }
+    public function testStore(Request $request)
+    {
+
+        $course_number = $request->input('course_number');
+        $chapter_number = $request->input('chapter_number');
+        $questions = $request->input('questions');
+
+
+        $preparedQuestions = array();
+        foreach ($questions as $id => $item) {
+            $question = array(
+                "question" => $item["question"],
+                "answers" => array_values($item["answers"]),
+                "correct_answer" => $item["correct_answer"]
+            );
+            $preparedQuestions[] = $question;
+        }
+
+
+        Question::create([
+            'test_id' => $chapter_number,
+            'data' => json_encode($preparedQuestions)
+        ]);
+        
+        return redirect()
+        ->route('tests.home')
+        ->with('success', 'Вопрос успешно добавлен!');
+ 
     }
 
+    //Метод, обрабатывает кнопку - добавить тест
     public function createOfChapter(Chapter $chapter)
     {
+
         return view('admin.test.create', [
             'chapter' => $chapter,
         ]);
@@ -51,15 +89,18 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $request->validate([
-            'min_correct' => 'required|integer',
-            'minutes' => 'required|integer'
-        ],
+
+        $validator = $request->validate(
+            [
+                'min_correct' => 'required|integer',
+                'minutes' => 'required|integer'
+            ],
             [
                 'min_correct.required' => 'Поле минимальное количество верных ответов должно быть заполено!',
                 'minutes.required' => 'Поле минуты должно быть заполено!',
                 'integer' => 'Укажите целое число!',
-            ]);
+            ]
+        );
 
         Test::create([
             'min_correct' => $request->get('min_correct'),
@@ -89,16 +130,54 @@ class TestController extends Controller
      * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function edit(Test $test)
+    public function editQuestion(Question $question)
     {
-        //
+        return view('admin.question.edit', ['question' => $question]);
     }
 
+    public function updateQuestion(Request $request, Question $question)
+    {
+        $data = json_decode($question->data, true);
+
+        // Обновите данные вопроса в соответствии с входными данными
+        // Здесь вы можете обновить массив $data и выполнить валидацию данных, если это необходимо
+
+        $question->data = json_encode($data);
+        $question->save();
+
+        return redirect()->route('tests.edit', $question->test_id)->with('success', 'Вопрос успешно обновлен');
+    }
+
+    public function destroyQuestion(Question $question)
+    {
+        $question->delete();
+
+        return redirect()->back()->withSuccess('Вопрос успешно удален!');
+    }
+
+    public function getQuetions(Test $test) //Получить вопросы из базы
+    {
+        //получения вопросов из таблицы
+        $questions = Question::where('test_id', $test->id)->get();
+        $questionDataList = array();
+        foreach ($questions as $question) {
+            $questionDataList[] = json_decode($question->data, true);
+        }
+        return $questionDataList;
+        //echo $questionData[0]['question'];
+        //echo $questionData[0]['answers'][0];
+        //echo $questionData[0]['answers'][1];
+        //echo $questionData[0]['answers'][2];
+        //echo $questionData[0]['correct_answer'];
+    }
     public function editOfChapter(Chapter $chapter, Test $test)
     {
+        $questions = $this->getQuetions($test);
+        //return $questions;
         return view('admin.test.edit', [
             'test' => $test,
             'chapter' => $chapter,
+            'questions' => $questions,
         ]);
     }
 
@@ -111,20 +190,22 @@ class TestController extends Controller
      */
     public function update(Request $request, Test $test)
     {
-        $validator = $request->validate([
-            'min_correct' => 'required|integer',
-            'minutes' => 'required|integer'
-        ],
+        $validator = $request->validate(
+            [
+                'min_correct' => 'required|integer',
+                'minutes' => 'required|integer'
+            ],
             [
                 'min_correct.required' => 'Поле минимальное количество верных ответов должно быть заполено!',
                 'minutes.required' => 'Поле минуты должно быть заполено!',
                 'integer' => 'Укажите целое число!',
-            ]);
+            ]
+        );
 
 
-            $test->min_correct = $request->get('min_correct');
-            $test->minutes = $request->get('minutes');
-            $test->save();
+        $test->min_correct = $request->get('min_correct');
+        $test->minutes = $request->get('minutes');
+        $test->save();
 
         return redirect()
             ->route('chapter.tests', $request->get('chapter_id'))

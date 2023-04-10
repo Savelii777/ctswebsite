@@ -90,6 +90,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::resource('chapter', ChapterController::class);
     // Тесты
     Route::resource('test', TestController::class);
+    Route::get('/tests', [TestController::class, 'index'])->name('tests.home');
+
+    Route::get('questions/{question}/edit', [TestController::class, 'editQuestion'])->name('questions.edit');
+    Route::delete('questions/{question}', [TestController::class, 'destroyQuestion'])->name('questions.destroy');
+    Route::put('questions/{question}', [TestController::class, 'updateQuestion'])->name('questions.update');
+
+    Route::get('questions/create', [TestController::class, 'create'])->name('questions.create');
+    Route::post('/questions', [TestController::class, 'testStore'])->name('questions.testStore');
+
+
+
     // Файлы
     Route::resource('file', FileController::class);
 

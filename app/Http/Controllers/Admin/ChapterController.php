@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Chapter;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use App\Models\Question;
+
 
 class ChapterController extends Controller
 {
@@ -14,6 +16,19 @@ class ChapterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function tests(Chapter $chapter)
+    {
+        //test_id может вызвать проблему.
+        //Сделать так, что бы вытягивались данные из тоблицы вопросы
+        //Страница со всеми тестами
+        $questions = Question::where('test_id', $chapter->id)->get();
+        //return $questions[0];
+        return view('admin.chapter.tests', [
+            'chapter' => $chapter,
+            'questions' =>$questions
+        ]);
+    }
+    
     public function index()
     {
         //
@@ -36,12 +51,7 @@ class ChapterController extends Controller
         ]);
     }
 
-    public function tests(Chapter $chapter)
-    {
-        return view('admin.chapter.tests', [
-            'chapter' => $chapter
-        ]);
-    }
+    
 
     public function files(Chapter $chapter)
     {
@@ -58,6 +68,7 @@ class ChapterController extends Controller
      */
     public function store(Request $request)
     {
+      
         $validator = $request->validate([
             'title' => 'required|max:255',
             'order' => 'integer'

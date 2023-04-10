@@ -120,7 +120,8 @@
     </ul>
     <?php $questionNumber++; ?>
     @endforeach
-    <button type="submit">Завершить тест</button>я
+    <input type="hidden" name="questions" value="{{ json_encode($questions) }}">
+    <button type="submit">Завершить тест</button>
 </form>
 </div>
 
