@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-group">
-        <label for="chapter_number">Выберите номер главы:</label>
+        <label for="chapter_number">Введите номер главы:</label>
         <input type="text" class="form-control" id="chapter_number" name="chapter_number" required>
     </div>
   
