@@ -31,6 +31,93 @@ class TestController extends Controller
     ]);
   }
 
+  //Получить вопросы из базы
+  //echo $questionData[0]['question'];
+  //echo $questionData[0]['answers'][0];
+  //echo $questionData[0]['answers'][1];
+  //echo $questionData[0]['answers'][2];
+  //echo $questionData[0]['correct_answer'];
+  public function getQuetionsInDB($testId)
+  {
+    $questions = Question::where('test_id', $testId)->get()->toArray();
+    $questionDataList = array_map(function ($question) {
+      return json_decode($question['data'], true);
+    }, $questions);
+    return array_merge(...$questionDataList);
+    //return "getQuetionsInDB";
+  }
+
+  //Добавить вопросы в базу
+  /*$que = array(
+    "answers" => array("Fake", "Fake", "Cool"),
+    "question" => "Raketa",
+    "correct_answer" => "3"
+  );
+  $this->insertQuetionToDB($que, 1);
+  */
+  public function insertQuetionToDB($question, $testId)
+  {
+    $questionData = array(
+      "question" => $question["question"],
+      "answers" => array_values($question["answers"]),
+      "correct_answer" => $question["correct_answer"]
+    );
+
+    Question::create([
+      'test_id' => $testId,
+      'data' => json_encode(array($questionData))
+    ]);
+
+    return redirect()
+      ->route('tests.home')
+      ->with('success', 'Вопрос успешно добавлен!');
+
+
+    //return "insertQuetionToDB";
+  }
+  public function editQuetionInDB(Question $question)
+  {
+    return "editQuetionInDB";
+  }
+  public function removeQuetionInDB(Question $question)
+  {
+    $question->delete();
+
+    return redirect()->back()->withSuccess('Вопрос успешно удален!');
+    //return "removeQuetionInDB";
+  }
+
+
+
+
+  //отображает страницу для прохождения теста;
+  public function test(Test $test)
+  {
+
+    //return $this->getQuetionsInDB(1);
+    //return $test;
+    //return 123;
+    $questionDataList = $this->getQuetionsInDB($test->id);
+    if (empty($questionDataList))
+      abort(404);
+    //$questions = $questionDataList[array_rand($questionDataList)];
+
+    //$test->questions = count($questions); //Количество вопросов
+    return view('test-demo', [
+      'questionDataList' => $questionDataList,
+      'test' => $test,
+    ]);
+  }
+
+
+
+
+
+
+
+
+
+
   //отображает результаты выполнения теста пользователем;
   public function testResult(Attempt $attempt)
   {
@@ -55,39 +142,32 @@ class TestController extends Controller
     //echo $questionData[0]['answers'][2];
     //echo $questionData[0]['correct_answer'];
   }
-   
 
-  //отображает страницу для прохождения теста;
-  public function test(Test $test)
-  {
-    $questionDataList = $this->getQuetions($test);
-    if (empty($questionDataList))
-      abort(404);
-    $questions = $questionDataList[array_rand($questionDataList)];
 
-    $test->questions = count($questions); //Количество вопросов
-    return view('test-demo', [
-      'questions' => $questions,
-      'test' => $test,
-    ]);
-  }
+
 
   public function check(Request $request)
   {
+    //return $request;
     $answers = $request->all();
-    $questions = json_decode($request->input('questions'), true);
 
     $correct_answers = 0;
+    $questions = [];
+    foreach ($answers as $key => $answer) {
+      if (strpos($key, 'question') === 0) {
+        // Получаем информацию о вопросе из скрытого поля
+        $question = json_decode($answer, true);
+        $question['selected_answer'] = $answers['answer' . substr($key, 8)];
+        $questions[] = $question;
 
-    foreach ($questions as $key => $question) {
-      $answer = $request->input('answer' . $key);
-      if ($answer == $question['correct_answer']) {
-        $correct_answers++;
+        // Проверяем правильность ответа
+        if ($question['selected_answer'] == $question['correct_answer']) {
+          $correct_answers++;
+        }
       }
     }
 
     $score = round(($correct_answers / count($questions)) * 100);
-
     $test = json_decode($request->input('test'));
     $attempt = Attempt::create([
       'user_id' => Auth::user()->id,
@@ -99,6 +179,6 @@ class TestController extends Controller
       'is_finished' => ($score > 50) ? true : false,
     ]);
 
-    return view('result', compact('score'));
+    return view('result', compact('score', 'questions'));
   }
 }

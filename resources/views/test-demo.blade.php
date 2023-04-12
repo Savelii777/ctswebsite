@@ -100,29 +100,29 @@
 
 
 
-<h1>Тест по береговым ракетным комплексам (БРК)</h1>
-<div class = "theform">
-<form method="post" action="{{ url('/test/check') }}">
+<h1>Тест </h1>
+<div class="theform">
+  <form method="post" action="{{ url('/test/check') }}">
     {{ csrf_field() }}
     <input type="hidden" name="test" value="{{ json_encode($test) }}">
     <?php $questionNumber = 1; ?>
-    @foreach ($questions as $key => $question)
+    @foreach ($questionDataList as $key => $question)
+    <input type="hidden" name="question{{ $key }}" value="{{ json_encode($question) }}">
     <h3>{{ $questionNumber }}. {{ $question['question'] }}</h3>
     <ul>
-        <?php $answerNumber = 1; ?>
-        @foreach ($question['answers'] as $answer)
-        <li>
-            <input type="radio" id="answer{{ $key }}{{ $answerNumber }}" name="answer{{ $key }}" value="{{ $answer }}">
-            <label for="answer{{ $key }}{{ $answerNumber }}">{{ $answer }}</label>
-        </li>
-        <?php $answerNumber++; ?>
-        @endforeach
+      <?php $answerNumber = 1; ?>
+      @foreach ($question['answers'] as $answer)
+      <li>
+        <input type="radio" id="answer{{ $key }}{{ $answerNumber }}" name="answer{{ $key }}" value="{{ $answerNumber }}">
+        <label for="answer{{ $key }}{{ $answerNumber }}">{{ $answer }}</label>
+      </li>
+      <?php $answerNumber++; ?>
+      @endforeach
     </ul>
     <?php $questionNumber++; ?>
     @endforeach
-    <input type="hidden" name="questions" value="{{ json_encode($questions) }}">
     <button type="submit">Завершить тест</button>
-</form>
+  </form>
 </div>
 
 @include('partials.footer')

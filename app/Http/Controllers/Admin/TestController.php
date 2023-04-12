@@ -58,11 +58,10 @@ class TestController extends Controller
             'test_id' => $chapter_number,
             'data' => json_encode($preparedQuestions)
         ]);
-        
+
         return redirect()
-        ->route('tests.home')
-        ->with('success', 'Вопрос успешно добавлен!');
- 
+            ->route('tests.home')
+            ->with('success', 'Вопрос успешно добавлен!');
     }
 
     //Метод, обрабатывает кнопку - добавить тест
@@ -157,6 +156,8 @@ class TestController extends Controller
 
     public function getQuetions(Test $test) //Получить вопросы из базы
     {
+        
+
         //получения вопросов из таблицы
         $questions = Question::where('test_id', $test->id)->get();
         $questionDataList = array();
