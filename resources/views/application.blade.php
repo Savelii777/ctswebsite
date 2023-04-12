@@ -23,7 +23,7 @@
                  </div>
                  <div class="row">
                     <div class="form-group">
-                       <label>Сфера деятельности</label>
+                       <label>Группа</label>
                        <input value="{{ old('place_of_work') }}" name="place_of_work" type="text" class="form-control @error('place_of_work') is-invalid @enderror">
                        @error('place_of_work')
                             <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                  </div>
                  <div class="row">
                     <div class="form-group">
-                       <label>Ваш город</label>
+                       <label>Ваш курс</label>
                        <input value="{{ old('city') }}" name="city" type="text" class="form-control @error('city') is-invalid @enderror">
                        @error('city')
                             <span class="invalid-feedback" role="alert">

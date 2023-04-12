@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div style="margin-bottom: 0" class="form-group col-md-6">
-                    <label>Город</label>
+                    <label>Курс</label>
                     <input
                         type="text"
                         class="form-control"
@@ -70,7 +70,7 @@
             </div>
             <div class="row">
                 <div style="margin-bottom: 0" class="form-group  col-md-12">
-                    <label>Место работы</label>
+                    <label>Группа</label>
                     <input
                         type="text"
                         class="form-control"

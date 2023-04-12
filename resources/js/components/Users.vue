@@ -25,7 +25,7 @@
             </div>
 
             <div class="form-group mr-2">
-                <label>Город</label>
+                <label>Курс</label>
                 <input
                     v-model="city"
                     name="name"
@@ -35,7 +35,7 @@
             </div>
 
             <div class="form-group mr-2">
-                <label>Сфера деятельности</label>
+                <label>Группа</label>
                 <input
                     v-model="placeOfWork"
                     name="name"
@@ -71,10 +71,10 @@
                                 Завершено глав
                             </th>
                             <th>
-                                Город
+                                Курс
                             </th>
                             <th>
-                                Сфера деятельности
+                                Группа
                             </th>
                             <th>
                                 Роли
@@ -197,7 +197,7 @@
                                             }}
                                         </p>
                                         <p>
-                                            <strong>Город: </strong
+                                            <strong>Курс: </strong
                                             >{{
                                                 selectedUser
                                                     ? selectedUser.city

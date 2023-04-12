@@ -81,21 +81,21 @@
                                 <img style="height: 100px; width: 100px; object-fit: cover" src="{{$user['img_url']}}"
                                      alt="User image">
                             @endif
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label>Аватар</label>
                                 <input style="height: 46px;" value="{{ old('image') }}" name="image" type="file"
                                        class="form-control">
-                            </div>
+                            </div>-->
                             <div class="form-group">
-                                <label>Город</label>
+                                <label>Курс</label>
                                 <input value="{{ $user['city'] }}" name="city" type="text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Место работы</label>
+                                <label>Группа</label>
                                 <input value="{{ $user['place_of_work'] }}" name="place_of_work" type="text"
                                        class="form-control">
                             </div>
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label for="inputStatus">Пол</label>
                                 <select name=sex id="inputStatus" class="form-control custom-select">
                                     <option
@@ -115,7 +115,7 @@
                             <div class="form-group">
                                 <label>Дата рождения</label>
                                 <input value="{{ $user['birth'] }}" name="birth" type="date" class="form-control">
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <label>Роли</label><br>
                                 @foreach($roles as $role)

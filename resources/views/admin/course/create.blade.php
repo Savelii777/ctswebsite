@@ -76,10 +76,10 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label>Изображение</label>
                                 <input style="height: 46px;" value="{{ old('image') }}" name="image" type="file" class="form-control">
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <label>Описание</label>
                                 <textarea name="city" type="text" class="form-control">{{ old('description') }}</textarea>

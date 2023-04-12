@@ -36,10 +36,10 @@
                         @sortablelink('name', 'ФИО')
                     </th>
                     <th>
-                        @sortablelink('place_of_work', 'Сфера деятельности')
+                        @sortablelink('place_of_work', 'Группа')
                     </th>
                     <th>
-                        @sortablelink('city', 'Город')
+                        @sortablelink('city', 'Курс')
                     </th>
                     <th>
                         @sortablelink('email', 'e-mail')

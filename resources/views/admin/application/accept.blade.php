@@ -84,15 +84,15 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Город</label>
+                                <label>Курс</label>
                                 <input value="{{ $application['city'] }}" name="city" type="text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Место работы</label>
+                                <label>Группа</label>
                                 <input value="{{ $application['place_of_work'] }}" name="place_of_work" type="text"
                                        class="form-control">
                             </div>
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label for="inputStatus">Пол</label>
                                 <select name=sex id="inputStatus" class="form-control custom-select">
                                     <option selected>не указан</option>
@@ -103,7 +103,7 @@
                             <div class="form-group">
                                 <label>Дата рождения</label>
                                 <input value="{{ old('birth') }}" name="birth" type="date" class="form-control">
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <label>Роли</label><br>
                                 @foreach($roles as $role)

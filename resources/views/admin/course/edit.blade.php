@@ -82,10 +82,10 @@
                             @if($course['img_url'])
                             <img style="height: 100px; width: 100px; object-fit: cover" src="{{$course['img_url']}}" alt="Course image">
                             @endif
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label>Изображение</label>
                                 <input style="height: 46px;" value="{{ old('image') }}" name="image" type="file" class="form-control">
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <label>Описание</label>
                                 <textarea name="description" type="text" class="form-control">{{ $course['description'] }}</textarea>
