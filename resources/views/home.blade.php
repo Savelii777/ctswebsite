@@ -23,22 +23,22 @@
                                     {{ Auth::user()->name }}
                                 </div>
                             </li>
-                            <li class="person__item">
+                            <!--<li class="person__item">
                                 <p>
                                     дата рождения
                                 </p>
                                 <div>
                                     {{ Auth::user()->birth ? date_format(date_create(Auth::user()->birth), 'd.m.Y') : 'не указана' }}
                                 </div>
-                            </li>
-                            <li class="person__item">
+                            </li>-->
+                            <!--<li class="person__item">
                                 <p>
                                     пол
                                 </p>
                                 <div>
                                     {{ Auth::user()->sex }}
                                 </div>
-                            </li>
+                            </li>-->
                             <li class="person__item">
                                 <p>
                                     курс
@@ -47,17 +47,16 @@
                                     {{ Auth::user()->city ? Auth::user()->city : 'не указан' }}
                                 </div>
                             </li>
-                        </div>
-                        <div class="col-lg-12">
                             <li class="person__item">
                                 <p>
-                                    место учебы/работы
+                                    группа
                                 </p>
                                 <div class="font">
                                     {{ Auth::user()->place_of_work ? Auth::user()->place_of_work : 'не указано'}}
                                 </div>
                             </li>
                         </div>
+                        
                     </div>
                 </ul>
                 <ul class="only_mobile person__list col-lg-7 col-8">
