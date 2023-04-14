@@ -8,95 +8,83 @@
     
 <head>
 <style>
-            .toppanel{
-                
-                background-color: #f5f5f5;
-                color: #fff;
-                padding-top: 3%;
-                padding-bottom: 2%;
-                padding-left:15%;
-                padding-right:15%;
-
-            }
-            .header{
-                background-color: #f5f5f5;
-            }
-            .account-block{
-                display: flex;
-                justify-content: space-between;
-            }
-            #structure{
-                background: #f5f5f5;
-    padding-bottom: 0;
-            }
-            
-            h1 {
-                font-size: 32px;
-                font-weight: bold;
-                text-align: center;
-                margin-top: 50px;
-            }
-            h3{
-                color:black;
-            }
-            .theform
-            {
-                color:#f5f5f5;
-                background: #f5f5f5;
-                margin-top: 50px;
-            padding: 20px;
-            border: 2px solid #e8e8e8;
-            border-radius: 10px;
-
-            box-shadow: 0px 3px 5px rgba(0,0,0,0.1);
-            margin-left: 20%;
-            margin-right: 20%;
-            }
-            form {
-                margin-top: 50px;
-                padding: 20px;
-                border: 2px solid #ccc;
-                border-radius: 10px;
-                
-            }
-
-            ul {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-
-            li {
-                margin-bottom: 10px;
-                color: black;
-
-            }
-
-            label {
-                display: inline-block;
-                vertical-align: middle;
-                margin-left: 10px;
-                font-size: 18px;
-                color: black;
-            }
-
-            button[type="submit"] {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4a4a4a;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
-        }
-
-        button[type="submit"]:hover {
-            background-color: #3a3a3a;
-            box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
-        }}
-        </style>
+    .toppanel {
+        background-color: #f5f5f5;
+        color: #fff;
+        padding-top: 3%;
+        padding-bottom: 2%;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+    
+    h1 {
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 50px;
+    }
+    
+    h3 {
+        color: black;
+    }
+    
+    .theform {
+        color: #f5f5f5;
+        background: #f5f5f5;
+        margin-top: 50px;
+        padding: 20px;
+        border: 2px solid #e8e8e8;
+        border-radius: 10px;
+        box-shadow: 0px 3px 5px rgba(0,0,0,0.1);
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    
+    form {
+        margin-top: 50px;
+        padding: 20px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+    }
+    
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    li {
+        margin-bottom: 10px;
+        color: black;
+        display: flex;
+        align-items: center;
+    }
+    
+    label {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        font-size: 18px;
+        color: black;
+    }
+    
+    button[type="submit"] {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4a4a4a;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #3a3a3a;
+        box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
+    }
+</style>
 
 
 
