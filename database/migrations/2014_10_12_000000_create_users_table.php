@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('city')->nullable();
             $table->date('birth')->nullable();
-            $table->enum('sex', ['не указан', 'мужской', 'женский']);
+            $table->enum('sex', ['не указан', 'мужской', 'женский'])->nullable();
             $table->string('place_of_work')->nullable();
             $table->string('img_url')->nullable();
             $table->timestamp('email_verified_at')->nullable();
