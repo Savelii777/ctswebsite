@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attempt;
 use App\Models\Question;
+use App\Models\CourseUser;
 use App\Models\Test;
 use App\Services\TestCheckService;
 use Illuminate\Http\Request;
@@ -178,7 +179,65 @@ class TestController extends Controller
       'is_passed' => ($score > 75) ? true : false,
       'is_finished' => ($score > 50) ? true : false,
     ]);
+      if ($score > 75) {
 
+          $chapterListWitoutOne =  array();
+          for ($i = 1; $i <= count(json_decode($request->test)->chapter->course->chapters); $i++) {
+              array_push($chapterListWitoutOne, $i);
+          }
+
+          $course_id = json_decode($request->test)->chapter->course->id;
+          $chapter_id = json_decode($request->test)->chapter_id;
+
+          $key = array_search($chapter_id,  $chapterListWitoutOne );
+          if ($key !== false) {
+              unset( $chapterListWitoutOne [$key]);
+          }
+          $user_id = Auth::user()->id;
+
+          $course_user = CourseUser::where('user_id', $user_id)->first();
+
+          if ($course_user) {
+              $chapterList = json_decode($course_user->chapter_list);
+
+              $course_user->course_id = $course_id;
+              $index = array_search($chapter_id, $chapterList);
+
+              if ($index !== false) {
+                  unset($chapterList[$index]);
+              }
+
+              $course_user->chapter_list = json_encode(array_values($chapterList));
+              $course_user->completed = count(json_decode($request->test)->chapter->course->chapters)-count($chapterList);
+              $course_user->save();
+          } else {
+              CourseUser::create([
+                  'course_id' => $course_id,
+                  'user_id' => $user_id,
+                  'completed' => count(json_decode($request->test)->chapter->course->chapters)-count($chapterListWitoutOne),
+                  'chapter_list' => json_encode(array_values($chapterListWitoutOne))
+              ]);
+          }
+      }
+//      if ($score > 75){
+//          $course_id = json_decode($request->test)->chapter->course->id;
+//          $chapter_id = json_decode($request->test)->chapter_id;
+//          $user_id = Auth::user()->id;
+//
+//          $course_user = CourseUser::where('user_id', $user_id)->first();
+//
+//          if ($course_user) {
+//              $course_user->course_id = $course_id;
+//              $course_user->completed = $chapter_id;
+//              $course_user->save();
+//          } else {
+//              CourseUser::create([
+//                  'course_id' => $course_id,
+//                  'user_id' => $user_id,
+//                  'completed' => $chapter_id
+//              ]);
+//          }
+//      }
     return view('result', compact('score', 'questions'));
   }
 }

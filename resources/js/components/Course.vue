@@ -5,9 +5,9 @@
    <div class="progress row">
       <div class="line" :style="'width:'+this.course.progress+'%'" ></div>
    </div>
-   <div class="courses__block row col-md-12"> 
+   <div class="courses__block row col-md-12">
       <button  class="person__btn btn-hide">
-         <a href="#">  
+         <a href="#">
          <span>
             <i class="fa fa-angle-up"></i>
          </span>
@@ -52,8 +52,8 @@
                      <div>
                         Администратор
                      </div>
-                     
-                  </div> 
+
+                  </div>
                   <img src="images/expert.png" alt="courses" class="img-responsive mx-auto d-block">
                </div>
             </div>
@@ -94,7 +94,6 @@ progress:38,
       border-radius: 4px;
       .line {
          height: 100%;
-         background: #00bfff;
       }
    }
 </style>

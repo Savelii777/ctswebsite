@@ -57,9 +57,9 @@ class User extends Authenticatable
                 $query->whereHas('courses', function($query) {
                     $query->where('completed', 16);
                 });
-    
-            } 
-            
+
+            }
+
             if ($filters->completed == 2) {
                 $query->whereHas('courses', function($query) {
                     $query->where('completed', '!=', 16);

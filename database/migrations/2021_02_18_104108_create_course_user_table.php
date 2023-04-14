@@ -20,6 +20,8 @@ class CreateCourseUserTable extends Migration
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->unsignedInteger('completed');
+            $table->json('chapter_list')->nullable();
+            $table->timestamps();
         });
     }
 

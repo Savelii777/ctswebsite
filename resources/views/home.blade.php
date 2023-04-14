@@ -115,7 +115,7 @@
                         <a href="{{route('settings')}}"> Настроки профиля</a>
                     </button>
                     <button
-                        type="button" data-toggle="collapse" data-target="#collapseProfile" aria-expanded="true" aria-controls="collapseProfile" 
+                        type="button" data-toggle="collapse" data-target="#collapseProfile" aria-expanded="true" aria-controls="collapseProfile"
                         id="button_hide_profile_info" class="person__btn btn-hide">
                             <div style="color:white">
                                 <span>
@@ -150,7 +150,7 @@
                     <line-progress :percent="{{ $course->completePercent(Auth::user()->id) }}"></line-progress>
                 </div>
             <div class="courses__block">
-                <button 
+                <button
                 type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseImg{{$key}} multiCollapseText{{$key}} multiCollapseInfo{{$key}}"
                 id="button_hide_course_info_{{$key}}" style="background-color: white" class="person__btn btn-hide">
                     <div class="profile_visibity">

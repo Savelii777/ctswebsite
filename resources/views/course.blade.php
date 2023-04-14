@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials.header')
-   
+
 
     <section id="structure" class="account">
         <div class="container">

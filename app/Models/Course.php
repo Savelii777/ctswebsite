@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use Illuminate\Support\Facades\Log;
 
 class Course extends Model
 {
@@ -33,7 +34,9 @@ class Course extends Model
     }
 
     public function users() {
+
         return $this->belongsToMany(User::class)->withPivot('completed');
+
     }
 
     public function completePercent($id){
@@ -45,6 +48,7 @@ class Course extends Model
         }
 
         $completed = $this->users()->find($id)->pivot->completed;
+
         return round(($completed/$chaptersCount)*100);
         /*$completedChapters = 0;
         $chaptersCount = $this->chapters()->count();
