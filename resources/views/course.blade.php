@@ -182,9 +182,8 @@
                                                 </div>
 
                                                 <div class="row w-100">
-<!--                                                    {{print_r($chapter->tests[0]->complete_questions??[],true)}}-->
-
-                                                    @foreach($chapter->tests[0]->questions as $index=>$q)
+                                                <p>Количество вопросов: {{ count($chapter->tests[0]->questions) }}</p>
+                                                    <!--@foreach($chapter->tests[0]->questions as $index=>$q)
                                                         <div class="col-3 border-left">
                                                             <p class="d-flex justify-content-between text-black">
                                                                 Вопрос {{$index+1}}
@@ -195,7 +194,7 @@
                                                                 @endif
                                                             </p>
                                                         </div>
-                                                    @endforeach
+                                                    @endforeach-->
 
                                                 </div>
 

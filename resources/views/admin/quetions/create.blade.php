@@ -12,10 +12,10 @@
     <form method="post" action="{{ route('questions.testStore') }}">
     @csrf
 
-    <div class="form-group">
+    <!--<div class="form-group">
         <label for="course_number">Введите номер курса:</label>
         <input type="text" class="form-control" id="course_number" name="course_number" required>
-    </div>
+    </div>-->
 
     <div class="form-group">
         <label for="chapter_number">Введите номер главы:</label>

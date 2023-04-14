@@ -38,7 +38,7 @@ class TestController extends Controller
     public function testStore(Request $request)
     {
 
-        $course_number = $request->input('course_number');
+        //$course_number = $request->input('course_number');
         $chapter_number = $request->input('chapter_number');
         $questions = $request->input('questions');
 
