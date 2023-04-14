@@ -65,6 +65,12 @@
                         </svg>
                     </svg>
                 </a>
+                    <a style="margin-top: 15px; max-height: 50px;" href="{{ url('/admin') }}"
+                       class="btn-active text-center col-sm-6 col-md-5">
+                        <p>
+                            Админка
+                        </p>
+                    </a>
             <div/>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf

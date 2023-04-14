@@ -219,25 +219,7 @@ class TestController extends Controller
               ]);
           }
       }
-//      if ($score > 75){
-//          $course_id = json_decode($request->test)->chapter->course->id;
-//          $chapter_id = json_decode($request->test)->chapter_id;
-//          $user_id = Auth::user()->id;
-//
-//          $course_user = CourseUser::where('user_id', $user_id)->first();
-//
-//          if ($course_user) {
-//              $course_user->course_id = $course_id;
-//              $course_user->completed = $chapter_id;
-//              $course_user->save();
-//          } else {
-//              CourseUser::create([
-//                  'course_id' => $course_id,
-//                  'user_id' => $user_id,
-//                  'completed' => $chapter_id
-//              ]);
-//          }
-//      }
+
     return view('result', compact('score', 'questions'));
   }
 }

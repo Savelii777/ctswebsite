@@ -150,24 +150,6 @@ $('button[id*="button_hide_course_info_"]').each(function (index) {
     });
 });
 $(document).ready(function() {
-
-        this.loading = true;
-        axios.get("/admin/api/users")
-            .then(function (resp) {
-                if(resp.data.data[1].roles[0].name==="admin"){
-                    document.querySelector('.header__btns').innerHTML +=  "" +
-                        "<a style=\"max-height: 50px\" class=\"btn-active-admin btn-active text-center btn-exit col-sm-6 col-md-5\"\n" +
-                        "                   href=\"admin\"\n" +
-                        "                    <p style=\"margin-right: 15px\">\n" +
-                        "                        Панель администратора\n" +
-                        "                    </p>\n" +
-                        "                </a>";
-                }
-        })["catch"](function (resp) {
-            console.log(resp);
-        });
-});
-$(document).ready(function() {
     const items = $('div[id*="materials-item"]');
     const lengthPdf = items.length;
     let index = 0;
