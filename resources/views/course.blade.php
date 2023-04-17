@@ -40,12 +40,12 @@
                     </button>
                 </div>
                 <div class="account-elem">
-                    <img src="{{ asset('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                    <img src="{{ asset('images/right-blue.png') }}" alt="courses" class="exp-img">
                     <p class="exp-prg">
                         {{ $course->chapters->count() }} занятий <br>({{ $course->completeCount(Auth::user()->id) }}
                         выполнено)
                     </p>
-                    <img src="{{ asset('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                    <img src="{{ asset('images/right-blue.png') }}" alt="courses" class="exp-img">
                     <p class="exp-prg">
                         {{ $course->hours }} часов <br>обучения
                     </p>

@@ -196,11 +196,11 @@
                         </div>
                         <div class="collapse multi-collapse only_mobile" id="multiCollapseInfo{{$key}}">
                             <div class="courses__elem-info row">
-                                <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                                <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                                 <p class="exp-prg">
                                     {{ $course->chapters->count() }} занятий <br>({{ $course->completeCount(Auth::user()->id) }} выполнено)
                                 </p>
-                                <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                                <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                                 <p class="exp-prg">
                                     40 часов <br>обучения
                                 </p>
@@ -219,11 +219,11 @@
                             </div>
                         </div>
                         <div class="courses__elem-info row only_desktop">
-                            <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                            <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                             <p class="exp-prg">
                                 {{ $course->chapters->count() }} занятий <br>({{ $course->completeCount(Auth::user()->id) }} выполнено)
                             </p>
-                            <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                            <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                             <p class="exp-prg">
                                 40 часов <br>обучения
                             </p>

@@ -92,11 +92,11 @@
                     </button>
                 </div>
                <div class="account-elem">
-                  <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                  <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                   <p class="exp-prg">
                      14 занятий <br>(4 выполнено)
                   </p>
-                  <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                  <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                   <p class="exp-prg">
                      40 часов <br>обучения
                   </p>
