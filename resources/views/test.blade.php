@@ -23,7 +23,7 @@
          <div class="container">
             <div class="row">
                <div class="logotip col-md-5 col-sm-7 col-7">
-{{--                  <img src="{{ ('icons/logo-white.png') }}" alt="logo">--}}
+{{--                  <img src="{{ ('images/logo-white.png') }}" alt="logo">--}}
 {{--                  <p>Система дистанционного обучения доктора Реутова</p>--}}
                </div>
                 <a style="max-height: 50px;" href="{{ url('/') }}"
@@ -1482,7 +1482,7 @@
          <div class="container">
             <div class="row footer__logo">
                <div class="logotip col-6">
-{{--                  <img src="{{ ('icons/logo-white.png') }}" alt="logo">--}}
+{{--                  <img src="{{ ('images/logo-white.png') }}" alt="logo">--}}
 {{--                  <p>Система дистанционного обучения доктора Реутова</p>--}}
                </div>
                <div class="col-6">

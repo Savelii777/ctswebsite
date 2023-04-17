@@ -165,7 +165,7 @@
                 </button>
                 <div class="courses__img col-md-4 col-lg-3 only_desktop">
                     <!--<img style="object-fit: cover" src="{{ $course->img_url }}" alt="courses">-->
-                    <img style="object-fit: cover" src="https://sun9-50.userapi.com/impg/g6Z-IlgvY388h-2vAjZyVBpJlcqhwh1QxuMBkw/RrWSO4bT2NM.jpg?size=512x512&quality=96&sign=00e0c3ce21e7cb7cae3567121d0cb444&type=album" alt="courses">
+                    <img style="object-fit: cover" src="{{ ('images/loco.jpg') }}" alt="courses">
 
                 </div>
                 <div class="collapse multi-collapse only_mobile" id="multiCollapseImg{{$key}}">

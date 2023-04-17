@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="{{ asset('icons/logo.png') }}" type="image/png">
+        <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" type="image/png">
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
@@ -23,7 +23,7 @@
          <div class="container">
             <div class="row">
                <div class="logotip col-md-5 col-sm-7 col-7">
-                  <img src="{{ ('icons/logo-white.png') }}" alt="logo">
+                  <img src="{{ ('images/logo-white.png') }}" alt="logo">
                   <p>Система дистанционного обучения доктора Реутова</p>
                </div>
                <a href="/entrance" class="btn-active btn-exit text-center col-lg-3 col-3">
