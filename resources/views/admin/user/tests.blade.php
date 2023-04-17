@@ -8,7 +8,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-3">
-                    <a href="/admin/user/{{$user->id}}/courses" class="btn btn-secondary">Назад</a>
+                    <!--<a href="/admin/user/{{$user->id}}/courses" class="btn btn-secondary">Назад</a>-->
+                    <a href="/admin/user" class="btn btn-secondary">Назад</a>
                 </div>
                 <div class="col-sm-6">
                     <h1>Тесты курса "{{$course->title}}" пройденные пользователем {{$user->name}}</h1>

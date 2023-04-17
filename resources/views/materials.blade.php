@@ -35,10 +35,17 @@
                          </div>
                         @endforeach
                         </div>
+                        <div class="d-flex justify-content-center">
+  <a href="{{ url("/test/about/{$chapter->tests[0]['id']}")}}" class="btn btn-primary btn-lg" style="background-color: #3c421a;">Пройти тест</a>
+</div>
+
+ 
                     </div>
+                    
                  </div>
               </div>
            </div>
+         
         </div>
      </section>
     @include('partials.footer')

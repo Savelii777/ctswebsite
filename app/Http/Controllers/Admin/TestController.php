@@ -131,20 +131,40 @@ class TestController extends Controller
      */
     public function editQuestion(Question $question)
     {
-        return view('admin.question.edit', ['question' => $question]);
+        //return $question;
+        return view('admin.quetions.edit', ['question' => $question]);
     }
 
     public function updateQuestion(Request $request, Question $question)
     {
-        $data = json_decode($question->data, true);
+        $whereid = $question['id'];
+         //$course_number = $request->input('course_number');
+        $chapter_number = $request->input('chapter_number');
+        $questions = $request->input('questions');
+        //return $whereid;
 
-        // Обновите данные вопроса в соответствии с входными данными
-        // Здесь вы можете обновить массив $data и выполнить валидацию данных, если это необходимо
+        $preparedQuestions = array();
+        foreach ($questions as $id => $item) {
+            $question = array(
+                "question" => $item["question"],
+                "answers" => array_values($item["answers"]),
+                "correct_answer" => $item["correct_answer"]
+            );
+            $preparedQuestions[] = $question;
+        }
 
-        $question->data = json_encode($data);
-        $question->save();
+        //return $whereid;
+        Question::where('id', $whereid)
+       ->update([
+           'test_id' => $chapter_number,
+           'data' => json_encode($preparedQuestions)
+       ]);
 
-        return redirect()->route('tests.edit', $question->test_id)->with('success', 'Вопрос успешно обновлен');
+        return redirect()
+            ->route('tests.home')
+            ->with('success', 'Вопрос успешно добавлен!');
+
+        
     }
 
     public function destroyQuestion(Question $question)
