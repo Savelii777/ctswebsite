@@ -67,6 +67,7 @@ class TestController extends Controller
     //Метод, обрабатывает кнопку - добавить тест
     public function createOfChapter(Chapter $chapter)
     {
+        
 
         return view('admin.test.create', [
             'chapter' => $chapter,

@@ -78,10 +78,10 @@
                                     <i class="fas fa-list">
                                     </i> Файлы
                                 </a>
-                                <a class="btn btn-info btn-sm" href="{{ route('chapter.tests', $chapter['id']) }}">
+                                <!--<a class="btn btn-info btn-sm" href="{{ route('chapter.tests', $chapter['id']) }}">
                                     <i class="fas fa-list">
                                     </i> Тесты
-                                </a>
+                                </a>-->
                                 <a class="btn btn-primary btn-sm"
                                    href="{{ route('course.chapters.edit', [$course['id'], $chapter['id']]) }}">
                                     <i class="fas fa-pencil-alt">

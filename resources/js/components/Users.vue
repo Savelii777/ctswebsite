@@ -188,14 +188,7 @@
                                                     : "не указано"
                                             }}
                                         </p>
-                                        <p>
-                                            <strong>Пол: </strong>
-                                            {{
-                                                selectedUser
-                                                    ? selectedUser.sex
-                                                    : "не указано"
-                                            }}
-                                        </p>
+                                        
                                         <p>
                                             <strong>Курс: </strong
                                             >{{
