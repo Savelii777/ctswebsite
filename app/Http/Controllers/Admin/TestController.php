@@ -21,7 +21,7 @@ class TestController extends Controller
         //      <!-- <a href="{{ //route('questions.create', $test->id) }}" class="small-box-footer">Перейти <i class="fas fa-arrow-circle-right"></i></a>
         $questions = Question::all();
     $chapters = Chapter::all();
-    return $chapters;
+    //return $chapters;
     return view('admin.test.index', ['questions' => $questions, 'chapters' => $chapters]);
 
     }
