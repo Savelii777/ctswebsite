@@ -152,9 +152,8 @@ $('button[id*="button_hide_course_info_"]').each(function (index) {
 $(document).ready(function () {
     this.loading = true;
     axios.get("/admin/api/users").then(function (resp) {
-        if (resp.data.data[0].roles[0].name === "admin") {
+        console.log(resp)
             document.querySelector('.administrator').style.display = 'block';
-        }
     })["catch"](function (resp) {
         console.log(resp);
     });

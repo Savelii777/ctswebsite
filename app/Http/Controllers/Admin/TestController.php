@@ -37,10 +37,19 @@ class TestController extends Controller
     }
     public function testStore(Request $request)
     {
-
-        //$course_number = $request->input('course_number');
         $chapter_number = $request->input('chapter_number');
         $questions = $request->input('questions');
+
+        $chapterExists = Test::where('id', $chapter_number)->exists();
+
+        if (!$chapterExists) {
+            return redirect()
+                ->back()
+                ->withErrors(['Глава с номером ' . $chapter_number . ' не найдена']);
+        }
+
+        //$course_number = $request->input('course_number');
+       
 
 
         $preparedQuestions = array();
@@ -67,7 +76,7 @@ class TestController extends Controller
     //Метод, обрабатывает кнопку - добавить тест
     public function createOfChapter(Chapter $chapter)
     {
-        
+
 
         return view('admin.test.create', [
             'chapter' => $chapter,
@@ -139,7 +148,7 @@ class TestController extends Controller
     public function updateQuestion(Request $request, Question $question)
     {
         $whereid = $question['id'];
-         //$course_number = $request->input('course_number');
+        //$course_number = $request->input('course_number');
         $chapter_number = $request->input('chapter_number');
         $questions = $request->input('questions');
         //return $whereid;
@@ -156,16 +165,14 @@ class TestController extends Controller
 
         //return $whereid;
         Question::where('id', $whereid)
-       ->update([
-           'test_id' => $chapter_number,
-           'data' => json_encode($preparedQuestions)
-       ]);
+            ->update([
+                'test_id' => $chapter_number,
+                'data' => json_encode($preparedQuestions)
+            ]);
 
         return redirect()
             ->route('tests.home')
             ->with('success', 'Вопрос успешно добавлен!');
-
-        
     }
 
     public function destroyQuestion(Question $question)
@@ -177,7 +184,7 @@ class TestController extends Controller
 
     public function getQuetions(Test $test) //Получить вопросы из базы
     {
-        
+
 
         //получения вопросов из таблицы
         $questions = Question::where('test_id', $test->id)->get();
