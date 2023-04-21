@@ -17,9 +17,13 @@ class TestController extends Controller
      */
     public function index()
     {
+
         //      <!-- <a href="{{ //route('questions.create', $test->id) }}" class="small-box-footer">Перейти <i class="fas fa-arrow-circle-right"></i></a>
         $questions = Question::all();
-        return view('admin.test.index', ['questions' => $questions]);
+    $chapters = Chapter::all();
+    return $chapters;
+    return view('admin.test.index', ['questions' => $questions, 'chapters' => $chapters]);
+
     }
 
     /**
@@ -37,17 +41,21 @@ class TestController extends Controller
     }
     public function testStore(Request $request)
     {
+        
         $chapter_number = $request->input('chapter_number');
         $questions = $request->input('questions');
 
-        $chapterExists = Test::where('id', $chapter_number)->exists();
+        $chapterExists = Chapter::where('order', $chapter_number)->exists();
+        //Нужно получить из таблицы Chapter
+        //return $chapterExists;
 
         if (!$chapterExists) {
             return redirect()
                 ->back()
                 ->withErrors(['Глава с номером ' . $chapter_number . ' не найдена']);
         }
-
+        $chapter = Chapter::where('order', $chapter_number)->first();
+        //return $chapter->id; 
         //$course_number = $request->input('course_number');
        
 
@@ -64,7 +72,7 @@ class TestController extends Controller
 
 
         Question::create([
-            'test_id' => $chapter_number,
+            'test_id' => $chapter->id,
             'data' => json_encode($preparedQuestions)
         ]);
 
