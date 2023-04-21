@@ -40,12 +40,12 @@
                     </button>
                 </div>
                 <div class="account-elem">
-                    <img src="{{ asset('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                    <img src="{{ asset('images/right-blue.png') }}" alt="courses" class="exp-img">
                     <p class="exp-prg">
                         {{ $course->chapters->count() }} занятий <br>({{ $course->completeCount(Auth::user()->id) }}
                         выполнено)
                     </p>
-                    <img src="{{ asset('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                    <img src="{{ asset('images/right-blue.png') }}" alt="courses" class="exp-img">
                     <p class="exp-prg">
                         {{ $course->hours }} часов <br>обучения
                     </p>
@@ -90,8 +90,8 @@
                                                 checkbox-img-passed
 @endif
                                                 ">
-                                                <img src="{{ asset('icons/tick.png') }}" alt="courses">
-                                                <img src="{{ asset('icons/tick-hover.png') }}" alt="courses">
+                                                <img src="{{ asset('images/tick.png') }}" alt="courses">
+                                                <img src="{{ asset('images/tick-hover.png') }}" alt="courses">
                                             </div>
 
                                             {{ $chapter->title }}
@@ -109,7 +109,7 @@
                                             @if (false)
                                                 <div class="content-elem">
                                                     <div class="content-left">
-                                                        <img src="{{ asset('icons/play-button.png') }}" alt="courses">
+                                                        <img src="{{ asset('images/play-button.png') }}" alt="courses">
                                                         <p>
                                                             Видео-урок по теме
                                                         </p>
@@ -127,7 +127,7 @@
                                                 </div>
                                                 <div class="content-elem">
                                                     <div class="content-left">
-                                                        <img src="{{ asset('icons/board.png') }}" alt="courses">
+                                                        <img src="{{ asset('images/board.png') }}" alt="courses">
                                                         <p>
                                                             Презентация по теме
                                                         </p>
@@ -143,7 +143,7 @@
                                             @endif
                                             <div class="content-elem">
                                                 <div class="content-left">
-                                                    <img src="{{ asset('icons/google-docs.png') }}" alt="courses">
+                                                    <img src="{{ asset('images/google-docs.png') }}" alt="courses">
                                                     <p>
                                                         Дополнительные материалы по теме
                                                     </p>

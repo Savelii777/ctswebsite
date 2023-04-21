@@ -165,7 +165,7 @@
                 </button>
                 <div class="courses__img col-md-4 col-lg-3 only_desktop">
                     <!--<img style="object-fit: cover" src="{{ $course->img_url }}" alt="courses">-->
-                    <img style="object-fit: cover" src="https://sun9-50.userapi.com/impg/g6Z-IlgvY388h-2vAjZyVBpJlcqhwh1QxuMBkw/RrWSO4bT2NM.jpg?size=512x512&quality=96&sign=00e0c3ce21e7cb7cae3567121d0cb444&type=album" alt="courses">
+                    <img style="object-fit: cover" src="{{ ('images/loco.jpg') }}" alt="courses">
 
                 </div>
                 <div class="collapse multi-collapse only_mobile" id="multiCollapseImg{{$key}}">
@@ -196,11 +196,11 @@
                         </div>
                         <div class="collapse multi-collapse only_mobile" id="multiCollapseInfo{{$key}}">
                             <div class="courses__elem-info row">
-                                <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                                <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                                 <p class="exp-prg">
                                     {{ $course->chapters->count() }} занятий <br>({{ $course->completeCount(Auth::user()->id) }} выполнено)
                                 </p>
-                                <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                                <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                                 <p class="exp-prg">
                                     40 часов <br>обучения
                                 </p>
@@ -219,11 +219,11 @@
                             </div>
                         </div>
                         <div class="courses__elem-info row only_desktop">
-                            <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                            <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                             <p class="exp-prg">
                                 {{ $course->chapters->count() }} занятий <br>({{ $course->completeCount(Auth::user()->id) }} выполнено)
                             </p>
-                            <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                            <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                             <p class="exp-prg">
                                 40 часов <br>обучения
                             </p>

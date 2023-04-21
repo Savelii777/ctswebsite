@@ -8,31 +8,31 @@
                </p>
                <ul class="plan__list">
                   <li class="plan__item">
-                     <img src="{{ ('icons/right.jpg.png') }}" alt="logo">
+                     <img src="{{ ('images/right.jpg.png') }}" alt="logo">
                      <p>
                         Систематизирует процесс обучения от простого к сложному по каждому разделу обращения с ракетными комплексами.
                      </p>
                   </li>
                   <li class="plan__item">
-                     <img src="{{ ('icons/right.jpg.png') }}" alt="logo">
+                     <img src="{{ ('images/right.jpg.png') }}" alt="logo">
                      <p>
                         Интерактивная форма заданий привычна и понятна студентам, позволяет не отвлекаться на технические вопросы.
                      </p>
                   </li>
                   <li class="plan__item">
-                    <img src="{{ ('icons/right.jpg.png') }}" alt="logo">
+                    <img src="{{ ('images/right.jpg.png') }}" alt="logo">
                      <p>
                         Простые и наглядные схемы способствуют быстрому освоению и запоминанию материала.
                      </p>
                   </li>
                   <li class="plan__item">
-                    <img src="{{ ('icons/right.jpg.png') }}" alt="logo">
+                    <img src="{{ ('images/right.jpg.png') }}" alt="logo">
                      <p>
                         Словарик в каждом разделе курса позволяет быстро усвоить специфическую артеллерийскую терминологию.
                      </p>
                   </li>
                   <li class="plan__item">
-                   <img src="{{ ('icons/right.jpg.png') }}" alt="logo">
+                   <img src="{{ ('images/right.jpg.png') }}" alt="logo">
                      <p>
                         В целом пособие позволяет достаточно просто и быстро освоить метод обращения с ракетными комплексами.
                      </p>
@@ -47,31 +47,31 @@
                </p>
                <ul class="plan__list">
                   <li class="plan__item">
-                   <img src="{{ ('icons/right.jpg.png') }}" alt="logo">
+                   <img src="{{ ('images/right.jpg.png') }}" alt="logo">
                      <p>
                         Доступная форма изложения и конкретные задачи в каждом из разделов позволяют лучше ориентироваться в сложном процессе работы с обучающими курсами.
                      </p>
                   </li>
                   <li class="plan__item">
-                    <img src="{{ ('icons/right.jpg.png') }}" alt="logo">
+                    <img src="{{ ('images/right.jpg.png') }}" alt="logo">
                      <p>
                         Контрольно-тренировочные карты и задачи – ключевая форма обучения, позволяющая быстро усвоить материал.
                      </p>
                   </li>
                   <li class="plan__item">
-                   <img src="{{ ('icons/right.jpg.png') }}" alt="logo">
+                   <img src="{{ ('images/right.jpg.png') }}" alt="logo">
                      <p>
                         Возможность самоконтроля обеспечивает качество полученных знаний.
                      </p>
                   </li>
                   <li class="plan__item">
-                    <img src="{{ ('icons/right.jpg.png') }}" alt="logo">
+                    <img src="{{ ('images/right.jpg.png') }}" alt="logo">
                      <p>
                         В целом пособие позволяет достаточно просто и быстро освоить метод рассчетов и наводки.
                      </p>
                   </li>
                   <li class="plan__item">
-                    <img src="{{ ('icons/right.jpg.png') }}" alt="logo">
+                    <img src="{{ ('images/right.jpg.png') }}" alt="logo">
                      <p>
                         Новаторская схема позволяет детально изучить алгоритм управления ракетным комплексом. На практике это поможет в борьбе с угразами и защите нашей родины.
                      </p>

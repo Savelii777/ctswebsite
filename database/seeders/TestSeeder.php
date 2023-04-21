@@ -20,7 +20,7 @@ class TestSeeder extends Seeder
         foreach ($chapters as $chapter)
         {
             Test::create([
-                'minutes' => 90,
+                'minutes' => 25,
                 'min_correct' => 1,
                 'chapter_id' => $chapter->id
             ]);

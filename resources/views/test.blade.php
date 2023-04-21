@@ -23,7 +23,7 @@
          <div class="container">
             <div class="row">
                <div class="logotip col-md-5 col-sm-7 col-7">
-{{--                  <img src="{{ ('icons/logo-white.png') }}" alt="logo">--}}
+{{--                  <img src="{{ ('images/logo-white.png') }}" alt="logo">--}}
 {{--                  <p>Система дистанционного обучения доктора Реутова</p>--}}
                </div>
                 <a style="max-height: 50px;" href="{{ url('/') }}"
@@ -92,11 +92,11 @@
                     </button>
                 </div>
                <div class="account-elem">
-                  <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                  <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                   <p class="exp-prg">
                      14 занятий <br>(4 выполнено)
                   </p>
-                  <img src="{{ ('icons/right-blue.png') }}" alt="courses" class="exp-img">
+                  <img src="{{ ('images/right-blue.png') }}" alt="courses" class="exp-img">
                   <p class="exp-prg">
                      40 часов <br>обучения
                   </p>
@@ -1482,7 +1482,7 @@
          <div class="container">
             <div class="row footer__logo">
                <div class="logotip col-6">
-{{--                  <img src="{{ ('icons/logo-white.png') }}" alt="logo">--}}
+{{--                  <img src="{{ ('images/logo-white.png') }}" alt="logo">--}}
 {{--                  <p>Система дистанционного обучения доктора Реутова</p>--}}
                </div>
                <div class="col-6">

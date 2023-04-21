@@ -90,7 +90,7 @@
 
 <h1>Тест </h1>
 <div class="theform">
-  <form method="post" action="{{ url('/test/check') }}">
+<form method="post" action="{{ url('/test/check') }}" onsubmit="return validateForm();">
     {{ csrf_field() }}
     <input type="hidden" name="test" value="{{ json_encode($test) }}">
     <?php $questionNumber = 1; ?>
@@ -112,6 +112,18 @@
     <button type="submit">Завершить тест</button>
   </form>
 </div>
+
+<script>
+    function validateForm() {
+        var answers = document.querySelectorAll('input[type=radio]:checked');
+        if (answers.length < {{ count($questionDataList) }}) {
+            alert('Пожалуйста, ответьте на все вопросы перед завершением теста.');
+            return false;
+        }
+        return true;
+    }
+</script>
+
 
 @include('partials.footer')
 @endsection

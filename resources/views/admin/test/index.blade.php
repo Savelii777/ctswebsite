@@ -75,6 +75,9 @@
                     <td>{{ $questionData['correct_answer'] }}</td>
                     <td>
     <div class="d-flex">
+    <form action="{{ route('questions.edit', $question->id) }}" method="GET">
+        <button type="submit" class="btn btn-primary mr-2">Редактировать</button>
+    </form>
          <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
             @csrf
             @method('DELETE')

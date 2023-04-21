@@ -7,7 +7,7 @@ use App\Models\Chapter;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\Question;
-
+use App\Models\Test;
 
 class ChapterController extends Controller
 {
@@ -79,39 +79,27 @@ class ChapterController extends Controller
                 'order.integer' => 'Порядок должен быть целым числом',
             ]);
 
-        Chapter::create([
-            'title' => $request->get('title'),
-            'order' => $request->get('order'),
-            'course_id' => $request->get('course_id')
+            $chapter_id = Chapter::create([
+                'title' => $request->get('title'),
+                'order' => $request->get('order'),
+                'course_id' => $request->get('course_id')
+            ])->id;
+
+        Test::create([
+            'min_correct' => 1,
+            'minutes' => 25,
+            'chapter_id' => $chapter_id
         ]);
+
 
         return redirect()
             ->route('course.chapters', $request->get('course_id'))
             ->with('success', 'Глава успешно добавлена');
+
+          
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Chapter $chapter
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chapter $chapter)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Chapter $chapter
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chapter $chapter)
-    {
-        //
-    }
-
+  
     public function editOfCourse(Course $course, Chapter $chapter)
     {
         return view('admin.chapter.edit', [
@@ -119,14 +107,7 @@ class ChapterController extends Controller
             'chapter' => $chapter,
         ]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Chapter $chapter
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function update(Request $request, Chapter $chapter)
     {
         $validator = $request->validate([
