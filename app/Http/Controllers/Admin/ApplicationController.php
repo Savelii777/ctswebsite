@@ -93,7 +93,6 @@ class ApplicationController extends Controller
     public function accept(Application $application)
     {
         $roles = Role::all();
-
         return view('admin.application.accept', [
             'roles' => $roles,
             'application' => $application
