@@ -183,6 +183,7 @@ class UserController extends Controller
         $user->birth = $request->get('birth');
         $user->sex = $request->get('sex');
         $user->place_of_work = $request->get('place_of_work');
+        $user->password = bcrypt($request->get('password'));
         $user->save();
 
         if ($request->hasFile('image')) {

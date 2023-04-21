@@ -60,6 +60,12 @@
                                 <label>e-mail</label>
                                 <input value="{{ $user['email'] }}" name="email" type="text" class="form-control">
                             </div>
+
+                                <label>Пароль</label>
+                                <input id="password_input" name="password" class="form-control" placeholder="Автоматическая генерация">
+                                <button type="button" onclick="generateUser()" id="generate_user" class="btn btn-success float-right mt-2">Сгенерировать пользователя</button>
+
+
                         </div>
                         <!-- /.card-body -->
                     </div>

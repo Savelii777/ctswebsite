@@ -56,7 +56,7 @@
                                 </div>
                             </li>
                         </div>
-                        
+
                     </div>
                 </ul>
                 <ul class="only_mobile person__list col-lg-7 col-8">

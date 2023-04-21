@@ -91,7 +91,7 @@
                                 {{ user.name }}
                             </td>
                             <td style="max-width: 300px">
-                                {{ user.completed }} из 16
+                                {{ user.completed }} из 9
                             </td>
                             <td style="max-width: 300px">
                                 {{ user.city }}
@@ -112,7 +112,7 @@
                                     class="btn btn-info btn-sm"
                                     :href="`user/${user.id}/course/1/tests`"
                                 >
-                                    <i class="fas fa-check-square"></i> Тесты
+                                    <i class="fas fa-check-square"></i> Попытки
                                 </a>
                                 <button
                                     type="button"

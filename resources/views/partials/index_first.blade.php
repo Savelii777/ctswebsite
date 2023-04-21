@@ -7,7 +7,7 @@
       <ul class="first__list row">
          <li class="first__item first__item_l col-xl-5 col-lg-8 col-md-10 col-sm-12">
             <div>
-               15
+               9
             </div>
             <p>
             обучающих <br>программ
@@ -15,7 +15,7 @@
          </li>
          <li class="first__item first__item_r col-xl-5 col-lg-8 col-md-10 col-sm-12">
             <div>
-               94
+               9
             </div>
             <p>
             практических занятия <br>в формате тестов

@@ -42,6 +42,12 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
+            <a style="height: 40px" href="{{ url('/') }}"
+               class="btn btn-success btn-home ">
+                <p>
+                    На главную
+                </p>
+            </a>
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
