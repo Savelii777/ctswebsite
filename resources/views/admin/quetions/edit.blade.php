@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Редактирование теста</title>
+    <title>Редактирование вопроса</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -18,8 +18,8 @@
     </div>-->
 
     <div class="form-group">
-        <label for="chapter_number">Номер главы:</label>
-        <input type="text" class="form-control" id="chapter_number" name="chapter_number" value={{$question["test_id"]}} required>
+        <!--<label  for="chapter_number">Номер главы:</label>-->
+        <input type="hidden" class="form-control" id="chapter_number" name="chapter_number" value={{$question["test_id"]}} required>
     </div>
 
             @php

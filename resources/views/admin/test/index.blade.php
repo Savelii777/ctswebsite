@@ -62,8 +62,12 @@
                 $data = json_decode($question->data, true);
             @endphp
             @foreach ($data as $questionData)
+            <?php
+    $chapter_id = $question->test_id;
+    $chapter = App\Models\Chapter::where('id', $chapter_id)->first();
+?>
                 <tr>
-                    <td>{{ $question->test_id }}</td>
+                    <td>{{ $chapter->order }}</td>
                     <td>{{ $questionData['question'] }}</td>
                     <td>
                         <ul>

@@ -71,11 +71,19 @@
 {{--                            Административная панель--}}
 {{--                        </p>--}}
 {{--                    </a>--}}
+<<<<<<< HEAD
 {{--                    @if ($resp['data']['data'][0]['roles'][0]['name'] === 'admin')--}}
                         <a style="margin-top: 15px; max-height: 50px; display: none" href="{{ url('/admin') }}" class="btn-active text-center col-sm-6 col-md-5 administrator">
                             <p>Административная панель </p>
                         </a>
 {{--                    @endif--}}
+=======
+@if (Auth::check() && Auth::user()->login === 'Admin')
+    <a style="margin-top: 15px; max-height: 50px;" href="{{ url('/admin') }}" class="btn-active text-center col-sm-6 col-md-5 administrator">
+        <p>Административная панель</p>
+    </a>
+@endif
+>>>>>>> e305c567ab2df214751b4067117b422d7a42f2b9
             <div/>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf

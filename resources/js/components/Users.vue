@@ -181,10 +181,10 @@
                                             }}
                                         </p>
                                         <p>
-                                            <strong>Дата рождения: </strong
+                                            <strong>Группа: </strong
                                             >{{
                                                 selectedUser
-                                                    ? selectedUser.birth
+                                                    ? selectedUser.place_of_work
                                                     : "не указано"
                                             }}
                                         </p>

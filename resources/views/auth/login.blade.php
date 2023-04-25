@@ -34,16 +34,16 @@
                 </div>
                 <button class="form-btn" type="submit"><a>Войти</a></button>
                <div class="form-txt">
-                   Нажимая кнопку «Войти» пользователь соглашается с <a href="#">политикой конфеденциальности</a> и <a href="#">правилами сайта</a> 
+               Для восстановления доступа обратитесь к администратору портала</a> 
                </div>
-               <div class="form-links">
+               <!--<div class="form-links">
                   @if (Route::has('password.request'))
                     <a href="{{ route('password.request') }}">
                         Восстановить пароль?
                     </a>
                 @endif
                   <a href="{{ route('application.create.guest') }}">Отправить заявку на получение доступа</a>
-               </div>
+               </div>-->
              </form>
           </div>
     </div>
