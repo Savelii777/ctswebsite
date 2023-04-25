@@ -71,7 +71,7 @@
 {{--                            Административная панель--}}
 {{--                        </p>--}}
 {{--                    </a>--}}
-{{--                    @if (Auth::user()->role === 'admin')--}}
+{{--                    @if ($resp['data']['data'][0]['roles'][0]['name'] === 'admin')--}}
                         <a style="margin-top: 15px; max-height: 50px; display: none" href="{{ url('/admin') }}" class="btn-active text-center col-sm-6 col-md-5 administrator">
                             <p>Административная панель </p>
                         </a>

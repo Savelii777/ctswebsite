@@ -284,7 +284,9 @@ h1 {
 
 .about__block_r {
     background: url(../images/rocket.png) no-repeat;
-    background-size: cover;
+    background-size: 70%, 70%, cover;
+    background-position:bottom right;
+
     padding: 55px 0;
 
     .about__text {
