@@ -151,11 +151,7 @@ $('button[id*="button_hide_course_info_"]').each(function (index) {
 });
 $(document).ready(function () {
     this.loading = true;
-<<<<<<< HEAD
     axios.get("/admin").then(function (resp) {
-=======
-    axios.get("/admin/api/users").then(function (resp) {
->>>>>>> e305c567ab2df214751b4067117b422d7a42f2b9
         console.log(resp)
             document.querySelector('.administrator').style.display = 'block';
     })["catch"](function (resp) {
