@@ -66,9 +66,12 @@
                     </svg>
                 </a>
 
-                        <a style="margin-top: 15px; max-height: 50px; display: none" href="{{ url('/admin') }}" class="btn-active text-center col-sm-6 col-md-5 administrator">
-                            <p>Административная панель </p>
-                        </a>
+                @if (Auth::check() && Auth::user()->login === 'Admin')
+    <a style="margin-top: 15px; max-height: 50px;" href="{{ url('/admin') }}" class="btn-active text-center col-sm-6 col-md-5 administrator">
+        <p>Административная панель</p>
+    </a>
+@endif
+
 
             <div/>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
