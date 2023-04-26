@@ -159,11 +159,45 @@ $(document).ready(function () {
     });
 });
 
+// $(document).ready(function() {
+//     const items = $('div[id*="materials-item"]');
+//     const lengthMp4 = items.length;
+//     let index = 0;
+
+//     function processItem() {
+//         if (index >= lengthMp4) {
+//             return;
+//         }
+
+//         const item = items[index];
+//         const str = item.querySelector('.link-pdf').textContent;
+//         const regex = /\d+/;
+//         const match = str.match(regex);
+//         const digit = match ? match[0] : null;
+//         const container = item;
+//         const mp4Url = item.querySelector('.link-pdf').href;
+
+//         if (!mp4Url.endsWith('.pdf')) {
+
+//         const video = document.createElement('video');
+//         video.src = mp4Url;
+//         video.controls = true;
+//         container.appendChild(video);
+//         }
+//         index++;
+//         processItem();
+//     }
+
+//     processItem();
+// });
 
 $(document).ready(function() {
     const items = $('div[id*="materials-item"]');
     const lengthPdf = items.length;
     let index = 0;
+    const item = items[index];  
+    const container = item;
+
 
     function processItem() {
         if (index >= lengthPdf) {
@@ -171,34 +205,49 @@ $(document).ready(function() {
         }
 
         const item = items[index];
-        const str = item.querySelector('.link-pdf').textContent;
-        const regex = /\d+/;
-        const match = str.match(regex);
-        const digit = match ? match[0] : null;
-        const container = item;
         const pdfUrl = item.querySelector('.link-pdf').href;
+        const videoUrl = item.querySelector('.link-video').href;
+        const fileType = pdfUrl.substr(pdfUrl.lastIndexOf('.') + 1);
 
-        // item.textContent = pdfUrl;
+        if (fileType === 'pdf') {
+            // Display PDF
+            pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    pdf.getPage(i).then(page => {
+                        const canvas = document.createElement('canvas');
+                        container.appendChild(canvas);
+                        const viewport = page.getViewport({ scale: 1.5 });
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        page.render({ canvasContext: canvas.getContext('2d'), viewport });
+                    });
+                }
+            });
+    
+        } else if (fileType === 'mp4') {
+            // Display video
+            const video = document.createElement('iframe');
+            video.setAttribute('src', videoUrl);
+            video.setAttribute('controls', '');
+            video.style.width = '892px';
+            video.style.height = '500px';
+            video.style.display = 'block';
+            video.style.margin = '30px auto'
 
-        pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
-            for (let i = 1; i <= pdf.numPages; i++) {
-                pdf.getPage(i).then(page => {
-                    const canvas = document.createElement('canvas');
-                    container.appendChild(canvas);
-                    const viewport = page.getViewport({ scale: 1.5 });
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-                    page.render({ canvasContext: canvas.getContext('2d'), viewport });
-                });
-            }
+            item.appendChild(video);
+        } else {
+            // Unknown file type
+            item.textContent = 'Unknown file type';
+        }
 
-            index++;
-            processItem();
-        });
+        index++;
+        processItem();
     }
 
     processItem();
 });
+
+
 var swiper = new Swiper(".test-swiper", {
     autoHeight: true,
     allowTouchMove: false,

@@ -19,6 +19,8 @@
                        <a href="">Видео-урок по теме</a>
                        <a href="">Презентация по теме</a>
                        @endif
+                       <!-- <a href="">Видео-урок по теме</a> -->
+
                        <a href="">Дополнительные материалы по теме</a>
                        <a href="{{ url("/test/about/{$chapter->tests[0]['id']}")}}">Тест по теме</a>
                     </nav>
@@ -32,6 +34,7 @@
                         @foreach ($chapter->files as $file)
                         <div class="col-md-4" id="materials-item">
                             <a style="display: none" class="link-pdf" id="materials-item-{{$file->id}}" href="{{$file->url}}">materials-item-{{$file->id}}</a>
+                            <a style="display: none" class="link-video" id="materials-item-{{$file->id}}" href="{{$file->url}}">materials-item-{{$file->id}}</a>
                          </div>
                         @endforeach
                         </div>

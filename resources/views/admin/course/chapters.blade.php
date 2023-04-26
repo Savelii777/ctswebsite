@@ -78,6 +78,7 @@
                                     <i class="fas fa-list">
                                     </i> Файлы
                                 </a>
+                                
                                 <!--<a class="btn btn-info btn-sm" href="{{ route('chapter.tests', $chapter['id']) }}">
                                     <i class="fas fa-list">
                                     </i> Тесты
