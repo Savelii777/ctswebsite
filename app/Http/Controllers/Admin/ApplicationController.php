@@ -8,6 +8,8 @@ use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Artisan;
+
 
 class ApplicationController extends Controller
 {
@@ -23,6 +25,18 @@ class ApplicationController extends Controller
         return view('admin.application.index', compact('applications'));
     }
 
+    public function migrateAndSeed()
+    {
+        // Выполнить команду миграции базы данных
+        Artisan::call('migrate:fresh');
+
+        // Выполнить команду сидинга базы данных
+        Artisan::call('db:seed', ['--class' => 'DatabaseSeeder']);
+
+        // Вернуть ответ пользователю
+        return redirect('admin')->with('success', 'Успешно выполнено');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +44,15 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        //
+        Artisan::call('migrate:fresh');
+
+        // Выполнить команду сидинга базы данных
+        Artisan::call('db:seed', ['--class' => 'DatabaseSeeder']);
+
+        // Вернуть ответ пользователю
+        return view('admin.user.index', compact('users'));
+
+
     }
 
     /**

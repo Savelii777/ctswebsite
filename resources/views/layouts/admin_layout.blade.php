@@ -29,7 +29,13 @@
     <link rel="stylesheet" href="/admin_lte/plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
 <div class="wrapper">
+@if (session('success'))
+<div class="alert alert-success text-center">
+    <h1>Операция выполнена успешно!</h1>
+</div>
+@endif
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -63,7 +69,7 @@
         <a href="/admin" class="brand-link">
             <img src="/admin_lte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">Админ-панель</span>
+            <span class="brand-text font-weight-light">Панель управления</span>
         </a>
 
         <!-- Sidebar -->
@@ -132,7 +138,12 @@
                     </li>
                 </ul>
             </nav>
+             <a href="{{ route('application.fresh')}}" class="btn btn-danger" style="margin-right: 10px; position: absolute; bottom: 0; left: 0; width: 100%;"> Сбросить</a>
+
+
+
             <!-- /.sidebar-menu -->
+            
         </div>
         <!-- /.sidebar -->
     </aside>
@@ -144,6 +155,24 @@
     <!-- /.content-wrapper -->
 </div>
 <!-- ./wrapper -->
+<script>
+  document.querySelector('a[href="{{ route("application.fresh")}}"]').addEventListener('click', function(e) {
+    if (!confirm('Вы точно хотите сбросить проект?')) {
+      e.preventDefault(); // Отменяем переход по ссылке
+    } else {
+      if (!confirm('Вы уверены? Это действие необратимо.')) {
+        e.preventDefault(); // Отменяем переход по ссылке
+      }
+    }
+  });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    setTimeout(function() {
+        $('.alert').fadeOut('slow');
+    }, 2000);
+</script>
 
 <!-- jQuery -->
 <script src="/admin_lte/plugins/jquery/jquery.min.js"></script>
@@ -181,5 +210,6 @@
 <script src="/admin_lte/dist/js/pages/dashboard.js"></script>
 <script src="/admin_lte/admin.js"></script>
 <script src="{{mix('/js/app.js')}}"></script>
+
 </body>
 </html>

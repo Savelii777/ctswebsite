@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class UserController extends Controller
 {
@@ -22,6 +25,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getXlsxData()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+
+    }
     public function index()
     {
         $users = User::sortable()->simplePaginate(20);

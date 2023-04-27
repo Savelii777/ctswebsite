@@ -68,7 +68,7 @@
 
                 @if (Auth::check() && Auth::user()->login === 'Admin')
     <a style="margin-top: 15px; max-height: 50px;" href="{{ url('/admin') }}" class="btn-active text-center col-sm-6 col-md-5 administrator">
-        <p>Административная панель</p>
+        <p>Панель управления</p>
     </a>
 @endif
 

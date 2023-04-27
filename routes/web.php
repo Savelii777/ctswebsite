@@ -70,12 +70,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     // Пользователи
     Route::get('user/{user}/course/{course}/tests', [UserController::class, 'tests'])->name('user.course.tests');
     Route::get('user/{user}/test/{test}/attempts', [UserController::class, 'attempts'])->name('user.test.attempts');
+    Route::get('user/export', [UserController::class, 'getXlsxData'])->name('user.export');
+
     Route::resource('user', UserController::class);
     Route::get('application/accept/{application}', [ApplicationController::class, 'accept'])->name('application.accept');
     Route::get('application/deny/{application}', [ApplicationController::class, 'deny'])->name('application.deny');
     Route::get('application/postpone/{application}', [ApplicationController::class, 'postpone'])->name('application.postpone');
+    Route::get('application/fresh', [ApplicationController::class, 'migrateAndSeed'])->name('application.fresh');
+    
     Route::post('application/deny', [ApplicationController::class, 'sendDenyEmail'])->name('application.send.deny');
     Route::resource('application', ApplicationController::class);
+
     // Курсы
     Route::get('course/{course}/chapters', [CourseController::class, 'chapters'])->name('course.chapters');
     Route::get('course/{course}/chapters/create', [ChapterController::class, 'createOfCourse'])->name('course.chapters.create');
