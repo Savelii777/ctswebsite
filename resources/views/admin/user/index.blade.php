@@ -11,7 +11,10 @@
             <h1>Пользователи</h1>
         </div>
         <div class="col-sm-6">
+          
             <a href="{{ route('user.create')}}" class="btn btn-success float-right">Добавить пользователя</a>
+            <a href="{{ route('user.export')}}" class="btn btn-success float-right" style="margin-right: 10px;"><img src="/images/excel.png" width="32" height="32"> Скачать</a>
+            
         </div>
       </div>
         @if (session('success'))
