@@ -10,9 +10,9 @@
                 <div class="col-sm-6">
                     <h1>Курсы</h1>
                 </div>
-                <div class="col-sm-6">
+               <!-- <div class="col-sm-6">
                     <a href="{{ route('course.create')}}" class="btn btn-success float-right">Добавить курс</a>
-                </div>
+                </div>-->
             </div>
             @if (session('success'))
                 <div class="alert alert-success" role="alert">
@@ -72,7 +72,7 @@
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                 </a>
-                                <form action="{{ route('course.destroy', $course['id']) }}" method="POST"
+                                <!--<form action="{{ route('course.destroy', $course['id']) }}" method="POST"
                                       style="display: inline-block">
                                     @csrf
                                     @method('DELETE')
@@ -80,7 +80,7 @@
                                         <i class="fas fa-trash">
                                         </i>
                                     </button>
-                                </form>
+                                </form>-->
                             </td>
                         </tr>
                     @endforeach
