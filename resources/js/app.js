@@ -228,11 +228,12 @@ $(document).ready(function() {
             // Display video
             const video = document.createElement('iframe');
             video.setAttribute('src', videoUrl);
-            video.setAttribute('controls', '');
+            video.setAttribute('controls', 'true');
             video.style.width = '892px';
             video.style.height = '500px';
             video.style.display = 'block';
             video.style.margin = '30px auto'
+
 
             item.appendChild(video);
         } else {
