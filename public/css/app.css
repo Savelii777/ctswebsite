@@ -10022,7 +10022,7 @@ header {
   max-height: -webkit-max-content;
   max-height: -moz-max-content;
   max-height: max-content;
-  padding: 25px 0;
+  padding: 50px 0;
 }
 header .row {
   min-width: 100%;
@@ -10042,6 +10042,25 @@ header a img {
 header a span {
   display: inline;
   transition: 0s;
+}
+header .header__logo {
+  position: absolute;
+  top: 15px;
+  left: 70px;
+  width: 100px;
+  min-height: 110px;
+  background-image: url("../images/header__logo.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+header .header__logo-link {
+  z-index: 1;
+}
+header .header__btns {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 header .btn-active:hover {
   background: #9ca324;
@@ -10068,10 +10087,10 @@ header .btn-exit svg {
   border: 1px solid #9ca324;
   border-radius: 4px;
   height: auto;
-  width: 218px;
   background: transparent;
   padding: 8px 0;
   display: flex;
+  min-width: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -10118,6 +10137,9 @@ header .btn-exit svg {
   background-color: #9ca324;
   width: 270px;
   height: 60px;
+  background: transparent;
+  border: none !important;
+  font-size: 0;
 }
 
 h1 {
