@@ -76,7 +76,13 @@
                             @endforeach
                         </ul>
                     </td>
-                    <td>{{ $questionData['correct_answer'] }}</td>
+                     <td>
+                        <ul>
+                            @foreach ($questionData['correct_answer'] as $correct_answer)
+                                <li>{{ $correct_answer }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
                     <td>
     <div class="d-flex">
     <form action="{{ route('questions.edit', $question->id) }}" method="GET">

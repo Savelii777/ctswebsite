@@ -35,8 +35,9 @@
                         <div class="col-md-4" id="materials-item">
                             <a style="display: none" class="link-pdf" id="materials-item-{{$file->id}}" href="{{$file->url}}">materials-item-{{$file->id}}</a>
                             <a style="display: none" class="link-video" id="materials-item-{{$file->id}}" href="{{$file->url}}">materials-item-{{$file->id}}</a>
-                         </div>
+                            </div>
                         @endforeach
+                        
                         </div>
                        <div id="pass" class="pass" style="position: relative">
   
@@ -56,4 +57,5 @@
      </section>
     @include('partials.footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+     
 @endsection

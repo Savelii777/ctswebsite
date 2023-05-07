@@ -157,6 +157,22 @@
                                                     </button>
                                                 </div>
                                             </div>
+                                            <div class="content-elem">
+                                                <div class="content-left">
+                                                    <img src="{{ asset('images/video.png') }}" alt="courses">
+                                                    <p>
+                                                        Видеоматериалы по теме
+                                                    </p>
+                                                </div>
+                                                <div class="content-right">
+                                                    <button
+                                                        style="margin-left: 20px"
+                                                        onclick="location.href='{{ route('chapter.materials', $chapter['id']) }}'"
+                                                        class="btn-active">
+                                                        <div style="font-size: 12px;color: #000;">Смотреть</div>
+                                                    </button>
+                                                </div>
+                                            </div>
                                             <div class="content-test">
 
 
