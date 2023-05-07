@@ -20,18 +20,23 @@
     <body class="antialiased">
       <!-- HEADER -->
       <header>
+         <a class="header__logo-link" href="{{ url('/') }}">
+         <div  class="header__logo">
+ 
+      </div>
+         </a>
          <div class="container">
             <div class="row">
                <div class="logotip col-md-5 col-sm-7 col-7">
 {{--                  <img src="{{ ('images/logo-white.png') }}" alt="logo">--}}
 {{--                  <p>Система дистанционного обучения доктора Реутова</p>--}}
                </div>
-                <a style="max-height: 50px;" href="{{ url('/') }}"
+                <!-- <a style="max-height: 50px;" href="{{ url('/') }}"
                    class="btn-active text-center col-sm-6 col-md-5">
                     <p>
                         На главную
                     </p>
-                </a>
+                </a> -->
                <a href="/entrance" class="btn-active btn-exit text-center col-lg-3 col-3">
                   <p>
                      Выход <span>из личного кабинета</span>

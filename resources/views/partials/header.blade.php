@@ -1,17 +1,26 @@
 <header>
+<a class="header__logo-link" href="{{ url('/') }}">
+<div class="header__logo">
+
+</div>
+</a>
+
     <div class="container">
+        
         <div class="row">
             <div class="home" style="cursor:pointer" onclick="location.href='{{ url('/') }}'"
                  class="logotip col-md-5 col-sm-6 col-6">
             </div>
             @guest
                 <div class="header__btns col-md-7 col-sm-6  row col-6">
-                    <a style="max-height: 50px;" href="{{ url('/') }}"
+                    <!-- <a style="max-height: 50px;" href="{{ url('/') }}"
                        class="btn-active text-center col-sm-6 col-md-5">
                         <p>
                             На главную
                         </p>
-                    </a>
+                    </a> -->
+                    
+                    
                     <a style="max-height: 50px;" href="{{ route('login') }}"
                        class="btn-active text-center col-sm-6 col-md-5">
                         <p>
@@ -35,13 +44,14 @@
                     </a>
                 </div>
             @else
-                <div class="header__btns col-md-7 col-sm-6  row col-6">
-                <a class="btn-active text-center btn-exit col-sm-6 col-md-5" style="max-height: 50px;" href="{{ url('/') }}"
+                <div class="header__btns col-md-7 col-sm-6 row col-6">
+                <!-- <a class="btn-active text-center btn-exit col-sm-6 col-md-5" style="max-height: 50px;" href="{{ url('/') }}"
                    class="btn-active text-center btn-exit col-sm-6 col-md-5">
                     <p>
                         На главную
                     </p>
-                </a>
+                </a> -->
+                
                 <a style="max-height: 50px" class="btn-active text-center btn-exit col-sm-6 col-md-5"
                    href="{{ route('logout') }}"
                    onclick="event.preventDefault();
@@ -65,14 +75,24 @@
                         </svg>
                     </svg>
                 </a>
+                <a style="max-height: 50px" class="btn-active text-center btn-exit col-sm-6 col-md-5"
+                   onclick="location.href='{{ route('login') }}'">
+                    <p style="margin-right: 15px">
+                    Пройти обучение
+                    </p>
+                </a>
 
                 @if (Auth::check() && strpos(strtolower(Auth::user()->login), 'admin') !== false)
-<a style="margin-top: 15px; max-height: 50px;" href="{{ url('/admin') }}" class="btn-active text-center col-sm-6 col-md-5 administrator">
-<p>Панель управления</p>
-</a>
+                <a style="max-height: 50px" class="btn-active text-center btn-exit col-sm-6 col-md-5 administrator"
+                    href="{{ url('/admin') }}">
+                    <p style="margin-right: 15px">
+                    Панель управления
+                    </p>
+                </a>
+    <!-- <a style="margin-top: 15px; max-height: 50px;" href="{{ url('/admin') }}" class="btn-active text-center btn-exit col-sm-6 col-md-5 administrator">
+        <p>Панель управления</p>
+    </a> -->
 @endif
-
-
             <div/>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
