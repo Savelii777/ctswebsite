@@ -193,10 +193,19 @@ class TestController extends Controller
     public function updateQuestion(Request $request, Question $question)
     {
          
+        //return $request;
+        $input = $request->all(); // получаем все значения формы
+        $input['questions'] = array_map(function ($question) {
+            $question['answers'] = array_filter($question['answers'], 'strlen');
+            return $question;
+        }, $input['questions']); // удаляем все элементы со значением null внутри массива вопросов
+
+
+
         $whereid = $question['id'];
         //$course_number = $request->input('course_number');
         $chapter_number = $request->input('chapter_number');
-        $questions = $request->input('questions');
+        $questions = $input['questions'];
         //return $whereid;
 
         //return $questions[1]['answers'][1];
