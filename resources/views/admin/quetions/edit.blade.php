@@ -31,6 +31,14 @@
     <label for="question_1">Вопрос:</label>
     <input type="text" class="form-control" id="question_1" name="questions[1][question]" value="{{$data[0]['question']}}" required>
 
+
+
+<div class="form-group">
+    <label for="image">Выберите изображение:</label>
+    <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+</div>
+
+
     <div class="form-check">
         <input type="radio" class="form-check-input" name="questions[1][correct_answer]" value="1" required @if($data[0]['correct_answer'] == 1) checked @endif>
         <label class="form-check-label" for="answer_1_1">Ответ 1:</label>
@@ -59,5 +67,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

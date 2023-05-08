@@ -61,7 +61,8 @@ class TestController extends Controller
     $questionData = array(
       "question" => $question["question"],
       "answers" => array_values($question["answers"]),
-      "correct_answer" => $question["correct_answer"]
+      "correct_answer" => $question["correct_answer"],
+      "image" => $question["image"]
     );
 
     Question::create([

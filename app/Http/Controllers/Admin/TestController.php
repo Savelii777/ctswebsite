@@ -59,13 +59,16 @@ class TestController extends Controller
         //$course_number = $request->input('course_number');
        
 
+        $image = $request->input('image');
 
         $preparedQuestions = array();
         foreach ($questions as $id => $item) {
             $question = array(
                 "question" => $item["question"],
                 "answers" => array_values($item["answers"]),
-                "correct_answer" => $item["correct_answer"]
+                "correct_answer" => $item["correct_answer"],
+                "image" => $image
+
             );
             $preparedQuestions[] = $question;
         }
@@ -158,15 +161,18 @@ class TestController extends Controller
         $whereid = $question['id'];
         //$course_number = $request->input('course_number');
         $chapter_number = $request->input('chapter_number');
+        $image = $request->input('image');
         $questions = $request->input('questions');
         //return $whereid;
 
         $preparedQuestions = array();
         foreach ($questions as $id => $item) {
+
             $question = array(
                 "question" => $item["question"],
                 "answers" => array_values($item["answers"]),
-                "correct_answer" => $item["correct_answer"]
+                "correct_answer" => $item["correct_answer"],
+                "image" => $image
             );
             $preparedQuestions[] = $question;
         }

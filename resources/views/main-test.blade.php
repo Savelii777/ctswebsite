@@ -23,6 +23,9 @@
          <a class="header__logo-link" href="{{ url('/') }}" >
          <div class="header__logo">
          </div>
+         <p class="header__logo-text">
+         Балтийский государственный технический университет «ВОЕНМЕХ» имени Д. Ф. Устинова
+         </p>
          </a>
          
          <div class="container">
