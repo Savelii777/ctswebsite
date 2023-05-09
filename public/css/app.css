@@ -10014,6 +10014,12 @@ input:active {
   position: relative;
 }
 
+.header__container {
+  margin: 0 auto;
+  position: relative;
+  max-width: 50%;
+}
+
 section {
   padding: 50px 0px;
 }
@@ -10046,15 +10052,24 @@ header a span {
 header .header__logo {
   position: absolute;
   top: 15px;
-  left: 70px;
-  width: 100px;
-  min-height: 110px;
+  left: 40px;
+  width: 90px;
+  min-height: 100px;
   background-image: url("../images/header__logo.jpg");
   background-size: contain;
   background-repeat: no-repeat;
 }
 header .header__logo-link {
   z-index: 1;
+}
+header .header__logo-text {
+  position: absolute;
+  top: 35px;
+  left: 120px;
+  min-width: 190px;
+  max-width: 300px;
+  font-size: 18px;
+  line-height: 1.375;
 }
 header .header__btns {
   width: 100%;
@@ -11276,6 +11291,7 @@ footer .logotip {
 }
 
 .setting__fix {
+  margin: 0 auto;
   padding-right: 0 !important;
 }
 
@@ -11323,6 +11339,21 @@ footer .logotip {
 .menu a.menu_active_tab {
   background-color: #9ca324;
   color: #fff;
+}
+
+.saved-message {
+  font-family: "Fira Sans";
+  position: absolute;
+  width: 1920px;
+  top: -422px;
+  left: -900px;
+  background-color: #9ca324;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+  z-index: -1;
 }
 
 .setting__img {

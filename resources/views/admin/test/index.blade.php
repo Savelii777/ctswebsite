@@ -83,8 +83,15 @@
                             @endforeach
                         </ul>
                     </td>
+                    <td>{{ $questionData['image'] }}</td>
+
                     <td>
+
     <div class="d-flex">
+    <!-- <img class="fit-picture"
+     src={{asset('images/404.png')}}
+     alt="Grapefruit slice atop a pile of other slices"> -->
+
     <form action="{{ route('questions.edit', $question->id) }}" method="GET">
         <button type="submit" class="btn btn-primary mr-2">Редактировать</button>
     </form>

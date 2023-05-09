@@ -82,6 +82,7 @@
                     </span>
                 </div>
             </div>
+            <div v-if="showSavedMessage" style="left:-730px" class="saved-message">Сохранено</div>
         </form>
 
         <div style="padding-right: 0" class="setting__block col-lg-3">
@@ -173,7 +174,9 @@ export default {
             file_loading: false,
             btnFileLoading: "Загрузить фото",
             file_deleting: false,
-            btnFileDeleting: "Удалить фото"
+            btnFileDeleting: "Удалить фото",
+            showSavedMessage: false
+
         };
     },
     methods: {
@@ -232,6 +235,13 @@ export default {
                     this.placeOfWorkError = null;
                     this.loading = false;
                     this.btnText = "Сохранить";
+
+                })
+                .then((response)=>{
+                    this.showSavedMessage = true;
+        setTimeout(() => {
+          this.showSavedMessage = false;
+        }, 1500);
                 })
                 .catch(error => {
                     const errors = error.response.data.errors;

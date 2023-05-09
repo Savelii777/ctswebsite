@@ -68,6 +68,8 @@ class TestController extends Controller
         //return $chapter->id; 
         //$course_number = $request->input('course_number');
 
+    $image = $request->input('image');
+
         $preparedQuestions = array();
         if (isset($input['manual_answer'])) {
             // выполнить какие-то действия
@@ -77,7 +79,8 @@ class TestController extends Controller
                     $question = array(
                         "question" => $item["question"],
                         "answers" => array("Свободный ответ"),
-                        "correct_answer" => array("Свободный ответ")
+                        "correct_answer" => array("Свободный ответ"),
+                        "image" => $image
 
                     );
                     $preparedQuestions[] = $question;
@@ -206,6 +209,7 @@ class TestController extends Controller
         //$course_number = $request->input('course_number');
         $chapter_number = $request->input('chapter_number');
         $questions = $input['questions'];
+        $image = $request->input('image');
         //return $whereid;
 
         //return $questions[1]['answers'][1];
@@ -219,8 +223,8 @@ class TestController extends Controller
                 $question = array(
                     "question" => $item["question"],
                     "answers" => array("Свободный ответ"),
-                    "correct_answer" => array("Свободный ответ")
-
+                    "correct_answer" => array("Свободный ответ"),
+                    "image" => $image
                 );
                 $preparedQuestions[] = $question;
             }

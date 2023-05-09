@@ -3,9 +3,12 @@
 <div class="header__logo">
 
 </div>
+<p class="header__logo-text">
+    Балтийский государственный технический университет «ВОЕНМЕХ» имени Д. Ф. Устинова
+</p>
 </a>
 
-    <div class="container">
+    <div class="header__container">
         
         <div class="row">
             <div class="home" style="cursor:pointer" onclick="location.href='{{ url('/') }}'"
@@ -19,8 +22,6 @@
                             На главную
                         </p>
                     </a> -->
-                    
-                    
                     <a style="max-height: 50px;" href="{{ route('login') }}"
                        class="btn-active text-center col-sm-6 col-md-5">
                         <p>
@@ -42,6 +43,12 @@
                             <use xlink:href="#entrance"></use>
                         </svg>
                     </a>
+                    <a style="max-height: 50px" class="btn-active text-center btn-exit col-sm-6 col-md-5"
+                   onclick="location.href='{{ route('login') }}'">
+                    <p style="margin-right: 15px">
+                    Пройти обучение
+                    </p>
+                </a>
                 </div>
             @else
                 <div class="header__btns col-md-7 col-sm-6 row col-6">

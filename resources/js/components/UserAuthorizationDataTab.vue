@@ -1,50 +1,6 @@
 <template>
+
     <div class="row col-lg-9 col-12 setting__fix">
-        <div class="col-md-6 setting__block setting__fix">
-            <form>
-                <p>Почта</p>
-                <div class="form-group">
-                    <label>Введите адрес почты</label>
-                    <input
-                        v-model="new_email"
-                        type="email"
-                        class="form-control"
-                        :class="{ 'is-invalid': new_email_error }"
-                    />
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ new_email_error }}</strong>
-                    </span>
-                </div>
-                <div class="form-group">
-                    <label>Введите текущий пароль</label>
-                    <input
-                        v-model="current_password"
-                        type="password"
-                        class="form-control"
-                        :class="{ 'is-invalid': current_password_error }"
-                    />
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ current_password_error }}</strong>
-                    </span>
-                </div>
-                <div class="block__form-btn">
-                    <button
-                        class="form-btn"
-                        :disabled="email_loading"
-                        type="button"
-                        @click="updateEmail"
-                    >
-                        <span
-                            v-if="email_loading"
-                            class="spinner-grow spinner-grow-sm"
-                            role="status"
-                            aria-hidden="true"
-                        ></span>
-                        {{ btn_email_text }}
-                    </button>
-                </div>
-            </form>
-        </div>
         <div class="col-md-6 setting__block setting__fix">
             <form>
                 <p>Смена пароля</p>
@@ -100,6 +56,7 @@
                         {{ btn_password_text }}
                     </button>
                 </div>
+                 <div v-if="showSavedMessage" class="saved-message">Сохранено</div>
             </form>
         </div>
     </div>
@@ -127,7 +84,9 @@ export default {
             new_email_error: null,
             current_password_error: null,
             btn_email_text: "Сохранить",
-            email_loading: false
+            email_loading: false,
+             showSavedMessage: false
+
         };
     },
     methods: {
@@ -151,6 +110,13 @@ export default {
                     this.password_loading = false;
                     this.btn_password_text = "Сохранить";
                 })
+                 .then(response => {
+        this.showSavedMessage = true;
+        setTimeout(() => {
+          this.showSavedMessage = false;
+        }, 1500);
+      
+      })
                 .catch(error => {
                     const errors = error.response.data.errors;
 
@@ -173,7 +139,7 @@ export default {
 
                     this.password_loading = false;
                     this.btn_password_text = "Сохранить";
-                });
+                })
         },
         // почта
         updateEmail() {

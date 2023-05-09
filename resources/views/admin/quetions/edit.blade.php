@@ -31,8 +31,15 @@
     <label for="question_1">Вопрос:</label>
     <input type="text" class="form-control" id="question_1" name="questions[1][question]" value="{{$data[0]['question']}}" required>
 
+
+
+
+<div class="form-group">
+    <label for="image">Выберите изображение:</label>
+    <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+</div>
     
-    <div class="form-check answer">
+<div class="form-check answer">
         <input type="checkbox" class="form-check-input" name="questions[1][correct_answer][]" value="1"  
         @foreach($data as $item)
             @foreach($item['correct_answer'] as $index => $answer)
@@ -48,6 +55,7 @@
             value="{{$data[0]['answers'][0]}}"
         @endif>
     </div>
+
 
     <div class="form-check answer">
         <input type="checkbox" class="form-check-input" name="questions[1][correct_answer][]" value="2"  
@@ -195,12 +203,9 @@
 </form>
  
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- 
-
 
 
 </body>
