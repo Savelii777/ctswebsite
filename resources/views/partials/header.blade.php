@@ -89,7 +89,7 @@
                     </p>
                 </a>
 
-                @if (Auth::check() && Auth::user()->login === 'Admin')
+                @if (Auth::check() && strpos(strtolower(Auth::user()->login), 'admin') !== false)
                 <a style="max-height: 50px" class="btn-active text-center btn-exit col-sm-6 col-md-5 administrator"
                     href="{{ url('/admin') }}">
                     <p style="margin-right: 15px">

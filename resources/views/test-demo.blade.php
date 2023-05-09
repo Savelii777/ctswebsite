@@ -88,45 +88,60 @@
 
 
 
-<h1>Тест </h1>
+<h1>Тест</h1>
 <div class="theform">
-<form method="post" action="{{ url('/test/check') }}" onsubmit="return validateForm();">
-    {{ csrf_field() }}
-    <input type="hidden" name="test" value="{{ json_encode($test) }}">
-    <?php $questionNumber = 1; ?>
-    @foreach ($questionDataList as $key => $question)
-    <input type="hidden" name="question{{ $key }}" value="{{ json_encode($question) }}">
-    <h3>{{ $questionNumber }}. {{ $question['question'] }}</h3>
-     <img style="width:100px; height:100px" class="fit-picture"
+    <form method="post" action="{{ url('/test/check') }}" onsubmit="return validateForm();">
+        {{ csrf_field() }}
+        <input type="hidden" name="test" value="{{ json_encode($test) }}">
+        <?php $questionNumber = 1; ?>
+        @foreach ($questionDataList as $key => $question)
+            <input type="hidden" name="question{{ $key }}" value="{{ json_encode($question) }}">
+            <h3>{{ $questionNumber }}. {{ $question['question'] }}</h3>
+            <img style="width:100px; height:100px" class="fit-picture"
      src={{asset('images/404.png')}}
      alt="Grapefruit slice atop a pile of other slices">
-    <ul>
-      <?php $answerNumber = 1; ?>
-      @foreach ($question['answers'] as $answer)
-      <li>
-        <input type="radio" id="answer{{ $key }}{{ $answerNumber }}" name="answer{{ $key }}" value="{{ $answerNumber }}">
-        <label for="answer{{ $key }}{{ $answerNumber }}">{{ $answer }}</label>
-      </li>
-      <?php $answerNumber++; ?>
-      @endforeach
-    </ul>
-    <?php $questionNumber++; ?>
-    @endforeach
-    <button type="submit">Завершить тест</button>
-  </form>
+            <ul>
+                <?php $answerNumber = 1; ?>
+                @foreach ($question['answers'] as $answer)
+                    @if ($answer === 'Свободный ответ')
+                        <li>
+                            <input type="text" class="form-control" id="answer{{ $key }}{{ $answerNumber }}" name="answer{{ $key }}[]" placeholder="Введите свой ответ">
+
+     
+
+                        </li>
+                    @else
+                        <li>
+                            <input type="checkbox" id="answer{{ $key }}{{ $answerNumber }}" name="answer{{ $key }}[]" value="{{ $answerNumber }}">
+                            <label for="answer{{ $key }}{{ $answerNumber }}">{{ $answer }}</label>
+                        </li>
+                    @endif
+                    <?php $answerNumber++; ?>
+                @endforeach
+            </ul>
+            <?php $questionNumber++; ?>
+        @endforeach
+        <button type="submit">Завершить тест</button>
+    </form>
 </div>
 
+
 <script>
-    function validateForm() {
+    function validateForm1() {
         var answers = document.querySelectorAll('input[type=radio]:checked');
-        if (answers.length < {{ count($questionDataList) }}) {
+        if (answers.length < {{ count($questionDataList)/10 }}) {
             alert('Пожалуйста, ответьте на все вопросы перед завершением теста.');
             return false;
         }
         return true;
     }
 </script>
-
+<script>
+    function validateForm() {
+         
+        return true;
+    }
+</script>
 
 @include('partials.footer')
 @endsection

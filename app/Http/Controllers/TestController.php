@@ -103,7 +103,7 @@ class TestController extends Controller
     if (empty($questionDataList))
       abort(404);
     //$questions = $questionDataList[array_rand($questionDataList)];
-
+    //return $questionDataList[3]['answers'][0];
     //$test->questions = count($questions); //Количество вопросов
     return view('test-demo', [
       'questionDataList' => $questionDataList,
@@ -150,11 +150,20 @@ class TestController extends Controller
 
   public function check(Request $request)
   {
+    /*
+      1. Определяем вопрос со свободным ответо или нет. Если со свободным, засчииываем как правильный
+      2. Проверяем тестовый вопрос.
+      Если 
+
+
+
+    */
     //return $request;
     $answers = $request->all();
 
     $correct_answers = 0;
     $questions = [];
+
     foreach ($answers as $key => $answer) {
       if (strpos($key, 'question') === 0) {
         // Получаем информацию о вопросе из скрытого поля
@@ -162,12 +171,30 @@ class TestController extends Controller
         $question['selected_answer'] = $answers['answer' . substr($key, 8)];
         $questions[] = $question;
 
+        if ($question['correct_answer'][0] === 'Свободный ответ') {
+          $correct_answers++;
+        }
         // Проверяем правильность ответа
-        if ($question['selected_answer'] == $question['correct_answer']) {
+        if (is_array($question['selected_answer']) && is_array($question['correct_answer'])) {
+          $isCorrect = true;
+          foreach ($question['selected_answer'] as $selected) {
+            if (!in_array($selected, $question['correct_answer'])) {
+              $isCorrect = false;
+              break;
+            }
+          }
+          if ($isCorrect) {
+            $correct_answers++;
+          }
+        }elseif ($question['selected_answer'] === $question['correct_answer']) {
           $correct_answers++;
         }
       }
     }
+
+    //return $correct_answers;
+    //return $questions[1]['correct_answer'][0];
+
 
     $score = round(($correct_answers / count($questions)) * 100);
     $test = json_decode($request->input('test'));
@@ -180,46 +207,46 @@ class TestController extends Controller
       'is_passed' => ($score > 75) ? true : false,
       'is_finished' => ($score > 50) ? true : false,
     ]);
-      if ($score > 75) {
+    if ($score > 75) {
 
-          $chapterListWitoutOne =  array();
-          for ($i = 1; $i <= count(json_decode($request->test)->chapter->course->chapters); $i++) {
-              array_push($chapterListWitoutOne, $i);
-          }
-
-          $course_id = json_decode($request->test)->chapter->course->id;
-          $chapter_id = json_decode($request->test)->chapter_id;
-
-          $key = array_search($chapter_id,  $chapterListWitoutOne );
-          if ($key !== false) {
-              unset( $chapterListWitoutOne [$key]);
-          }
-          $user_id = Auth::user()->id;
-
-          $course_user = CourseUser::where('user_id', $user_id)->first();
-
-          if ($course_user) {
-              $chapterList = json_decode($course_user->chapter_list);
-
-              $course_user->course_id = $course_id;
-              $index = array_search($chapter_id, $chapterList);
-
-              if ($index !== false) {
-                  unset($chapterList[$index]);
-              }
-
-              $course_user->chapter_list = json_encode(array_values($chapterList));
-              $course_user->completed = count(json_decode($request->test)->chapter->course->chapters)-count($chapterList);
-              $course_user->save();
-          } else {
-              CourseUser::create([
-                  'course_id' => $course_id,
-                  'user_id' => $user_id,
-                  'completed' => count(json_decode($request->test)->chapter->course->chapters)-count($chapterListWitoutOne),
-                  'chapter_list' => json_encode(array_values($chapterListWitoutOne))
-              ]);
-          }
+      $chapterListWitoutOne =  array();
+      for ($i = 1; $i <= count(json_decode($request->test)->chapter->course->chapters); $i++) {
+        array_push($chapterListWitoutOne, $i);
       }
+
+      $course_id = json_decode($request->test)->chapter->course->id;
+      $chapter_id = json_decode($request->test)->chapter_id;
+
+      $key = array_search($chapter_id,  $chapterListWitoutOne);
+      if ($key !== false) {
+        unset($chapterListWitoutOne[$key]);
+      }
+      $user_id = Auth::user()->id;
+
+      $course_user = CourseUser::where('user_id', $user_id)->first();
+
+      if ($course_user) {
+        $chapterList = json_decode($course_user->chapter_list);
+
+        $course_user->course_id = $course_id;
+        $index = array_search($chapter_id, $chapterList);
+
+        if ($index !== false) {
+          unset($chapterList[$index]);
+        }
+
+        $course_user->chapter_list = json_encode(array_values($chapterList));
+        $course_user->completed = count(json_decode($request->test)->chapter->course->chapters) - count($chapterList);
+        $course_user->save();
+      } else {
+        CourseUser::create([
+          'course_id' => $course_id,
+          'user_id' => $user_id,
+          'completed' => count(json_decode($request->test)->chapter->course->chapters) - count($chapterListWitoutOne),
+          'chapter_list' => json_encode(array_values($chapterListWitoutOne))
+        ]);
+      }
+    }
 
     return view('result', compact('score', 'questions'));
   }

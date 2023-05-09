@@ -76,10 +76,17 @@
                             @endforeach
                         </ul>
                     </td>
-                    <td>{{ $questionData['correct_answer'] }}</td>
+                     <td>
+                        <ul>
+                            @foreach ($questionData['correct_answer'] as $correct_answer)
+                                <li>{{ $correct_answer }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
                     <td>{{ $questionData['image'] }}</td>
-        
+
                     <td>
+
     <div class="d-flex">
     <!-- <img class="fit-picture"
      src={{asset('images/404.png')}}

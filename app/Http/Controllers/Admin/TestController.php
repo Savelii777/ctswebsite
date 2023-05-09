@@ -21,9 +21,8 @@ class TestController extends Controller
         //      <!-- <a href="{{ //route('questions.create', $test->id) }}" class="small-box-footer">Перейти <i class="fas fa-arrow-circle-right"></i></a>
         $questions = Question::all();
         $chapters = Chapter::all();
-    //return $chapters;
-    return view('admin.test.index', ['questions' => $questions, 'chapters' => $chapters]);
-
+        //return $chapters;
+        return view('admin.test.index', ['questions' => $questions, 'chapters' => $chapters]);
     }
 
     /**
@@ -41,9 +40,20 @@ class TestController extends Controller
     }
     public function testStore(Request $request)
     {
-        
-        $chapter_number = $request->input('chapter_number');
-        $questions = $request->input('questions');
+        //return $request;
+        $input = $request->all(); // получаем все значения формы
+        $input['questions'] = array_map(function ($question) {
+            $question['answers'] = array_filter($question['answers'], 'strlen');
+            return $question;
+        }, $input['questions']); // удаляем все элементы со значением null внутри массива вопросов
+
+
+
+        // return $input['manual_answer'];
+        $chapter_number = $input['chapter_number'];
+        // $chapter_number = $request->input('chapter_number');
+        //$questions = $request->input('questions');
+        $questions = $input['questions'];
 
         $chapterExists = Chapter::where('order', $chapter_number)->exists();
         //Нужно получить из таблицы Chapter
@@ -57,21 +67,38 @@ class TestController extends Controller
         $chapter = Chapter::where('order', $chapter_number)->first();
         //return $chapter->id; 
         //$course_number = $request->input('course_number');
-       
 
-        $image = $request->input('image');
+    $image = $request->input('image');
 
         $preparedQuestions = array();
-        foreach ($questions as $id => $item) {
-            $question = array(
-                "question" => $item["question"],
-                "answers" => array_values($item["answers"]),
-                "correct_answer" => $item["correct_answer"],
-                "image" => $image
+        if (isset($input['manual_answer'])) {
+            // выполнить какие-то действия
+            if ($input['manual_answer'] == 'on') {
 
-            );
-            $preparedQuestions[] = $question;
+                foreach ($questions as $id => $item) {
+                    $question = array(
+                        "question" => $item["question"],
+                        "answers" => array("Свободный ответ"),
+                        "correct_answer" => array("Свободный ответ"),
+                        "image" => $image
+
+                    );
+                    $preparedQuestions[] = $question;
+                }
+            }
+        } else {
+
+            foreach ($questions as $id => $item) {
+                $question = array(
+                    "question" => $item["question"],
+                    "answers" => array_values($item["answers"]),
+                    "correct_answer" => $item["correct_answer"]
+                );
+                $preparedQuestions[] = $question;
+            }
         }
+
+
 
 
         Question::create([
@@ -152,30 +179,68 @@ class TestController extends Controller
      */
     public function editQuestion(Question $question)
     {
-        //return $question;
+        $data = json_decode($question->data, true);
+ 
+        if (isset($data[0]['answers'][0])) {
+             if ($data[0]['answers'][0] === 'Свободный ответ') {
+                return view('admin.quetions.editFreeAnswer', ['question' => $question]);
+
+            }
+        }
+
+   
+
         return view('admin.quetions.edit', ['question' => $question]);
     }
 
     public function updateQuestion(Request $request, Question $question)
     {
+         
+        //return $request;
+        $input = $request->all(); // получаем все значения формы
+        $input['questions'] = array_map(function ($question) {
+            $question['answers'] = array_filter($question['answers'], 'strlen');
+            return $question;
+        }, $input['questions']); // удаляем все элементы со значением null внутри массива вопросов
+
+
+
         $whereid = $question['id'];
         //$course_number = $request->input('course_number');
         $chapter_number = $request->input('chapter_number');
+        $questions = $input['questions'];
         $image = $request->input('image');
-        $questions = $request->input('questions');
         //return $whereid;
 
-        $preparedQuestions = array();
-        foreach ($questions as $id => $item) {
+        //return $questions[1]['answers'][1];
 
-            $question = array(
-                "question" => $item["question"],
-                "answers" => array_values($item["answers"]),
-                "correct_answer" => $item["correct_answer"],
-                "image" => $image
-            );
-            $preparedQuestions[] = $question;
+        
+        
+        $preparedQuestions = array();
+        if($questions[1]['answers'][1]===null){
+            // выполнить какие-то действия
+            foreach ($questions as $id => $item) {
+                $question = array(
+                    "question" => $item["question"],
+                    "answers" => array("Свободный ответ"),
+                    "correct_answer" => array("Свободный ответ"),
+                    "image" => $image
+                );
+                $preparedQuestions[] = $question;
+            }
+        } else {
+
+            foreach ($questions as $id => $item) {
+                $question = array(
+                    "question" => $item["question"],
+                    "answers" => array_values($item["answers"]),
+                    "correct_answer" => $item["correct_answer"]
+                );
+                $preparedQuestions[] = $question;
+            }
         }
+
+
 
         //return $whereid;
         Question::where('id', $whereid)
