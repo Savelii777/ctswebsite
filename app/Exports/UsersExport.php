@@ -2,60 +2,65 @@
 
 namespace App\Exports;
 
+use Illuminate\Support\Collection;
 use App\Models\Chapter;
 use App\Models\User;
-use App\Models\Test;
 use App\Models\Attempt;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+
 
 class UsersExport implements FromCollection, WithHeadings
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
-    {
- 
-
-        $users = User::select('users.name', 'users.login', 'users.city', 'users.place_of_work', 'course_user.completed', 'courses.title')
-        ->leftJoin('course_user', 'users.id', '=', 'course_user.user_id')
-        ->leftJoin('courses', 'courses.id', '=', 'course_user.course_id')
-        ->selectRaw('IFNULL(course_user.completed, "не приступил") as completed')
-        ->get();
-            
-    return $users;
-    }
-     /*public function headings(): array
-    {
-        $x = $count = Chapter::count();
-
-        return ['ФИО', 'Логин', 'Курс', 'Группа', 'Завершено из '.$x.' тем','Раздел'];
-    }*/
+     * @return \Illuminate\Support\Collection
+     */
     
-    public function map($user): array
+     
+     public function collection()
     {
-        $chapters = Chapter::all();
-        $chapterStatuses = [];
+        $data = [];
+        $users = User::select('id', 'name', 'city', 'place_of_work')->get();
+        $chapters = Chapter::select('id', 'title')->get();
 
-        foreach ($chapters as $chapter) {
-            $status = $this->passed($chapter->id,$user->id);
-            $chapterStatuses[] = $status;
+        foreach ($users as $user) {
+            $userData = [
+                'name' => $user->name,
+                'city' => $user->city,
+                'place_of_work' => $user->place_of_work,
+            ];
+
+            foreach ($chapters as $chapter) {
+                $status = $this->passed($chapter->id, $user->id);
+
+                $userData['chapter_' . $chapter->id . '_status'] = $status;
+            }
+
+            $data[] = $userData;
         }
 
-        return [
-            $user->name,
-            $user->login,
-            $user->city,
-            $user->place_of_work,
-            $user->completed,
-            $user->title,
-            ...$chapterStatuses,
-        ];
+        return new Collection($data);
     }
-    public function passed($chapter_id, $user_id) {
-        //dd($this->id);
+    
+
+    public function headings(): array
+    {
+        $headings = ['ФИО', 'Курс', 'Группа'];
+
+        $chapters = Chapter::select('title')->get();
+        foreach ($chapters as $chapter) {
+            $headings[] = $chapter->title;
+        }
+
+        return $headings;
+    }
+
+
+    public function passed($chapter_id, $user_id)
+    {
         $test_id = $chapter_id;
         $attempts = Attempt::where("user_id", $user_id)->where("test_id", $test_id)->get();
 
@@ -73,19 +78,4 @@ class UsersExport implements FromCollection, WithHeadings
 
         return "Не приступил";
     }
-    public function headings(): array
-    {
-        $chapterCount = Chapter::count();
-
-        return [
-            'ФИО',
-            'Логин',
-            'Город',
-            'Место работы',
-            'Завершено из '.$chapterCount.' тем',
-            'Курс',
-            ...Chapter::pluck('title')->toArray(),
-        ];
-    }
-   
 }

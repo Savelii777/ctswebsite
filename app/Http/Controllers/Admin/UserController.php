@@ -27,7 +27,8 @@ class UserController extends Controller
      */
     public function getXlsxData()
     {
-        return Excel::download(new UsersExport, 'users.xlsx');
+        
+        return Excel::download(new UsersExport, 'Прогресс студентов.xlsx');
 
     }
     public function index()
