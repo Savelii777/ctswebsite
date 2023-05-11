@@ -32,11 +32,15 @@
                     <div class="materials-list" >
                        <div style="margin-left:0; margin-right:0; flex-direction: column" class="row">
                         @foreach ($chapter->files as $file)
+                           @if (pathinfo($file->url, PATHINFO_EXTENSION) === 'pdf')
+
                         <div class="col-md-4" id="materials-item">
                             <a style="display: none" class="link-pdf" id="materials-item-{{$file->id}}" href="{{$file->url}}">materials-item-{{$file->id}}</a>
                             <a style="display: none" class="link-video" id="materials-item-{{$file->id}}" href="{{$file->url}}">materials-item-{{$file->id}}</a>
                             </div>
-                        @endforeach
+                            @endif
+
+                         @endforeach
                         
                         </div>
                        <div id="pass" class="pass" style="position: relative">

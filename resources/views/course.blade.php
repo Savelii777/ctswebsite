@@ -167,7 +167,7 @@
                                                 <div class="content-right">
                                                     <button
                                                         style="margin-left: 20px"
-                                                        onclick="location.href='{{ route('chapter.materials', $chapter['id']) }}'"
+                                                        onclick="location.href='{{ route('chapter.materialsVideo', $chapter['id']) }}'"
                                                         class="btn-active">
                                                         <div style="font-size: 12px;color: #000;">Смотреть</div>
                                                     </button>

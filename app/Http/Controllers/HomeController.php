@@ -57,10 +57,15 @@ class HomeController extends Controller
             'course' => $course
         ]);
     }
-
     public function materials(Chapter $chapter)
     {
         return view('materials', [
+            'chapter' => $chapter
+        ]);
+    }
+    public function materialsVideo(Chapter $chapter)
+    {
+        return view('materials-video', [
             'chapter' => $chapter
         ]);
     }
