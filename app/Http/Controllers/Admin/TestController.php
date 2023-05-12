@@ -65,7 +65,7 @@ class TestController extends Controller
                 ->withErrors(['Глава с номером ' . $chapter_number . ' не найдена']);
         }
         $chapter = Chapter::where('order', $chapter_number)->first();
-        //return $chapter->id; 
+        //return $chapter->id;
         //$course_number = $request->input('course_number');
 
     $image = $request->input('image');
@@ -81,7 +81,6 @@ class TestController extends Controller
                         "answers" => array("Свободный ответ"),
                         "correct_answer" => array("Свободный ответ"),
                         "image" => $image
-
                     );
                     $preparedQuestions[] = $question;
                 }
@@ -180,7 +179,7 @@ class TestController extends Controller
     public function editQuestion(Question $question)
     {
         $data = json_decode($question->data, true);
- 
+
         if (isset($data[0]['answers'][0])) {
              if ($data[0]['answers'][0] === 'Свободный ответ') {
                 return view('admin.quetions.editFreeAnswer', ['question' => $question]);
@@ -188,14 +187,14 @@ class TestController extends Controller
             }
         }
 
-   
+
 
         return view('admin.quetions.edit', ['question' => $question]);
     }
 
     public function updateQuestion(Request $request, Question $question)
     {
-         
+
         //return $request;
         $input = $request->all(); // получаем все значения формы
         $input['questions'] = array_map(function ($question) {
@@ -214,8 +213,8 @@ class TestController extends Controller
 
         //return $questions[1]['answers'][1];
 
-        
-        
+
+
         $preparedQuestions = array();
         if($questions[1]['answers'][1]===null){
             // выполнить какие-то действия
