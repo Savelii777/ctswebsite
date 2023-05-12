@@ -27,8 +27,8 @@
 
                 <p>Добавить</p>
               </div>
-               
-        
+
+
               <a href="/admin/questions/create" class="small-box-footer">Перейти <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
@@ -36,7 +36,7 @@
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
-              
+
           </div>
           <!-- ./col -->
         </div>
@@ -45,7 +45,7 @@
     </section>
     <!-- /.content -->
 
-  
+
   <table class="table">
   <thead>
         <tr>
@@ -83,14 +83,14 @@
                             @endforeach
                         </ul>
                     </td>
-                    <td>{{ $questionData['image'] }}</td>
-
+                    <td>
+                    <img style="width:100px" class="fit-picture"
+                    src="{{ asset('images/' . ($questionData['image'])) }}">
+                    </td>
                     <td>
 
     <div class="d-flex">
-    <!-- <img class="fit-picture"
-     src={{asset('images/404.png')}}
-     alt="Grapefruit slice atop a pile of other slices"> -->
+
 
     <form action="{{ route('questions.edit', $question->id) }}" method="GET">
         <button type="submit" class="btn btn-primary mr-2">Редактировать</button>
@@ -108,4 +108,3 @@
     </tbody>
     </table>
 @endsection
- 

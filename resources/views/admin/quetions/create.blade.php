@@ -18,7 +18,7 @@
 @endif
 <div class="container mt-5">
     <h1>Создание теста</h1>
-    <form method="post" action="{{ route('questions.testStore') }}">
+    <form method="post" action="{{ route('questions.testStore') }}" enctype="multipart/form-data">
     @csrf
 
     <div class="form-check">
@@ -117,12 +117,13 @@
             if(this.checked) {
                 $('.form-check.answer input[type="checkbox"]').css('pointer-events', 'none');
                 $('.form-check.answer input[type="text"]').prop('readonly', true);
- 
+
             } else {
                 $('.form-check.answer input[type="checkbox"]').css('pointer-events', 'auto');
                 $('.form-check.answer input[type="text"]').prop('readonly', false);
             }
         });
+
     });
 </script>
 

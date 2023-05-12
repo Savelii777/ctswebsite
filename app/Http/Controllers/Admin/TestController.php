@@ -42,11 +42,20 @@ class TestController extends Controller
     {
         //return $request;
         $input = $request->all(); // получаем все значения формы
+
         $input['questions'] = array_map(function ($question) {
             $question['answers'] = array_filter($question['answers'], 'strlen');
             return $question;
         }, $input['questions']); // удаляем все элементы со значением null внутри массива вопросов
+        $image = "";
 
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $imageName);
+            $image=$imageName;
+        }
 
 
         // return $input['manual_answer'];
@@ -54,7 +63,6 @@ class TestController extends Controller
         // $chapter_number = $request->input('chapter_number');
         //$questions = $request->input('questions');
         $questions = $input['questions'];
-
         $chapterExists = Chapter::where('order', $chapter_number)->exists();
         //Нужно получить из таблицы Chapter
         //return $chapterExists;
@@ -68,7 +76,6 @@ class TestController extends Controller
         //return $chapter->id;
         //$course_number = $request->input('course_number');
 
-    $image = $request->input('image');
 
         $preparedQuestions = array();
         if (isset($input['manual_answer'])) {
@@ -91,7 +98,8 @@ class TestController extends Controller
                 $question = array(
                     "question" => $item["question"],
                     "answers" => array_values($item["answers"]),
-                    "correct_answer" => $item["correct_answer"]
+                    "correct_answer" => $item["correct_answer"],
+                    "image" => $image
                 );
                 $preparedQuestions[] = $question;
             }
@@ -201,14 +209,22 @@ class TestController extends Controller
             $question['answers'] = array_filter($question['answers'], 'strlen');
             return $question;
         }, $input['questions']); // удаляем все элементы со значением null внутри массива вопросов
+        $image = "";
 
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $imageName);
+            $image = $imageName;
+        }
 
 
         $whereid = $question['id'];
         //$course_number = $request->input('course_number');
         $chapter_number = $request->input('chapter_number');
         $questions = $input['questions'];
-        $image = $request->input('image');
+
         //return $whereid;
 
         //return $questions[1]['answers'][1];
@@ -233,14 +249,13 @@ class TestController extends Controller
                 $question = array(
                     "question" => $item["question"],
                     "answers" => array_values($item["answers"]),
-                    "correct_answer" => $item["correct_answer"]
+                    "correct_answer" => $item["correct_answer"],
+                    "image" => $image
                 );
                 $preparedQuestions[] = $question;
+
             }
         }
-
-
-
         //return $whereid;
         Question::where('id', $whereid)
             ->update([
