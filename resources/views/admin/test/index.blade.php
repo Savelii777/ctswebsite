@@ -84,8 +84,9 @@
                         </ul>
                     </td>
                     <td>
-                    <img style="width:100px" class="fit-picture"
-                    src="{{ asset('images/' . ($questionData['image'])) }}">
+                    @if ($questionData['image'] != "")
+                    <img style="width:100px" class="fit-picture" src="{{ asset('images/' . ($questionData['image'])) }}">
+                    @endif
                     </td>
                     <td>
 

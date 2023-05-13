@@ -97,9 +97,12 @@
         @foreach ($questionDataList as $key => $question)
             <input type="hidden" name="question{{ $key }}" value="{{ json_encode($question) }}">
             <h3>{{ $questionNumber }}. {{ $question['question'] }}</h3>
-            <img style="width:300px; height:300px" class="fit-picture"
+            @if ($question['image'] != "")
+            <img style="margin: 5px 0 20px 0; width:300px; height:300px" class="fit-picture"
             src="{{ asset('images/' . ($question['image'])) }}"
-     alt="Grapefruit slice atop a pile of other slices">
+            alt="Grapefruit slice atop a pile of other slices">
+            @endif
+
 
             <ul>
                 <?php $answerNumber = 1; ?>
@@ -158,3 +161,4 @@
 
 @include('partials.footer')
 @endsection
+
