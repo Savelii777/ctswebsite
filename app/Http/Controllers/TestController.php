@@ -146,7 +146,7 @@ class TestController extends Controller
   }
 
 
-
+ 
 
   public function check(Request $request)
   {
@@ -158,6 +158,8 @@ class TestController extends Controller
 
 
     */
+ 
+
     //return $request;
     $answers = $request->all();
 

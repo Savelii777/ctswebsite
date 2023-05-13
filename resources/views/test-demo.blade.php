@@ -126,37 +126,42 @@
     </form>
 </div>
 
-
+ 
+ 
 <script>
     function validateForm() {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    var textInputs = document.querySelectorAll('input[type="text"]');
-    
-    // Проверяем, что все чекбоксы выбраны
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (!checkboxes[i].checked) {
-            alert('Пожалуйста, ответьте на все вопросы перед завершением теста.');
+    var questions = document.querySelectorAll('ul');
+
+    for (var i = 0; i < questions.length; i++) {
+        var checkboxes = questions[i].querySelectorAll('input[type="checkbox"]');
+        var checked = false;
+
+        for (var j = 0; j < checkboxes.length; j++) {
+            if (checkboxes[j].checked) {
+                checked = true;
+                break;
+            }
+        }
+
+        var textInputs = questions[i].querySelectorAll('input[type="text"]');
+        var filled = false;
+
+        for (var k = 0; k < textInputs.length; k++) {
+            if (textInputs[k].value.trim() !== '') {
+                filled = true;
+                break;
+            }
+        }
+
+        if (!checked && !filled) {
+            alert('Выберите хотя бы один вариант ответа или заполните свободный ответ для каждого вопроса.');
             return false;
         }
     }
-    
-    // Проверяем, что все текстовые поля заполнены
-    for (var j = 0; j < textInputs.length; j++) {
-        if (textInputs[j].value.trim() === '') {
-            alert('Пожалуйста, ответьте на все вопросы перед завершением теста.');
-            return false;
-        }
-    }
-    
+
     return true;
 }
 
-</script>
-<script>
-    function validateFor1m() {
-
-        return true;
-    }
 </script>
 
 @include('partials.footer')
