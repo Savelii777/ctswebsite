@@ -125,17 +125,32 @@
 
 
 <script>
-    function validateForm1() {
-        var answers = document.querySelectorAll('input[type=radio]:checked');
-        if (answers.length < {{ count($questionDataList)/10 }}) {
+    function validateForm() {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var textInputs = document.querySelectorAll('input[type="text"]');
+    
+    // Проверяем, что все чекбоксы выбраны
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (!checkboxes[i].checked) {
             alert('Пожалуйста, ответьте на все вопросы перед завершением теста.');
             return false;
         }
-        return true;
     }
+    
+    // Проверяем, что все текстовые поля заполнены
+    for (var j = 0; j < textInputs.length; j++) {
+        if (textInputs[j].value.trim() === '') {
+            alert('Пожалуйста, ответьте на все вопросы перед завершением теста.');
+            return false;
+        }
+    }
+    
+    return true;
+}
+
 </script>
 <script>
-    function validateForm() {
+    function validateFor1m() {
 
         return true;
     }
