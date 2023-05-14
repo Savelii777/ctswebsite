@@ -94,7 +94,16 @@ class TestController extends Controller
             }
         } else {
 
+            
+
             foreach ($questions as $id => $item) {
+
+                if (!isset($item["correct_answer"])) {
+                    return redirect()
+                        ->back()
+                        ->withErrors(['Правильный ответи не выбран!']);
+                }  
+                 
                 $question = array(
                     "question" => $item["question"],
                     "answers" => array_values($item["answers"]),

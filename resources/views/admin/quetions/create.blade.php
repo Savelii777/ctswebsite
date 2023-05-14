@@ -47,7 +47,7 @@
     <div class="form-check answer">
         <input type="checkbox" class="form-check-input" name="questions[1][correct_answer][]" value="1"  >
         <label class="form-check-label" for="answer_1_1">Ответ 1:</label>
-        <input type="text" class="form-control" id="answer_1_1" name="questions[1][answers][1]" >
+        <input type="text" class="form-control" id="answer_1_1" name="questions[1][answers][1]" required >
     </div>
 
     <div class="form-check answer">
