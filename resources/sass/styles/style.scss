@@ -95,7 +95,7 @@ header {
         background-image: url('../images/header__logo.jpg');
         background-size: contain;
         background-repeat: no-repeat;
-        
+
     }
     .header__logo-link{
      z-index: 1;
@@ -110,6 +110,7 @@ header {
         line-height: 1.375;
     }
     .header__btns{
+        margin: 0 auto 0 135px;
         width: 100%;
         display: grid;
         grid-template-columns: repeat(3, 1fr);

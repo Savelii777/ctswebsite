@@ -10072,6 +10072,7 @@ header .header__logo-text {
   line-height: 1.375;
 }
 header .header__btns {
+  margin: 0 auto 0 135px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -11949,6 +11950,18 @@ footer {
   padding: 0 50px;
   overflow-y: hidden;
   overflow-x: hidden;
+}
+.chapter-accordion .test-button {
+  background-color: #9ca324;
+  color: white;
+}
+.chapter-accordion .test-button[disabled] {
+  opacity: 0.5;
+  /* уменьшаем прозрачность кнопки */
+  cursor: not-allowed;
+  /* меняем курсор на "запрещено" */
+  pointer-events: none;
+  /* отключаем события мыши, чтобы кнопка не реагировала на клики */
 }
 .chapter-accordion .content-caption {
   font-size: 16px;
@@ -16282,6 +16295,20 @@ img.incorrect {
 
 .materials-list .col-md-4 {
   padding: 0;
+}
+
+.test-button {
+  background-color: #9ca324;
+  color: white;
+}
+
+.test-button[disabled] {
+  opacity: 0.5;
+  /* уменьшаем прозрачность кнопки */
+  cursor: not-allowed;
+  /* меняем курсор на "запрещено" */
+  pointer-events: none;
+  /* отключаем события мыши, чтобы кнопка не реагировала на клики */
 }
 
 .presentation-item img {

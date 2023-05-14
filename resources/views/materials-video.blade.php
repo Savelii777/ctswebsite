@@ -41,25 +41,25 @@
                             @endif
 
                          @endforeach
-                        
+
                         </div>
                        <div id="pass" class="pass" style="position: relative">
-  
+
                         <div class="d-flex justify-content-center" style="position: relative; left: 25%">
-                         <a href="{{ url("/test/about/{$chapter->tests[0]['id']}")}}" class="btn btn-primary btn-lg" style="background-color: #3c421a;">Пройти тест</a>
+                         <button {{count($chapter->tests[0]->questions) == 0 ? 'disabled' : ''}} class="test-button" onclick="location.href='{{ url("/test/about/{$chapter->tests[0]['id']}")}}'">Пройти тест</button>
                         </div>
-  
+
                      </div>
 
                   </div>
-                    
+
                  </div>
               </div>
            </div>
-         
+
         </div>
      </section>
     @include('partials.footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
-     
+
 @endsection

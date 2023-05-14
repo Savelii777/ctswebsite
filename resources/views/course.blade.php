@@ -190,7 +190,7 @@
 
                                                     <div class="col-2 d-flex justify-content-end">
                                                         <button
-                                                            {{!$chapter->available(Auth::user()) ? 'disabled' : ''}} style="color: white"
+                                                        {{count($chapter->tests[0]->questions) == 0 ? 'disabled' : ''}} class="test-button"
                                                             onclick="location.href='{{ url("/test/about/{$chapter->tests[0]['id']}")}}'">
                                                             Пройти
                                                         </button>

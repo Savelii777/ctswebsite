@@ -38,7 +38,15 @@
         padding: 0;
     }
 }
-
+.test-button{
+    background-color:#9ca324;
+    color:white
+}
+.test-button[disabled]{
+    opacity: 0.5; /* уменьшаем прозрачность кнопки */
+    cursor: not-allowed; /* меняем курсор на "запрещено" */
+    pointer-events: none; /* отключаем события мыши, чтобы кнопка не реагировала на клики */
+}
 .presentation-item {
     // width: 724px;
     // height: 543px;
@@ -55,6 +63,7 @@
         font-size: 12px;
     }
 }
+
 .presentation-navigation {
     display: flex;
     justify-content: space-between;
