@@ -11,14 +11,43 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-
-class UsersExport implements FromCollection, WithHeadings
+class UsersExport implements FromCollection, WithHeadings, WithColumnWidths, WithStyles
 {
     /**
      * @return \Illuminate\Support\Collection
      */
+    public function styles(Worksheet $sheet)
+    {
+        return [
+            // Style the first row as bold text.
+            1    => ['font' => ['bold' => true], 'alignment' => ['vertical' => 'top', 'wrapText' => true]],
+
     
+        ];
+    }
+
+    public function columnWidths(): array
+    {
+        $columnWidth = 27;
+        return [
+            'A' => 30,
+            'B' => 10,   
+            'C' => 10, 
+            'D' => $columnWidth,     
+            'E' => $columnWidth,
+            'F' => $columnWidth,
+            'G' => $columnWidth,
+            'H' => $columnWidth,
+            'I' => $columnWidth,
+            'J' => $columnWidth,
+            'K' => $columnWidth,     
+        ];
+    }
      
      public function collection()
     {

@@ -16,7 +16,8 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
-
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 class UserController extends Controller
 {
@@ -30,7 +31,10 @@ class UserController extends Controller
         
         return Excel::download(new UsersExport, 'Прогресс студентов.xlsx');
 
+
+        
     }
+    
     public function index()
     {
         $users = User::sortable()->simplePaginate(20);
