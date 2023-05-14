@@ -59,6 +59,8 @@ Route::get('/settings', [HomeController::class, 'settings'])->name('settings');
 Route::get('/course/{course}', [HomeController::class, 'course'])->name('course.show.user');
 Route::get('/chapter/{chapter}/materials', [HomeController::class, 'materials'])->name('chapter.materials');
 Route::get('/chapter/{chapter}/materialsVideo', [HomeController::class, 'materialsVideo'])->name('chapter.materialsVideo');
+Route::get('/chapter/{chapter}/materialsVideo', [HomeController::class, 'materialsVideo'])->name('chapter.materialsVideo');
+Route::get('/course/{course}/materialsAllVideo',  [HomeController::class, 'materialsAllVideo'])->name('course.materialsAllVideo');
 
 Route::patch('/user/profile/{user}', [UserComponentController::class, 'updateUserProfileData'])->name('user.profile');
 Route::post('/user/image/upload/{user}', [UserComponentController::class, 'updateUserProfileImageUpload'])->name('user.image.upload');

@@ -224,6 +224,9 @@
                     </div>
                 </div>
             </div>
+            <a href="{{ route('course.materialsAllVideo', $course->id) }}" class="btn-active">
+    <div style="font-size: 12px; color: #000;">Смотреть все видео-материалы</div>
+</a>
         </div>
     </section>
     @include('partials.footer')

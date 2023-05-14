@@ -69,6 +69,13 @@ class HomeController extends Controller
             'chapter' => $chapter
         ]);
     }
+    public function materialsAllVideo(Course $course)
+    {
+       // return $course;
+        return view('materials-Allvideo', [
+            'course' => $course,
+        ]);
+    }
 
     public function settings()
     {
