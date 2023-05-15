@@ -236,12 +236,11 @@ class TestController extends Controller
 
         //return $whereid;
 
-        //return $questions[1]['answers'][1];
-
-
-
+ 
+        
+        
         $preparedQuestions = array();
-        if($questions[1]['answers'][1]===null){
+        if($questions[1]['answers']===[]){
             // выполнить какие-то действия
             foreach ($questions as $id => $item) {
                 $question = array(
