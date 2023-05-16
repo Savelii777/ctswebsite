@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h1>Редактирование теста1</h1>
+    <h1>Редактирование теста</h1>
     <form method="post" action="{{ route('questions.update', $question->id) }}">
     @csrf
     @method('PUT')  
