@@ -10072,10 +10072,9 @@ header .header__logo-text {
   line-height: 1.375;
 }
 header .header__btns {
-  margin: 0 auto 0 135px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 10px;
 }
 header .btn-active:hover {
@@ -16407,19 +16406,4 @@ ul.only_desktop {
   background: transparent url("/images/pause.png");
   background-position: center;
   background-size: cover;
-}
-
-.video-wrapper {
-  width: 400px;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 8px;
-  margin: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.video-wrapper video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
