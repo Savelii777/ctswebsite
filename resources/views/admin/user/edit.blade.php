@@ -56,10 +56,10 @@
                                 <label>Логин</label>
                                 <input value="{{ $user['login'] }}" name="login" type="text" class="form-control">
                             </div>
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label>e-mail</label>
                                 <input value="{{ $user['email'] }}" name="email" type="text" class="form-control">
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <label>Пароль</label>
                                 <input id="password_input" name="password" class="form-control" placeholder="Автоматическая генерация" required>

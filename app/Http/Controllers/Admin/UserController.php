@@ -81,7 +81,7 @@ class UserController extends Controller
         $validator = $request->validate([
             'name' => 'required|max:255',
             'login' => 'required|unique:users|max:255',
-            'email' => 'required|unique:users|email|max:255',
+            'email' => 'unique:users|email|max:255',
             'password' => 'required|max:255',
             'city' => 'max:255',
             'place_of_work' => 'max:255',
@@ -91,7 +91,6 @@ class UserController extends Controller
                 'name.required' => 'Поле имя должно быть заполено!',
                 'login.required' => 'Поле логин должно быть заполено!',
                 'login.unique' => 'Пользователь с таким логином уже существует!',
-                'email.required' => 'Поле e-mail должно быть заполено!',
                 'email.unique' => 'Пользователь с таким e-mail уже существует!',
                 'email.email' => 'e-mail указан в неверном формате!',
                 'password.required' => 'Поле пароль должно быть заполено!',
@@ -172,7 +171,6 @@ class UserController extends Controller
             [
                 'name' => 'required|max:255',
                 'login' => ['max:255', 'required', Rule::unique('users')->ignore($user->id)],
-                'email' => ['email', 'max:255', 'required', Rule::unique('users')->ignore($user->id)],
                 'city' => 'max:255',
                 'place_of_work' => 'max:255',
                 'image' => 'image|mimes:jpg,jpeg,png,gif,bmp'
@@ -181,9 +179,7 @@ class UserController extends Controller
                 'name.required' => 'Поле имя должно быть заполено!',
                 'login.required' => 'Поле логин должно быть заполено!',
                 'login.unique' => 'Пользователь с таким логином уже существует!',
-                'email.required' => 'Поле e-mail должно быть заполено!',
-                'email.unique' => 'Пользователь с таким e-mail уже существует!',
-                'email.email' => 'e-mail указан в неверном формате!',
+
                 'max' => 'Максимальная длина параметра 255 символов!',
                 'mimes' => 'Изображение должно быть в формате jpg,jpeg,png,gif,bmp'
             ]
@@ -191,7 +187,6 @@ class UserController extends Controller
 
         $user->name = $request->get('name');
         $user->login = $request->get('login');
-        $user->email = $request->get('email');
         $user->city = $request->get('city');
         $user->birth = $request->get('birth');
         $user->sex = $request->get('sex');
