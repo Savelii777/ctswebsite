@@ -186,9 +186,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="courses__txt col-md-10 only_desktop">
-                            {{ $course->description }}
-                        </div>
+
                         <div class="collapse multi-collapse only_mobile" id="multiCollapseText{{$key}}">
                             <div class="courses__txt col-md-10">
                                 {{ $course->description }}
