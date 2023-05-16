@@ -16407,3 +16407,18 @@ ul.only_desktop {
   background-position: center;
   background-size: cover;
 }
+
+.video-wrapper {
+  width: 400px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
