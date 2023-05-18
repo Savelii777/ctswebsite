@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Создание теста</title>
+    <title>Создание вопроса</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -17,7 +17,7 @@
     </div>
 @endif
 <div class="container mt-5">
-    <h1>Создание теста</h1>
+    <h1>Создание вопроса</h1>
     <form method="post" action="{{ route('questions.testStore') }}" enctype="multipart/form-data">
     @csrf
 

@@ -1,5 +1,4 @@
 @extends('layouts.main_layout')
-
 @section('content')
     @include('partials.header')
     <section id="person">

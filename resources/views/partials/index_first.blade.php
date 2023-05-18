@@ -6,8 +6,8 @@
       <button onclick="location.href='{{ route('login') }}'">Пройти обучение</button>
       <ul class="first__list row">
          <li class="first__item first__item_l col-xl-5 col-lg-8 col-md-10 col-sm-12">
-            <div>
-               9
+             <div>
+                {{ $chapterCount }}
             </div>
             <p>
             обучающих <br>программ
@@ -15,7 +15,7 @@
          </li>
          <li class="first__item first__item_r col-xl-5 col-lg-8 col-md-10 col-sm-12">
             <div>
-               9
+            {{ $chapterCount }}
             </div>
             <p>
             практических занятий <br>в формате тестов
@@ -24,3 +24,4 @@
       </ul>
    </div>
 </section>
+

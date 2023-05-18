@@ -17,6 +17,7 @@ class Attempt extends Model
         'questions',
         'is_passed',
         'answers',
+        'free_answer',
         'is_finished'
     ];
 

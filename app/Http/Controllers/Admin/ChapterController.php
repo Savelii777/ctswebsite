@@ -28,7 +28,7 @@ class ChapterController extends Controller
             'questions' =>$questions
         ]);
     }
-    
+
     public function index()
     {
         //
@@ -51,7 +51,11 @@ class ChapterController extends Controller
         ]);
     }
 
-    
+    public function viewChapterCount()
+    {
+        $chapterCount = Chapter::count();
+        return view('index', ['chapterCount' => $chapterCount]);
+    }
 
     public function files(Chapter $chapter)
     {
@@ -68,7 +72,7 @@ class ChapterController extends Controller
      */
     public function store(Request $request)
     {
-      
+
         $validator = $request->validate([
             'title' => 'required|max:255',
             'order' => 'integer'
@@ -96,10 +100,10 @@ class ChapterController extends Controller
             ->route('course.chapters', $request->get('course_id'))
             ->with('success', 'Глава успешно добавлена');
 
-          
+
     }
 
-  
+
     public function editOfCourse(Course $course, Chapter $chapter)
     {
         return view('admin.chapter.edit', [
@@ -107,7 +111,7 @@ class ChapterController extends Controller
             'chapter' => $chapter,
         ]);
     }
- 
+
     public function update(Request $request, Chapter $chapter)
     {
         $validator = $request->validate([

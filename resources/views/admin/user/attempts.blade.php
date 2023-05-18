@@ -41,6 +41,9 @@
                         <th>
                             Результат
                         </th>
+                        <th>
+                            Свободный ответ
+                        </th>
                         <th>Дата и время</th>
                     </tr>
                     </thead>
@@ -57,8 +60,18 @@
                                 {{ $attempt->is_passed ? "сдан" : "не сдан" }}
                             </td>
                             <td>
+                            @php
+                                 $array = json_decode($attempt->free_answer, true);
+                            @endphp
+
+                    @foreach($array as $item)
+                     {{$item[0]}}<br>
+                    @endforeach
+                            </td>
+                            <td>
                                 {{ $attempt->created_at }}
                             </td>
+
                         </tr>
                     @endforeach
                     </tbody>

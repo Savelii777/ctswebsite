@@ -42,6 +42,7 @@ class Chapter extends Model
         return $completedTests == $tests;
     }
 
+
     public function available(User $user) : bool
     { return true;
         if ($this->order == 1) {
@@ -53,7 +54,7 @@ class Chapter extends Model
         if ($previous) {
             return $previous->complete($user);
         }
-        
+
         return true;
     }
 }

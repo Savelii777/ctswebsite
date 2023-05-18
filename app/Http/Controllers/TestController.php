@@ -146,7 +146,7 @@ class TestController extends Controller
   }
 
 
- 
+
 
   public function check(Request $request)
   {
@@ -158,13 +158,14 @@ class TestController extends Controller
 
 
     */
- 
+
 
     //return $request;
     $answers = $request->all();
 
     $correct_answers = 0;
     $questions = [];
+    $freeAnswer = [];
 
     foreach ($answers as $key => $answer) {
       if (strpos($key, 'question') === 0) {
@@ -175,7 +176,9 @@ class TestController extends Controller
 
         if ($question['correct_answer'][0] === 'Свободный ответ') {
           $correct_answers++;
+          array_push($freeAnswer, $question['selected_answer']);
         }
+
         // Проверяем правильность ответа
         if (is_array($question['selected_answer']) && is_array($question['correct_answer'])) {
           $isCorrect = true;
@@ -205,6 +208,7 @@ class TestController extends Controller
       'test_id' => $test->id,
       'finished_at' => Carbon::now()->addMinute($test->minutes),
       'correct' => $correct_answers,
+      'free_answer' => json_encode($freeAnswer),
       'questions' => count($questions),
       'is_passed' => ($score > 75) ? true : false,
       'is_finished' => ($score > 50) ? true : false,

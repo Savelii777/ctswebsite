@@ -22,6 +22,7 @@ class CreateAttemptsTable extends Migration
             $table->timestamp('finished_at');
             $table->integer('correct');
             $table->json('answers')->nullable();
+            $table->json('free_answer')->nullable();
             $table->integer('questions');
             $table->boolean('is_finished');
             $table->boolean('is_passed');

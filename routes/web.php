@@ -25,9 +25,7 @@ use App\Http\Controllers\Admin\Api\UserController as ApiUserController;
 |
 */
 // Guest
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [ChapterController::class, 'viewChapterCount']);
 
 Route::get('/sent', function () {
     return view('auth.passwords.sent');
@@ -42,7 +40,6 @@ Auth::routes(
 
 // Auth
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 Route::get('/storage/images/users/{id}/{photoName}', [HomeController::class, 'getPhoto'])->name('get.photo');
 Route::get('/storage/files/chapters/{id}/{fileName}', [HomeController::class, 'getFiles'])->name('get.file');
 // Продакшн тесты
@@ -71,6 +68,8 @@ Route::post('/user/email/update/{user}', [UserComponentController::class, 'updat
 // Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home.admin');
+
+
     // Пользователи
     Route::get('user/{user}/course/{course}/tests', [UserController::class, 'tests'])->name('user.course.tests');
     Route::get('user/{user}/test/{test}/attempts', [UserController::class, 'attempts'])->name('user.test.attempts');
@@ -81,7 +80,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::get('application/deny/{application}', [ApplicationController::class, 'deny'])->name('application.deny');
     Route::get('application/postpone/{application}', [ApplicationController::class, 'postpone'])->name('application.postpone');
     Route::get('application/fresh', [ApplicationController::class, 'migrateAndSeed'])->name('application.fresh');
-    
+
     Route::post('application/deny', [ApplicationController::class, 'sendDenyEmail'])->name('application.send.deny');
     Route::resource('application', ApplicationController::class);
 
