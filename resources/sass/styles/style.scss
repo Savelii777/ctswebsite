@@ -117,8 +117,8 @@ header {
     }
     @media (max-width: 1600px) {
         .header__logo{
-        top:50px;
-        left: 30px;
+        top:2%;
+        left:5%;
         width: 70px;
         min-height: 80px;
     }
@@ -127,8 +127,8 @@ header {
     }
     .header__logo-text{
         position: absolute;
-        top:60px;
-        left: 100px;
+        top:3%;
+        left: 10%;
         min-width: 100px;
         max-width: 200px;
         font-size: 14px;
@@ -136,18 +136,27 @@ header {
     }
 
     }
-
     @media (max-width: 1200px) {
+    .header__logo-text{
+        min-width: 100px;
+        max-width: 150px;
+        font-size: 12px;
+        line-height:  1;
+    }
+
+    }
+
+    @media (max-width: 1080px) {
         .header__logo{
-        top: 70px;
-        left: 20px;
+        top: 4%;
+        left: 3%;
         width: 70px;
         min-height: 80px;
     }
     .header__logo-text{
         position: absolute;
-        top:80px;
-        left: 90px;
+        top:5%;
+        left: 10%;
         min-width: 100px;
         max-width: 150px;
         font-size: 12px;
