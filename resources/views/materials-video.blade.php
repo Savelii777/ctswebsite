@@ -41,7 +41,11 @@
                             @endif
 
                          @endforeach
-
+                         @if (count($chapter->files) == 0)
+                         <p class="tests-title" style="margin-left: 300px; width: max-content; color: red;">
+                        видеоматериалы отсутствуют
+                        </p>
+                        @endif
                         </div>
                        <div id="pass" class="pass" style="position: relative">
 
@@ -52,7 +56,6 @@
                      </div>
 
                   </div>
-
                  </div>
               </div>
            </div>

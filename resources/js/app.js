@@ -170,7 +170,6 @@ $(document).ready(function () {
       if (index >= lengthPdf) {
         return;
       }
-
       var item = items[index];
       var pdfUrl = item.querySelector('.link-pdf').href;
       var videoUrl = item.querySelector('.link-video').href;
@@ -200,7 +199,6 @@ $(document).ready(function () {
         var videoWrapper = document.createElement('div');
         videoWrapper.className = 'video-wrapper';
         item.appendChild(videoWrapper);
-
         var video = document.createElement('video');
         video.setAttribute('src', videoUrl);
         video.setAttribute('controls', 'true');
@@ -216,7 +214,6 @@ $(document).ready(function () {
       index++;
       processItem();
     }
-
     processItem();
   });
 
