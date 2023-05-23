@@ -143,7 +143,7 @@
                                                 <div class="content-left">
                                                     <img src="{{ asset('images/google-docs.png') }}" alt="courses">
                                                     <p>
-                                                        Дополнительные материалы по теме
+                                                        Материалы по теме
                                                     </p>
                                                 </div>
                                                 <div class="content-right">

@@ -65,18 +65,18 @@
                 </div>
             </div>
             <h2>
-                <b>курс: </b>{{ $course->title }} 
+                <b> </b>{{ $course->title }}
                 <p class="tests-title">
                   Видеоматериалы:
                </p>
             </h2>
          </div>
     </section>
-      
+
       <div id="pass" class="pass">
          <div style="margin-left:0; margin-right:0;" class="row">
             <div class="col-lg-4 pass-menu">
-                
+
                <nav class="menu">
                   @if (false)
                   <a href="">Видео-урок по теме</a>
@@ -86,11 +86,11 @@
                </nav>
             </div>
             <div class=" col-lg-7 materials-block">
-               
+
                <div class="materials-list">
                   <div style="margin-left:0; margin-right:0; flex-direction: column" class="row">
                      @foreach($course->chapters as $chapter)
-                     
+
                         @foreach ($chapter->files as $file)
                            @if (pathinfo($file->url, PATHINFO_EXTENSION) === 'mp4')
                            <b>{{$chapter->title}}</b>
@@ -105,7 +105,7 @@
                   </div>
                   <div id="pass" class="pass" style="position: relative">
 
-                    
+
 
                   </div>
 
