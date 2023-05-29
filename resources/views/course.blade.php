@@ -63,7 +63,7 @@
                 </div>
             </div>
             <h2>
-                <b>курс: </b>{{ $course->title }}
+                {{ $course->title }}
             </h2>
         </div>
     </section>

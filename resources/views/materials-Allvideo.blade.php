@@ -65,7 +65,7 @@
                 </div>
             </div>
             <h2>
-                <b> </b>{{ $course->title }}
+                {{ $course->title }}
                 <p class="tests-title">
                   Видеоматериалы:
                </p>

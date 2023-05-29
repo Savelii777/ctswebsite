@@ -6,7 +6,7 @@
         <div class="container">
             @include('partials.test_top', ['chapter' => $chapter])
            <h2>
-              <b>курс: </b>{{ $chapter->course->title }}
+              {{ $chapter->course->title }}
            </h2>
            <div id="pass" class="pass">
               <div style="margin-left:0; margin-right:0;" class="row">
