@@ -63,10 +63,9 @@
                             @php
                                  $array = json_decode($attempt->free_answer, true);
                             @endphp
-
-                    @foreach($array as $item)
-                     {{$item[0]}}<br>
-                    @endforeach
+                            @foreach($array as $item)
+                            {{$item[0]}}<br>
+                            @endforeach
                             </td>
                             <td>
                                 {{ $attempt->created_at }}

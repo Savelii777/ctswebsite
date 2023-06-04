@@ -129,9 +129,21 @@
 
 
 <script>
+
+
+
+
+
     function validateForm() {
     var questions = document.querySelectorAll('ul');
-
+    const inputElements = document.querySelectorAll('input[type="text"]'); // получаем все элементы input с атрибутом type="text"
+    for (let i = 0; i < inputElements.length; i++) { // проходим по всем элементам массива
+      let str = inputElements[i].name;
+      let digit = str.match(/\d/)[0];
+      digit++;
+      inputElements[i].value = digit +") "+inputElements[i].value; // присоединяем значение из свойства name к свойству value текущего элемента
+      console.log(inputElements[i].value);
+    }
     for (var i = 0; i < questions.length; i++) {
         var checkboxes = questions[i].querySelectorAll('input[type="checkbox"]');
         var checked = false;
@@ -153,14 +165,17 @@
             }
         }
 
+
         if (!checked && !filled) {
             alert('Выберите хотя бы один вариант ответа или заполните свободный ответ для каждого вопроса.');
             return false;
         }
-    }
 
+
+    }
     return true;
 }
+
 
 </script>
 
