@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Тесты</h1>
+            <h1 class="m-0">Заказы</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -22,15 +22,8 @@
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
+            <a href="{{ route('order.export')}}" class="btn btn-success float-right" style="margin-right: 10px;"><img src="/images/excel.png" width="32" height="32"> Скачать</a>
 
-                <p>Добавить</p>
-              </div>
-
-
-              <a href="/admin/questions/create" class="small-box-footer">Перейти <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
@@ -45,66 +38,55 @@
     </section>
     <!-- /.content -->
 
-
+    <form style="max-width:100%; height:40px; margin: 20px; border:1px solid #6b7fe3; border-radius:5px" action="/admin/tests" method="GET">
+    <input  type="text" name="keyword" placeholder="Введите ключевое слово" style="width:100%; font-size:23px">
+    <button style="position:absolute;top:198px;right:20px;height:39px;border:1px solid #6b7fe3;border-radius:5px" type="submit">Поиск</button>
+</form>
   <table class="table">
   <thead>
         <tr>
-            <th>Номер главы</th>
-            <th>Вопрос</th>
-            <th>Ответы</th>
-            <th>Правильный ответ</th>
-            <th></th>
+            <th>Номер заказа</th>
+            <th>Товар</th>
+            <th>Заказчик</th>
+            <th>Дата заказа</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($questions as $question)
+           <tr>
+           <td>
+            {{$question->id}}
+            </td>
+ <td>
             @php
-                $data = json_decode($question->data, true);
-            @endphp
-            @foreach ($data as $questionData)
-            <?php
-    $chapter_id = $question->test_id;
-    $chapter = App\Models\Chapter::where('id', $chapter_id)->first();
-?>
-                <tr>
-                    <td>{{ $chapter->order }}</td>
-                    <td>{{ $questionData['question'] }}</td>
-                    <td>
-                        <ul>
-                            @foreach ($questionData['answers'] as $answer)
-                                <li>{{ $answer }}</li>
-                            @endforeach
-                        </ul>
-                    </td>
-                     <td>
-                        <ul>
-                            @foreach ($questionData['correct_answer'] as $correct_answer)
-                                <li>{{ $correct_answer }}</li>
-                            @endforeach
-                        </ul>
-                    </td>
-                    <td>
-                    @if ($questionData['image'] != "")
-                    <img style="width:100px" class="fit-picture" src="{{ asset('images/' . ($questionData['image'])) }}">
-                    @endif
-                    </td>
-                    <td>
+        $orderInfo = json_decode($question->order_info, true);
+        $totalPrice = 0;
+    @endphp
+    @foreach ($orderInfo as $item)
+    @php
+        $itemPrice = $item['price'] * $item['quantity'];
+        $totalPrice += $itemPrice;
+    @endphp
+    <p><strong>{{ $loop->index + 1 }}</strong> {{ $item['title'] }}, {{ $item['price'] }}, {{ $item['quantity'] }}</p>
+    @endforeach
+    <p><strong>Итого: </strong>{{$totalPrice}}</p>
 
-    <div class="d-flex">
-
-
-    <form action="{{ route('questions.edit', $question->id) }}" method="GET">
-        <button type="submit" class="btn btn-primary mr-2">Редактировать</button>
-    </form>
-         <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить этот вопрос?')">Удалить</button>
-        </form>
-    </div>
 </td>
-                </tr>
-            @endforeach
+<td>
+@php
+        $userInfo = json_decode($question->user_info, true);
+    @endphp
+
+    @foreach ($userInfo as $key => $value)
+@if ($key == 'name' || $key == 'email' || $key == 'city' || $key == 'place_of_work')
+{{ $value }},
+@endif
+@endforeach
+</td>
+<td>
+    {{$question->created_at}}
+</td>
+           </tr>
         @endforeach
     </tbody>
     </table>

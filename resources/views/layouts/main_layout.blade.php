@@ -15,8 +15,10 @@
         rel="stylesheet"
         href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
     />
+
     <!-- Styles -->
     <style>
+
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
         html {
             line-height: 1.15;
@@ -400,6 +402,112 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script src="{{mix('/js/app.js')}}"></script>
 <script>
+    var buttons = document.getElementsByClassName("btn-default");
+// Проходимся по каждой кнопке и добавляем слушатель клика
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", function() {
+    // Создаем элемент div для красного квадрата
+    var redSquare = document.createElement("div");
+
+    // Добавляем стили для красного квадрата
+    redSquare.style.width = "20px";
+    redSquare.style.height = "35px";
+    redSquare.style.backgroundColor = "#6b7fe3";
+    redSquare.style.position = "absolute";
+    redSquare.style.top = "0px";
+    redSquare.style.left = "33px";
+    redSquare.style.borderRadius = "0px 5px 5px 0px";
+    var counter = 0;
+var nameOfItem = $(this).parent().parent().prev().prev().prev().prev().text().trim();
+
+// Access the jsonData array from local storage
+var jsonData = JSON.parse(localStorage.getItem('jsonData'));
+
+// Iterate through the array and check for matching names
+for (var i = 0; i < jsonData.length; i++) {
+  if (jsonData[i].title === nameOfItem) {
+    counter = jsonData[i].quantity;
+  }
+}
+
+redSquare.innerHTML += `${counter}`;
+
+
+
+
+
+    // Вставляем красный квадрат после кнопки
+    this.append(redSquare);
+  });
+//   buttons[i].addEventListener("load", function() {
+//     // Создаем элемент div для красного квадрата
+//     var redSquare = document.createElement("div");
+
+//     // Добавляем стили для красного квадрата
+//     redSquare.style.width = "20px";
+//     redSquare.style.height = "35px";
+//     redSquare.style.backgroundColor = "#6b7fe3";
+//     redSquare.style.position = "absolute";
+//     redSquare.style.top = "0px";
+//     redSquare.style.left = "33px";
+//     redSquare.style.borderRadius = "0px 5px 5px 0px";
+
+//     var counter = 0;
+// var nameOfItem = $(this).parent().parent().prev().prev().prev().prev().text().trim();
+
+// // Access the jsonData array from local storage
+// var jsonData = JSON.parse(localStorage.getItem('jsonData'));
+
+// // Iterate through the array and check for matching names
+// for (var i = 0; i < jsonData.length; i++) {
+//   if (jsonData[i].title === nameOfItem) {
+//     counter = jsonData[i].quantity;
+//   }
+// }
+
+// console.log(counter);
+// redSquare.innerHTML += `${counter}`;
+
+
+//     // Вставляем красный квадрат после кнопки
+//     this.append(redSquare);
+//   });
+}
+$(document).ready(function() {
+  var buttons = document.getElementsByClassName("btn-default");
+
+  for (var i = 0; i < buttons.length; i++) {
+    // Создаем элемент div для красного квадрата
+    var redSquare = document.createElement("div");
+
+    // Добавляем стили для красного квадрата
+    redSquare.style.width = "20px";
+    redSquare.style.height = "35px";
+    redSquare.style.backgroundColor = "#6b7fe3";
+    redSquare.style.position = "absolute";
+    redSquare.style.top = "0px";
+    redSquare.style.left = "33px";
+    redSquare.style.borderRadius = "0px 5px 5px 0px";
+
+    var counter = 0;
+    var nameOfItem = $(buttons[i]).parent().parent().prev().prev().prev().prev().text().trim();
+
+    // Access the jsonData array from local storage
+    var jsonData = JSON.parse(localStorage.getItem('jsonData'));
+
+    // Iterate through the array and check for matching names
+    for (var j = 0; j < jsonData.length; j++) {
+      if (jsonData[j].title === nameOfItem) {
+        counter = jsonData[j].quantity;
+      }
+    }
+
+    redSquare.innerHTML += `${counter}`;
+
+    // Вставляем красный квадрат после кнопки
+    buttons[i].append(redSquare);
+  }
+});
     window.addEventListener("load", function () {
         let elem = document.querySelector('#history-button');
         if (window.history.length > 2) {
@@ -410,6 +518,276 @@
             elem.classList.remove("history-hide");
         }
     });
+    const change = (elementId, minValue, maxValue, increment) => {
+    const inputElement = document.getElementById(elementId);
+    const currentValue = parseInt(inputElement.value);
+
+
+
+
+    // Проверяем, чтобы значение оставалось в пределах минимального и максимального значения
+    if (currentValue + increment >= minValue && currentValue + increment <= maxValue) {
+      inputElement.value = currentValue + increment;
+    }
+  };
+  function recalculateCart() {
+
+var items = JSON.parse(localStorage.getItem('jsonData'));
+
+// Проверяем, есть ли элементы в массиве
+if (!items || items.length === 0) {
+  return 0; // Если массив пуст, возвращаем 0
+}
+
+var total = 0;
+
+// Проходимся по каждому элементу массива
+for (var i = 0; i < items.length; i++) {
+  var item = items[i];
+
+  // Проверяем, есть ли поля "price" и "quantity" в объекте
+  if (item.hasOwnProperty('price') && item.hasOwnProperty('quantity')) {
+    // Умножаем цену на количество и добавляем к общей сумме
+    total += item.price * item.quantity;
+  }
+}
+var roundedTotalSum = total.toFixed(2);
+
+var cartSubtotalElement = document.getElementById('cart-subtotal');
+cartSubtotalElement.textContent = roundedTotalSum;
+}
+async function sendDataToServer() {
+  var data = localStorage.getItem('jsonData');
+
+  // Получение CSRF-токена из мета-тега
+  var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+  // Создание промиса для выполнения AJAX-запроса
+  return new Promise(function(resolve, reject) {
+    fetch('/order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': csrfToken, // Добавление CSRF-токена в заголовок
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      },
+      body: JSON.stringify({ data: data })
+    })
+    .then(response => {
+      if (response.ok) {
+        resolve(response.text());
+      } else {
+        reject(response.statusText);
+      }
+    })
+    .catch(error => {
+      reject(error);
+    });
+  });
+}
+
+
+  function updateJsonData(nameOfClass, priceOfItem, nameOfItem) {
+    console.log(jsonData)
+  // Получаем значение из инпута
+  var inputValue = document.getElementById(nameOfClass).value;
+
+  // Создаем новый объект с переданными данными
+    var newItem = {
+        title: nameOfItem,
+        price: priceOfItem,
+        quantity: inputValue,
+        total: priceOfItem*inputValue
+    };
+    if (jsonData === null) {
+        jsonData = [];
+    }
+
+    var existingItem = jsonData.find(function(item) {
+    return item.title === newItem.title;
+});
+
+if (existingItem) {
+    // Если элемент уже существует, прибавляем его quantity к quantity нового элемента
+    existingItem.quantity = (Number(existingItem.quantity) + Number(newItem.quantity))+"";
+
+}else{
+    jsonData.push(newItem);
+
+}
+    // Добавляем новый объект в jsonData
+
+  var html = "<tbody style='max-height:10px'>";
+
+    html +=
+      '<tr class="cart-item" style="max-height:10px" >' +
+      "        <td style='max-height:10px; max-width:50px; font-size:12px; overflow:hidden;   white-space: nowrap;'>" +
+      "          " +
+      newItem.title +
+      "        </td>" +
+      "        <td style='max-height:10px; max-width:10px'>$" +
+      newItem.price +
+      "</td>" +
+      "        <td style='max-height:10px; max-width:5px'>" +
+      '          <input class="input is-primary cart-item-qty" style="" type="number" min="1" value="' +
+      newItem.quantity +
+      '" data-price="' +
+      newItem.price +
+      '">' +
+      "        </td>" +
+      '        <td style="max-height:10px; max-width:10px" class="cart-item-total">$' +
+      newItem.total +
+      "</td>" +
+      "        <td style=' max-height:10px; max-width:20px'>" +
+      '          <a class="button is-small">Удалить</a>' +
+      "        </td>" +
+      "      </tr>";
+  html += "</tbody>";
+  $(".shopping-cart").append(html);
+
+  var items = jsonData;
+
+// Проверяем, есть ли элементы в массиве
+if (!items || items.length === 0) {
+  return 0; // Если массив пуст, возвращаем 0
+}
+
+var total = 0;
+
+// Проходимся по каждому элементу массива
+for (var i = 0; i < items.length; i++) {
+  var item = items[i];
+
+  // Проверяем, есть ли поля "price" и "quantity" в объекте
+  if (item.hasOwnProperty('price') && item.hasOwnProperty('quantity')) {
+    // Умножаем цену на количество и добавляем к общей сумме
+    total += item.price * item.quantity;
+  }
+}
+var roundedTotalSum = total.toFixed(2);
+
+console.log(roundedTotalSum+"kkk")
+var cartSubtotalElement = document.getElementById('cart-subtotal');
+cartSubtotalElement.textContent = roundedTotalSum;
+
+
+
+
+
+$(".button").click(function() {
+var parent = $(this)
+  .parent()
+  .parent();
+var totalPrice = $(this).parent().prev().text();
+var quantityOfItems = $(this).parent().prev().prev().find('input').val();
+var priceOfItem = $(this).parent().prev().prev().prev().text();
+var nameOfItem = $(this).parent().prev().prev().prev().prev().text().trim();
+parent.remove();
+// Получаем текущий список элементов из localStorage
+var cartItems = JSON.parse(localStorage.getItem("jsonData")) || [];
+
+// Удаляем элемент из списка
+cartItems = cartItems.filter(function(item) {
+  return item.title.trim() !== nameOfItem;
+});
+
+// Обновляем список элементов в localStorage
+localStorage.setItem("jsonData", JSON.stringify(cartItems));
+
+recalculateCart();
+
+
+// var cartSubtotalElement = document.getElementById('cart-subtotal');
+
+// var total = cartSubtotalElement.textContent;
+
+// var roundedTotalSum = total.toFixed(2);
+
+// roundedTotalSum = float(roundedTotalSum) - (float(priceOfItem) * float(quantityOfItems))
+// cartSubtotalElement.textContent = roundedTotalSum;
+
+});
+
+
+
+  // Сохраняем обновленный jsonData в localStorage
+  localStorage.setItem('jsonData', JSON.stringify(jsonData));
+
+  // Выводим обновленный jsonData в консоль для проверки
+  console.log(jsonData);
+  sendDataToServer()
+  .then(function(response) {
+    console.log(response); // Обработка успешного ответа от сервера
+  })
+  .catch(function(error) {
+    console.error(error); // Обработка ошибки
+  });
+}
+
+
+
+var jsonData = JSON.parse(localStorage.getItem('jsonData'));
+
+$(function() {
+  var html = "<tbody style='max-height:10px;'>";
+  $.each(jsonData, function() {
+    html +=
+    '<tr class="cart-item" style="max-height:10px">' +
+      "        <td style='max-height:10px; max-width:50px; font-size:12px; overflow:hidden;   white-space: nowrap;'>" +
+      "          " +
+      this.title +
+      "        </td>" +
+      "        <td style='max-height:10px;max-width:10px'>$" +
+      this.price +
+      "</td>" +
+      "        <td style='max-height:10px;max-width:5px'>" +
+      '          <input class="input is-primary cart-item-qty" style="" type="number" min="1" value="' +
+      this.quantity +
+      '" data-price="' +
+      this.price +
+      '">' +
+      "        </td>" +
+      '        <td style="max-height:10px;max-width:10px" class="cart-item-total">$' +
+      this.total +
+      "</td>" +
+      "        <td style='max-height:10px;max-width:20px'>" +
+      '          <a class="button is-small">Remove</a>' +
+      "        </td>" +
+      "      </tr>";
+  });
+  html += "</tbody>";
+  $(".shopping-cart").append(html);
+
+  recalculateCart();
+
+  $(".button").click(function() {
+  var parent = $(this)
+    .parent()
+    .parent();
+  var totalPrice = $(this).parent().prev().text();
+  var quantityOfItems = $(this).parent().prev().prev().find('input').val();
+  var priceOfItem = $(this).parent().prev().prev().prev().text();
+  var nameOfItem = $(this).parent().prev().prev().prev().prev().text().trim();
+  parent.remove();
+  // Получаем текущий список элементов из localStorage
+  var cartItems = JSON.parse(localStorage.getItem("jsonData")) || [];
+
+  // Удаляем элемент из списка
+  cartItems = cartItems.filter(function(item) {
+    return item.title.trim() !== nameOfItem;
+  });
+
+  // Обновляем список элементов в localStorage
+  localStorage.setItem("jsonData", JSON.stringify(cartItems));
+
+  recalculateCart();
+});
+
+
+});
+
 </script>
 </body>
 </html>

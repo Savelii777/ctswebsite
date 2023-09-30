@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Store;
 use App\Models\Course;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,11 +16,23 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $courses = Course::sortable()->simplePaginate(20);
 
-        return view('admin.course.index', compact('courses'));
+        $keyword = $request->input('keyword');
+        $query = Store::query();
+
+        if ($keyword) {
+            $query->whereRaw('LOWER(name) LIKE ?', ["%$keyword%"])
+            ->orWhereRaw('LOWER(section) LIKE ?', ["%$keyword%"])
+            ->orWhereRaw('LOWER(description) LIKE ?', ["%$keyword%"]);
+            // Add more columns as needed
+        }
+
+        $items = $query->sortable()->simplePaginate(2000);
+
+        return view('admin.course.index', compact('courses', 'items'));
     }
 
     /**
@@ -61,6 +75,15 @@ class CourseController extends Controller
             'hours' => $request->get('hours'),
             'user_id' => $request->get('user_id')
         ]);
+        $item = Store::create([
+            'tsection' => $request->get('section'),
+            'name' => $request->get('name'),
+            'retail_price' => $request->get('retail_price'),
+            'dealer' => $request->get('dealer'),
+            'availability' => $request->get('availability'),
+            'description' => $request->get('description'),
+
+        ]);
 
         /*if ($request->hasFile('image')) {
             $filename = $request->image->getClientOriginalName();
@@ -88,6 +111,7 @@ class CourseController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Course  $course
+     * @param  \App\Models\Store  $item
      * @return \Illuminate\Http\Response
      */
     public function edit(Course $course)
@@ -107,6 +131,21 @@ class CourseController extends Controller
         ]);
     }
 
+    public function elements(Srote $item)
+    {
+        return view('admin.course.chapters', [
+            'item' => $item
+        ]);
+    }
+    public function search(Request $request, Srote $item)
+    {
+        $keywords = $request->input('keywords');
+        $results = $item->where('name', 'like', '%' . $keywords . '%')->get();
+        // Выполните поиск по ключевым словам в вашей базе данных
+        return view('admin.course.chapters', [
+            'item' => $results
+        ]);
+    }
     /**
      * Update the specified resource in storage.
      *

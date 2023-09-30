@@ -8,12 +8,12 @@
              <form method="POST" action="{{ route('login') }}" class="auth-block">
                 @csrf
                 <p class="form-title">
-                   Авторизация
+                  Вход
                 </p>
                 <div class="row">
                    <div class="form-group">
-                      <label>Введите Ваш логин</label>
-                      <input id="login" type="login" class="form-control @error('login') is-invalid @enderror" name="login" value="{{ old('login') }}" required autocomplete="login" autofocus>
+                      <label style="color:#6b7fe3">Введите Ваш логин</label>
+                      <input id="login" type="login" style="color:#000" class="form-control @error('login') is-invalid @enderror" name="login" value="{{ old('login') }}" required autocomplete="login" autofocus>
                       @error('login')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="row">
                    <div class="form-group">
-                      <label>Введите Ваш пароль</label>
+                      <label style="color:#6b7fe3">Введите Ваш пароль</label>
                       <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                       @error('password')
                       <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                 </div>
                 <button class="form-btn" type="submit"><a>Войти</a></button>
                <div class="form-txt">
-               Для восстановления доступа обратитесь к администратору портала</a> 
+               Для восстановления доступа обратитесь к администратору портала</a>
                </div>
                <!--<div class="form-links">
                   @if (Route::has('password.request'))

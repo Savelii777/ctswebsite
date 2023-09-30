@@ -122,17 +122,17 @@
                     </li>-->
                     <li class="nav-item">
                         <a href="{{ route('course.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-book-open"></i>
+                            <i class="nav-icon fas fa-pencil-alt"></i>
                             <p>
-                                Курсы
+                                Товар
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('tests.home') }}" class="nav-link">
-                            <i class="nav-icon fas fa-pencil-alt"></i>
+                            <i class="nav-icon fas fa-book-open"></i>
                             <p>
-                                Тесты
+                                Заказы
                             </p>
                         </a>
                     </li>
@@ -143,7 +143,7 @@
 
 
             <!-- /.sidebar-menu -->
-            
+
         </div>
         <!-- /.sidebar -->
     </aside>

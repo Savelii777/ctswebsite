@@ -93,11 +93,11 @@
                                        class="form-control">
                             </div>-->
                             <div class="form-group">
-                                <label>Курс</label>
+                                <label>Город</label>
                                 <input value="{{ $user['city'] }}" name="city" type="text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Группа</label>
+                                <label>Место рыботы</label>
                                 <input value="{{ $user['place_of_work'] }}" name="place_of_work" type="text"
                                        class="form-control">
                             </div>

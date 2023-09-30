@@ -19,7 +19,7 @@
                     </span>
                 </div>
                 <div class="form-group col-lg-4">
-                    <label>Дата рождения2</label>
+                    <label>Дата рождения</label>
                     <input
                         pattern="(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)"
                         style="background-image: none; padding-right: 12px"
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div style="margin-bottom: 0" class="form-group col-md-6">
-                    <label>Курс</label>
+                    <label>Город</label>
                     <input
                         type="text"
                         class="form-control"
@@ -70,7 +70,7 @@
             </div>
             <div class="row">
                 <div style="margin-bottom: 0" class="form-group  col-md-12">
-                    <label>Группа</label>
+                    <label>Место работы</label>
                     <input
                         type="text"
                         class="form-control"

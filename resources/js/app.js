@@ -120,6 +120,7 @@ Vue.component(
  */
 
 Vue.component("users", require("./components/Users.vue").default);
+Vue.component("search", require("./components/Search.vue").default);
 
 import SimpleVueValidation from "simple-vue-validator";
 
@@ -226,5 +227,57 @@ var swiper = new Swiper(".test-swiper", {
         prevEl: ".test-button-prev",
     },
 });
+
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+function showSlide() {
+  slides.forEach((slide, index) => {
+    if (index === currentSlide) {
+      slide.classList.add('active');
+    } else {
+      slide.classList.remove('active');
+    }
+  });
+}
+
+function nextSlide() {
+  currentSlide++;
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  }
+  showSlide();
+}
+
+// Задайте интервал для автоматического переключения слайдов
+setInterval(nextSlide, 10000); // Измените время (в миллисекундах) по своему усмотрению
+
+// Вызовите функцию showSlide() для отображения первого слайда при загрузке страницы
+showSlide();
+
+
+
+
+const sliderContainer = document.querySelector('.slider-container');
+    const sliderItems = document.querySelectorAll('.slider-item');
+    const sliderWidth = sliderItems[0].offsetWidth;
+    let currentIndex = 0;
+
+    function slideTo(index) {
+      sliderContainer.style.transform = `translateX(-${sliderWidth * index}px)`;
+      currentIndex = index;
+    }
+
+    function nextSlide1() {
+      if (currentIndex < sliderItems.length - 1) {
+        slideTo(currentIndex + 1);
+      } else {
+        slideTo(0);
+      }
+    }
+
+    setInterval(nextSlide1, 5000); // Авто
+
+
 
 

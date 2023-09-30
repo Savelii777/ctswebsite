@@ -1,27 +1,23 @@
 <section id="first">
-   <div class="container">
-      <h1>
-         ПОВЫШЕНИЕ<br>КВАЛИФИКАЦИИ СПЕЦИАЛИСТОВ<br>И ОБУЧЕНИЕ СТУДЕНТОВ
+    <!-- <div class="layout"></div>
+<div class="slide">
+    <img src="../images/image1.jpg" alt="Image 1">
+  </div>
+  <div class="slide">
+    <img src="../images/image2.jpg" alt="Image 2">
+  </div>
+  <div class="slide">
+    <img src="../images/image3.jpg" alt="Image 3">
+  </div> -->
+   <div class="container first__container">
+      <h1 class="first__title">
+ООО "КОПИРТЕХСЕРВИС"
       </h1>
-      <button onclick="location.href='{{ route('login') }}'">Пройти обучение</button>
-      <ul class="first__list row">
-         <li class="first__item first__item_l col-xl-5 col-lg-8 col-md-10 col-sm-12">
-             <div>
-                {{ $chapterCount }}
-            </div>
-            <p>
-            обучающих <br>программ
-            </p>
-         </li>
-         <li class="first__item first__item_r col-xl-5 col-lg-8 col-md-10 col-sm-12">
-            <div>
-            {{ $chapterCount }}
-            </div>
-            <p>
-            практических занятий <br>в формате тестов
-            </p>
-         </li>
-      </ul>
    </div>
+
+   <form style="max-width:100%; height:40px; margin: 20px; border:1px solid #6b7fe3; border-radius:5px" action="/general" method="GET">
+    <input  type="text" name="keyword" placeholder="Введите ключевые слова" style="width:100%; font-size:23px">
+    <button style="position:absolute;top:200px;right:200px;height:39px;border:1px solid #6b7fe3;border-radius:5px;" type="submit">Поиск</button>
+</form>
 </section>
 

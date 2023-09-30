@@ -76,7 +76,7 @@
                <img style="width: 1000px" src="{{ ('images/404.png') }}" alt="courses" class="img-responsive mx-auto d-block">
             </div>
             <div class="row">
-               <button style="background-color: #9ca324" class="btn-active test-button mistake-btn">
+               <button style="background-color: #6b7fe3" class="btn-active test-button mistake-btn">
                   <a href="/">На главную</a>
                </button>
             </div>

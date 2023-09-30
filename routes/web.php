@@ -13,6 +13,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController as UserComponentController;
 use App\Http\Controllers\TestController as UserTestController;
 use App\Http\Controllers\Admin\Api\UserController as ApiUserController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\OrderController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +29,7 @@ use App\Http\Controllers\Admin\Api\UserController as ApiUserController;
 |
 */
 // Guest
-Route::get('/', [ChapterController::class, 'viewChapterCount']);
+Route::get('/', [ChapterController::class, 'viewChapterCount'])->name('home.page');
 
 Route::get('/sent', function () {
     return view('auth.passwords.sent');
@@ -39,6 +43,30 @@ Auth::routes(
 );
 
 // Auth
+Route::get('/items', [ItemController::class, 'index']);
+Route::get('/general', [ItemController::class, 'general']);
+Route::get('/page1', [ItemController::class, 'page1'])->name('page1');
+Route::get('/page2', [ItemController::class, 'page2'])->name('page2');
+Route::get('/page3', [ItemController::class, 'page3'])->name('page3');
+Route::get('/page4', [ItemController::class, 'page4'])->name('page4');
+Route::get('/page5', [ItemController::class, 'page5'])->name('page5');
+Route::get('/page6', [ItemController::class, 'page6'])->name('page6');
+Route::get('/page7', [ItemController::class, 'page7'])->name('page7');
+Route::get('/page8', [ItemController::class, 'page8'])->name('page8');
+Route::get('/page9', [ItemController::class, 'page9'])->name('page9');
+Route::get('/page10', [ItemController::class, 'page10'])->name('page10');
+Route::get('/page11', [ItemController::class, 'page11'])->name('page11');
+Route::get('/page12', [ItemController::class, 'page12'])->name('page12');
+Route::get('/page13', [ItemController::class, 'page13'])->name('page13');
+Route::get('/page14', [ItemController::class, 'page14'])->name('page14');
+Route::get('/page15', [ItemController::class, 'page15'])->name('page15');
+Route::get('/page16', [ItemController::class, 'page16'])->name('page16');
+Route::get('/page17', [ItemController::class, 'page17'])->name('page17');
+Route::get('/page18', [ItemController::class, 'page18'])->name('page18');
+
+
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/storage/images/users/{id}/{photoName}', [HomeController::class, 'getPhoto'])->name('get.photo');
 Route::get('/storage/files/chapters/{id}/{fileName}', [HomeController::class, 'getFiles'])->name('get.file');
@@ -65,6 +93,8 @@ Route::post('/user/image/delete/{user}', [UserComponentController::class, 'updat
 Route::post('/user/password/update/{user}', [UserComponentController::class, 'updateUserPassword'])->name('user.password.update');
 Route::post('/user/email/update/{user}', [UserComponentController::class, 'updateUserEmail'])->name('user.email.update');
 
+
+
 // Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home.admin');
@@ -74,6 +104,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::get('user/{user}/course/{course}/tests', [UserController::class, 'tests'])->name('user.course.tests');
     Route::get('user/{user}/test/{test}/attempts', [UserController::class, 'attempts'])->name('user.test.attempts');
     Route::get('user/export', [UserController::class, 'getXlsxData'])->name('user.export');
+    Route::get('order/export', [UserController::class, 'getOrderXlsxData'])->name('order.export');
+    Route::get('user/import', [UserController::class, 'postXlsxData'])->name('user.import');
 
     Route::resource('user', UserController::class);
     Route::get('application/accept/{application}', [ApplicationController::class, 'accept'])->name('application.accept');
@@ -89,6 +121,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::get('course/{course}/chapters/create', [ChapterController::class, 'createOfCourse'])->name('course.chapters.create');
     Route::get('course/{course}/chapters/edit/{chapter}', [ChapterController::class, 'editOfCourse'])->name('course.chapters.edit');
     Route::resource('course', CourseController::class);
+
     // Главы
     Route::get('chapter/{chapter}/tests', [ChapterController::class, 'tests'])->name('chapter.tests');
     Route::get('chapter/{chapter}/tests/create', [TestController::class, 'createOfChapter'])->name('chapter.tests.create');

@@ -1,110 +1,99 @@
 <header>
-<a class="header__logo-link" href="{{ url('/') }}">
-<div class="header__logo">
-
-</div>
-<p class="header__logo-text">
-    Балтийский государственный технический университет «ВОЕНМЕХ» имени Д. Ф. Устинова
-</p>
+<a  href="{{ url('/') }}">
+    <div class="header__logo"></div>
 </a>
 
-    <div class="header__container">
-        
-        <div class="row">
-            <div class="home" style="cursor:pointer" onclick="location.href='{{ url('/') }}'"
-                 class="logotip col-md-5 col-sm-6 col-6">
-            </div>
-            @guest
-                <div class="header__btns col-md-7 col-sm-6  row col-6">
-                    <!-- <a style="max-height: 50px;" href="{{ url('/') }}"
-                       class="btn-active text-center col-sm-6 col-md-5">
-                        <p>
-                            На главную
-                        </p>
-                    </a> -->
-                    <a style="max-height: 50px;" href="{{ route('login') }}"
-                       class="btn-active text-center col-sm-6 col-md-5">
-                        <p>
-                            Вход <span>в личный кабинет</span>
-                        </p>
-                        <svg display="none">
-                            <symbol viewBox="0 0 512 512" id="entrance">
-                                <g>
-                                    <path d="M228.487,319.228c-7.811,7.811-7.811,20.474,0,28.284c7.81,7.81,20.474,7.811,28.285,0l77.37-77.37
-                                 c7.789-7.789,7.774-20.51,0-28.284l-77.37-77.37c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.474,0,28.284
-                                 L271.716,236H20c-11.046,0-20,8.954-20,20s8.954,20,20,20h251.716L228.487,319.228z"/>
-                                    <path d="M433.543,7.75C429.754,2.861,423.918,0,417.733,0H170c-11.046,0-20,8.954-20,20s8.954,20,20,20h237.719
-                                 C451.396,100.536,472,179.45,472,256c0,76.515-20.589,155.443-64.281,216H170c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20
-                                 h247.733c6.185,0,12.022-2.861,15.81-7.75C486.683,435.671,512,344.876,512,256C512,167.134,486.686,76.333,433.543,7.75z"/>
-                                </g>
-                            </symbol>
-                        </svg>
-                        <svg class="entrance">
-                            <use xlink:href="#entrance"></use>
-                        </svg>
-                    </a>
-                    <a style="max-height: 50px" class="btn-active text-center btn-exit col-sm-6 col-md-5"
-                   onclick="location.href='{{ route('login') }}'">
-                    <p style="margin-right: 15px">
-                    Пройти обучение
-                    </p>
-                </a>
-                </div>
-            @else
-                <div class="header__btns col-md-7 col-sm-6 row col-6">
-                <!-- <a class="btn-active text-center btn-exit col-sm-6 col-md-5" style="max-height: 50px;" href="{{ url('/') }}"
-                   class="btn-active text-center btn-exit col-sm-6 col-md-5">
-                    <p>
-                        На главную
-                    </p>
-                </a> -->
-                
-                <a style="max-height: 50px" class="btn-active text-center btn-exit col-sm-6 col-md-5"
-                   href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                    <p style="margin-right: 15px">
-                        Выход <span>из личного кабинета</span>
-                    </p>
-                    <svg display="none">
-                        <symbol viewBox="0 0 512 512" id="entrance">
-                            <g>
-                                <path d="M228.487,319.228c-7.811,7.811-7.811,20.474,0,28.284c7.81,7.81,20.474,7.811,28.285,0l77.37-77.37
-                                 c7.789-7.789,7.774-20.51,0-28.284l-77.37-77.37c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.474,0,28.284
-                                 L271.716,236H20c-11.046,0-20,8.954-20,20s8.954,20,20,20h251.716L228.487,319.228z"/>
-                                <path d="M433.543,7.75C429.754,2.861,423.918,0,417.733,0H170c-11.046,0-20,8.954-20,20s8.954,20,20,20h237.719
-                                 C451.396,100.536,472,179.45,472,256c0,76.515-20.589,155.443-64.281,216H170c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20
-                                 h247.733c6.185,0,12.022-2.861,15.81-7.75C486.683,435.671,512,344.876,512,256C512,167.134,486.686,76.333,433.543,7.75z"/>
-                            </g>
-                        </symbol>
-                        <svg class="entrance">
-                            <use xlink:href="#entrance"></use>
-                        </svg>
-                    </svg>
-                </a>
-                <a style="max-height: 50px" class="btn-active text-center btn-exit col-sm-6 col-md-5"
-                   onclick="location.href='{{ route('login') }}'">
-                    <p style="margin-right: 15px">
-                    Пройти обучение
-                    </p>
-                </a>
+<input type="checkbox" id="burger-toggle">
+<label for="burger-toggle" class="burger-menu">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</label>
+<div class="menu">
+  <div class="menu-inner">
+    <ul class="menu-nav" style="margin-top:150px">
+      <li class="menu-nav-item"><a class="menu-nav-link" style="background:#6b7fe3"  href="{{ url('/') }}"><span>
+            <div style="background:#6b7fe3">На главную</div>
+          </span></a></li>
+      <li class="menu-nav-item"><a class="menu-nav-link" style="background:#6b7fe3" href="{{ route('login') }}"><span>
+            <div>Личный кабинет</div>
+          </span></a></li>
 
-                @if (Auth::check() && strpos(strtolower(Auth::user()->login), 'admin') !== false)
-                <a style="max-height: 50px" class="btn-active text-center btn-exit col-sm-6 col-md-5 administrator"
-                    href="{{ url('/admin') }}">
-                    <p style="margin-right: 15px">
-                    Панель управления
-                    </p>
-                </a>
-    <!-- <a style="margin-top: 15px; max-height: 50px;" href="{{ url('/admin') }}" class="btn-active text-center btn-exit col-sm-6 col-md-5 administrator">
-        <p>Панель управления</p>
-    </a> -->
-@endif
-            <div/>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            @endguest
-        </div>
+      <li class="menu-nav-item"><a class="menu-nav-link" style="background:#6b7fe3" href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit(); localStorage.clear();">
+        Выход из личного кабинета
+      </a>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST">
+        @csrf
+    </form>
+    </li>
+
+
+      <li class="menu-nav-item"><a class="menu-nav-link" style="background:#6b7fe3" href="#"><span>
+            <div>Team</div>
+          </span></a></li>
+    </ul>
+    <div class="gallery" style="margin-top:0px; margin-bottom: 50px">
+      <div class="title">
+        <p>Sora Gallery</p>
+      </div>
+      <div class="images">
+        <a class="image-link" href="{{ route('page1') }}">
+          <div class="image" data-label="Бумага/плёнки/наклейки"><img src="https://rhs.com.ru/files/product-image/ofisnaya_bumaga_svetocopy_a3-25329.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page2') }}">
+          <div class="image" data-label="Девелопер"><img src="https://cdn.tze1.ru/a6/63c6ecbd-0b89-11e9-a4ef-e8611f100fce/600K88840.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page3') }}">
+          <div class="image" data-label="ЗИП - аксессуары (смазки, салфетки, фильтры, шнуры  и др.)"><img src="https://im01.itaiwantrade.com/93946157-33a3-40cd-bf19-b2422b1883ce/Printer_Parts_01.png" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page4') }}">
+          <div class="image" data-label="ЗИП - аппаратные (ролики, шестерни, втулки, лампы, шлейфы и др.)"><img src="https://im01.itaiwantrade.com/93946157-33a3-40cd-bf19-b2422b1883ce/Printer_Parts_01.png" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page5') }}">
+          <div class="image" data-label="ЗИП - комплектующие корпусные к лаз. Картриджам"><img src="https://printmall.ru/upload/resize_cache/iblock/fea/800_600_1/fea8a6f22d0d190a5f473bd84bf8125d.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page6') }}">
+          <div class="image" data-label="ЗИП - лезвия, ракеля"><img src="https://alkorta.ru/sites/default/files/catalog_data/2134/2134_9569.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page7') }}">
+          <div class="image" data-label="ЗИП - валы магнитные, валы заряда"><img src="https://alkorta.ru/sites/default/files/catalog_data/2585/2585_9553.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page8') }}">
+          <div class="image" data-label="ЗИП - термоблока (валы тефлоновые, резиновые, термопленки, бушинги и др.)"><img src="https://printmall.ru/upload/resize_cache/iblock/7a5/800_600_1/7a544ba509a8e89667941f45c6613a9b.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page9') }}">
+          <div class="image" data-label="ЗИП - чипы"><img src="https://www.atlantcom.ru/upload/iblock/4ad/ouib1s1ot9loprd0lrx9dwerq7997nqk.webp" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page10') }}">
+          <div class="image" data-label="Картриджи к лазерным принтерам"><img src="https://images.satom.ru/i3/firms/28/334/334281/zapravka-lazernyh-kartridzhey-hp-v-simferopole_53f36c66c4b87ce_800x600.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page11') }}">
+          <div class="image" data-label="Картриджи к матричным принтерам, лента красящая"><img src="https://images.satom.ru/i3/firms/28/334/334281/zapravka-lazernyh-kartridzhey-hp-v-simferopole_53f36c66c4b87ce_800x600.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page12') }}">
+          <div class="image" data-label="Картриджи к струйным принтерам"><img src="https://images.satom.ru/i3/firms/28/334/334281/zapravka-lazernyh-kartridzhey-hp-v-simferopole_53f36c66c4b87ce_800x600.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page13') }}">
+          <div class="image" data-label="Тонер"><img src="https://paper66.ru/image/product_foto/image/products_images_2/goods/361159/537ee9a0acdb2_xl.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page14') }}">
+          <div class="image" data-label="Тонер к цветным принтерам/копирам"><img src="https://sc04.alicdn.com/kf/H2cd023933503485a891c34290b4e10cc6.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page15') }}">
+          <div class="image" data-label="Фотобарабаны"><img src="https://siyzran.sidex.ru/images_offers/1723/1723891/imgfotobaraban_hp_laserjet_m106_m104_m203_mitsubishi_opchpm104mit_2.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page16') }}">
+          <div class="image" data-label="Чернила для струйных принтеров"><img src="https://cdn1.ozone.ru/s3/multimedia-0/6051924276.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page17') }}">
+          <div class="image" data-label="Чернила для лазерных принтеров"><img src="https://cdn1.ozone.ru/s3/multimedia-0/6051924276.jpg" alt=""></div>
+        </a>
+        <a class="image-link" href="{{ route('page18') }}">
+          <div class="image" data-label="Чернила для матричных принтеров"><img src="https://cdn1.ozone.ru/s3/multimedia-0/6051924276.jpg" alt=""></div>
+        </a>
+
+      </div>
     </div>
+  </div>
+</div>
 </header>

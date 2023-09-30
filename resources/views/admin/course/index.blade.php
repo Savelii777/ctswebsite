@@ -6,13 +6,16 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-2" style="display: flex; justify-content: space-between">
                 <div class="col-sm-6">
                     <h1>Курсы</h1>
                 </div>
-               <!-- <div class="col-sm-6">
-                    <a href="{{ route('course.create')}}" class="btn btn-success float-right">Добавить курс</a>
-                </div>-->
+                <div class="col-sm-6" style="display: flex; justify-content: space-between; margin-right: 0; max-width: 470px">
+                <form style="margin-top: 10px;" action="/admin/course" method="GET">
+    <input  type="text" name="keyword" placeholder="Введите ключевое слово">
+    <button type="submit">Поиск</button>
+</form>
+                    <a href="{{ route('user.import')}}" class="btn btn-success" style="margin-right: 10px;"><img src="/images/excel.png" width="32" height="32"> Загрузать товар</a>
             </div>
             @if (session('success'))
                 <div class="alert alert-success" role="alert">
@@ -24,7 +27,7 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" style="max-width: 1600px; overflow: hidden;">
 
         <!-- Default box -->
         <div class="card">
@@ -36,51 +39,50 @@
                             #
                         </th>
                         <th>
-                            @sortablelink('title', 'Название')
+                            @sortablelink('section', 'Раздел')
                         </th>
                         <th>
-                            @sortablelink('user_id', 'Администратор')
+                            @sortablelink('name', 'Название')
                         </th>
                         <th>
-                            Главы
+                            @sortablelink('retail_price', 'Розница')
+                        </th>
+                        <th>
+                            @sortablelink('dealer', 'Дилер')
+                        </th>
+                        <th>
+                            Наличие
+                        </th>
+                        <th>
+                            Описание
                         </th>
                         <th>
                         </th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($courses as $course)
+                    @foreach ($items as $item)
                         <tr>
                             <td>
                                 {{ $loop->iteration }}
                             </td>
-                            <td style="max-width: 300px">
-                                {{ $course->title }}
+                            <td style="min-width: 350px">
+                                {{ $item->section }}
+                            </td >
+                            <td style="max-width:500px">
+                                {{ $item->name }}
                             </td>
-                            <td>
-                                {{ $course->user->name }}
+                            <td style="min-width: 150px; max-width:200px">
+                                {{ $item->retail_price }}
                             </td>
-                            <td>
-                                {{ $course->chapters->count() }}
+                            <td style="min-width: 150px; max-width:200px">
+                                {{ $item->dealer }}
                             </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="{{ route('course.chapters', $course['id']) }}">
-                                    <i class="fas fa-list">
-                                    </i> Главы
-                                </a>
-                                <a class="btn btn-primary btn-sm" href="{{ route('course.edit', $course['id']) }}">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                </a>
-                                <!--<form action="{{ route('course.destroy', $course['id']) }}" method="POST"
-                                      style="display: inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm delete-btn">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                    </button>
-                                </form>-->
+                            <td style="min-width: 150px; max-width:200px">
+                                {{ $item->availability }}
+                            </td>
+                            <td  style="min-width: 150px; max-width:200px; word-wrap: break-word;">
+                                {{ $item->description }}
                             </td>
                         </tr>
                     @endforeach
@@ -94,5 +96,7 @@
             {{ $courses->links() }}
         </div>
     </section>
+
     <!-- /.content -->
 @endsection
+

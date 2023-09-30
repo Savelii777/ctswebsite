@@ -7,6 +7,9 @@ use App\Models\Test;
 use App\Models\Chapter;
 use Illuminate\Http\Request;
 use App\Models\Question;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
+
 
 class TestController extends Controller
 {
@@ -15,15 +18,22 @@ class TestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(Request $request)
+{
+    $questions = Order::orderBy('created_at', 'desc');
+    $keyword = $request->input('keyword');
 
-        //      <!-- <a href="{{ //route('questions.create', $test->id) }}" class="small-box-footer">Перейти <i class="fas fa-arrow-circle-right"></i></a>
-        $questions = Question::all();
-        $chapters = Chapter::all();
-        //return $chapters;
-        return view('admin.test.index', ['questions' => $questions, 'chapters' => $chapters]);
+    if ($keyword) {
+        $questions = $questions->where(function ($query) use ($keyword) {
+            $query->where('created_at', 'LIKE', "%$keyword%")
+            ->orWhere('user_info', 'LIKE', "%$keyword%");
+        });
     }
+
+    $questions = $questions->get();
+
+    return view('admin.test.index', compact('questions'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -94,7 +104,7 @@ class TestController extends Controller
             }
         } else {
 
-            
+
 
             foreach ($questions as $id => $item) {
 
@@ -102,8 +112,8 @@ class TestController extends Controller
                     return redirect()
                         ->back()
                         ->withErrors(['Правильный ответи не выбран!']);
-                }  
-                 
+                }
+
                 $question = array(
                     "question" => $item["question"],
                     "answers" => array_values($item["answers"]),
@@ -236,9 +246,9 @@ class TestController extends Controller
 
         //return $whereid;
 
- 
-        
-        
+
+
+
         $preparedQuestions = array();
         if($questions[1]['answers']===[]){
             // выполнить какие-то действия

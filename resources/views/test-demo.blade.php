@@ -9,7 +9,7 @@
 <head>
 <style>
     .toppanel {
-        background-color: #f5f5f5;
+        background-color: #000;
         color: #fff;
         padding-top: 3%;
         padding-bottom: 2%;
@@ -30,7 +30,7 @@
 
     .theform {
         color: #f5f5f5;
-        background: #f5f5f5;
+        background: #000;
         margin-top: 50px;
         padding: 20px;
         border: 2px solid #e8e8e8;

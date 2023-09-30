@@ -11,7 +11,7 @@
     svg {
         width: 9px;
         height: 20px;
-        fill: #9ca324;
+        fill: #6b7fe3;
         transition: 0s;
         margin-left: -8px;
         -webkit-transform: rotate(90deg);
@@ -30,12 +30,12 @@
     border-radius: 4px;
     .line {
         height: 100%;
-        background: #9ca324;
+        background: #6b7fe3;
     }
 }
 #person {
     padding-bottom: 20px;
-    background-color: #3c421a;
+    background-color: #6b7fe3;
     .person__img {
         width: 108px;
         height: 108px;
@@ -64,20 +64,20 @@
     }
 }
 .person__btn {
-    border: 1px solid #9ca324;
-    color: #9ca324;
+    border: 1px solid #6b7fe3;
+    color: #6b7fe3;
     text-align: center;
     border-radius: 4px;
-    background-color: #3c421a;
+    background-color: #fff;
     width: 180px;
     float: right;
     height: 40px;
     a {
-        color: #9ca324;
+        color: #6b7fe3;
         text-align: center;
     }
     &:hover {
-        background-color: #9ca324;
+        background-color: #6b7fe3;
         a {
             color: rgb(255, 255, 255);
         }
@@ -94,14 +94,14 @@
     background-color: #fff;
     // background-color: rgb(175, 175, 175);
     .btn-hide {
-        border: 1px solid #9ca324;
+        border: 1px solid #6b7fe3;
         div {
-            color: black;
+            color: #6b7fe3;
             display: flex;
             justify-content: center;
         }
         span {
-            color: #9ca324;
+            color: #6b7fe3;
         }
         &:hover {
             background-color: white;
@@ -124,7 +124,7 @@
         line-height: 1.5;
         color: rgb(51, 51, 51);
         &:hover {
-            color: #9ca324;
+            color: #6b7fe3;
         }
     }
     .courses__txt {
@@ -138,7 +138,7 @@
 .courses__percent {
     div {
         font-size: 48px;
-        color: #9ca324;
+        color: #6b7fe3;
         font-weight: 700;
         line-height: 0.667;
         text-align: center;
@@ -163,7 +163,7 @@
 }
 .exp-span {
     font-size: 30px;
-    color: #9ca324;
+    color: #6b7fe3;
 }
 .exp-prg {
     color: rgb(119, 119, 119);
@@ -195,7 +195,7 @@
 }
 #extra,
 #courses {
-    background-color: #f5f5f5;
+    background-color: #6b7fe3;
 }
 .extra__item {
     height: 487px;
@@ -203,7 +203,7 @@
 }
 .extra__link {
     font-size: 12px;
-    color: #9ca324;
+    color: #6b7fe3;
     line-height: 1.833;
     text-align: center;
     border-radius: 4px;
@@ -235,11 +235,11 @@
         border-radius: 50%;
         width: 80px;
         height: 80px;
-        color: #9ca324;
+        color: #6b7fe3;
         background-color: rgba(0, 191, 255, 0.071);
         &:hover {
             color: #fff;
-            background-color: #9ca324;
+            background-color: #6b7fe3;
         }
     }
     p {

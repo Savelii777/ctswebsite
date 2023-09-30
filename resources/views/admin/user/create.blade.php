@@ -89,11 +89,11 @@
                                        class="form-control">
                             </div>-->
                             <div class="form-group">
-                                <label>Курс</label>
+                                <label>Город</label>
                                 <input value="{{ old('city') }}" name="city" type="text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Группа</label>
+                                <label>Место работы</label>
                                 <input value="{{ old('place_of_work') }}" name="place_of_work" type="text"
                                        class="form-control">
                             </div>

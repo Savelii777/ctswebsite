@@ -3,12 +3,14 @@ body {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.571;
-    color: #999999;
+    color: #6b7fe3;
     text-align: left;
-    background-color: #3c421a;
+    background-color: #fff;
     margin: 0;
-    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 html,
@@ -48,6 +50,16 @@ input:active {
 .container {
     position: relative;
 }
+.layout{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:25px;
+    left: 0;
+    opacity: 0.4;
+    background-color: #000;
+    z-index: 0;
+}
 .header__container{
     margin: 0 auto;
     position: relative;
@@ -60,7 +72,8 @@ section {
 //  HEADER
 header {
     max-height: max-content;
-    padding: 50px 0;
+    padding: 5px 0 0 0;
+    z-index: 1;
 
     .row {
         min-width: 100%;
@@ -72,7 +85,7 @@ header {
 
     a {
         p {
-            color: #fff;
+            color: #6b7fe3;
             margin-right: 8px;
             transition: 0s;
         }
@@ -87,12 +100,11 @@ header {
         }
     }
     .header__logo{
-        position: absolute;
-        top:15px;
-        left: 40px;
-        width: 90px;
-        min-height: 100px;
-        background-image: url('../images/header__logo.jpg');
+        margin: 0;
+        margin-top: 5px;
+        min-width: 75px;
+        min-height: 55px;
+        background-image: url('../images/header__logo.png');
         background-size: contain;
         background-repeat: no-repeat;
 
@@ -153,19 +165,10 @@ header {
         width: 70px;
         min-height: 80px;
     }
-    .header__logo-text{
-        position: absolute;
-        top:5%;
-        left: 10%;
-        min-width: 100px;
-        max-width: 150px;
-        font-size: 12px;
-        line-height:  1;
-    }
 
     }
     .btn-active:hover {
-        background: #9ca324;
+        background: #6b7fe3;
         transition: 0s;
 
         p {
@@ -180,7 +183,7 @@ header {
     svg {
         width: 16px;
         height: 16px;
-        fill: #9ca324;
+        fill: #6b7fe3;
         transition: 0s;
         margin-left: -8px;
     }
@@ -193,7 +196,7 @@ header {
 }
 
 .btn-active {
-    border: 1px solid #9ca324;
+    border: 1px solid #6b7fe3;
     border-radius: 4px;
     height: auto;
     background: transparent;
@@ -206,10 +209,10 @@ header {
 
 .btn-active-admin {
     margin-top: 10px;
-    color: #fff;
+    color: #6b7fe3;
 }
 .btn-active-admin:hover {
-    color: #fff;
+    color: #6b7fe3;
 }
 .logotip {
     display: flex;
@@ -223,7 +226,7 @@ header {
     }
 
     span {
-        color: #9ca324;
+        color: #6b7fe3;
     }
 
     img {
@@ -235,10 +238,14 @@ header {
 
 // МАКЕТ 01
 #first {
+    margin: auto;
+    position: relative;
+    width: 80%;
+    overflow: hidden;
     padding: 150px 215px;
-    color: #fff;
-    background: url('../images/main-backgroung.png') no-repeat center/cover;
+    color: #6b7fe3;
     text-align: center;
+    margin-top: -35px;
     // position: relative;
     button {
         margin-top: 32px;
@@ -247,7 +254,7 @@ header {
         line-height: 1.375;
         text-align: center;
         border-radius: 4px;
-        background-color: #9ca324;
+        background-color: #6b7fe3;
         width: 270px;
         height: 60px;
         background: transparent;
@@ -255,8 +262,29 @@ header {
     font-size:0;
     }
 }
+.slide {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: -1;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
 
 h1 {
+    margin-top: -550px;
     font-size: 48px;
     color: rgb(255, 255, 255);
     font-weight: 700;
@@ -276,6 +304,38 @@ h1 {
     margin: 160px 0 -210px;
     // position: relative;
 }
+.first__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 250px 0 -200px;
+    max-width: 100%;
+    // position: relative;
+}
+.first__title{
+    color: #6b7fe3;
+}
+.first__btn-active {
+    max-height: 50px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: #6b7fe3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 250px;
+    font-size: 20px;
+  }
+  .first__btn-active:hover {
+    background-color: #404b87;
+    color: #fff; /* Устанавливаем прозрачность 0.8 при наведении */
+  }
 
 .first__item {
     margin: 0 15px;
@@ -289,11 +349,12 @@ h1 {
     display: flex;
     flex-wrap: nowrap;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: #6b7fe3;
     align-items: center;
 
+
     div {
-        background-color: #9ca324;
+        background-color: #6b7fe3;
         // width: 215px;
         font-size: 48px;
         color: rgb(255, 255, 255);
@@ -327,7 +388,7 @@ h1 {
     .about__text {
         // padding: 0 0 65px;
         span {
-            color: #9ca324;
+            color: #6b7fe3;
             font-size: 50px;
             margin-bottom: 45px;
         }
@@ -346,7 +407,7 @@ h1 {
             text-align: center;
             border-radius: 4px;
             margin: 0 auto;
-            background-color: #9ca324;
+            background-color: #6b7fe3;
             box-shadow: 0px 15px 43px 0px rgba(156, 163, 36, 0.22);
         }
 
@@ -365,50 +426,32 @@ h1 {
         }
     }
 }
-
-.about__block_r {
-    background: url(../images/rocket.png) no-repeat;
-    background-size: 70%, 70%, cover;
-    background-position:bottom right;
-
-    padding: 55px 0;
-
-    .about__text {
-        max-width: 500px;
-
-        h3 {
-            font-size: 30px;
-            line-height: 1.267;
-        }
-
-        p {
-            color: rgb(119, 119, 119);
-
-            padding: 24px 0;
-        }
-
-        // img {
-        //    display: none;
-        // }
-    }
-
-    .about__text_small {
-        img {
-            float: left;
-        }
-
-        p {
-            padding: 10px 55px 0;
-            font-style: italic;
-            color: rgb(51, 51, 51);
-        }
-
-        div {
-            padding: 0 0 0 55px;
-            font-weight: 300;
-        }
-    }
+#about{
+    max-width: 100%;
+    overflow: hidden;
 }
+
+.slider {
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slider-item {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+
+  .slider-item__image {
+    max-width: 300px;
+    margin-left: 165px; /* Задайте желаемое значение отступа */
+  }
+
 
 h2 {
     font-size: 36px;
@@ -417,92 +460,10 @@ h2 {
     margin-bottom: 40px;
 }
 
-.plan__block {
-    justify-content: space-between;
-    margin-top: -50px;
-    margin-right: 15px;
-    margin-left: 15px;
-}
-
-.plan__subtitle {
-    margin: 35px 0;
-    font-size: 20px;
-    line-height: 1.5;
-    font-weight: 300;
-}
-
-.plan-curriculum__list {
-    div {
-        font-size: 70px;
-        color: #9ca324;
-        font-weight: 700;
-        line-height: 0.457;
-        text-align: center;
-        padding: 28px 0 0 0;
-
-        &:first-child {
-            border-right: 2px solid #9ca324;
-        }
-    }
-
-    p {
-        color: #fff;
-        // width: 379px;
-        // height: 81px;
-        padding: 20px;
-        border-radius: 4px;
-
-        &:last-child {
-            background-color: #9ca324;
-            box-shadow: 0px 15px 43px 0px rgba(156, 163, 36, 0.22);
-            color: #fff;
-        }
-    }
-}
-
-.plan__elem_l {
-    padding: 0;
-    background:  url(../images/back1.jpg) no-repeat center / cover;
-    border-radius: 4px;
-    margin-right: 15px;
-}
-
-.plan__elem_r {
-    padding: 0;
-    background:  url(../images/back2.jpg) no-repeat center / cover;
-    border-radius: 4px;
-    margin-left: 15px;
-}
-
-.plan__elem {
-    color: rgb(255, 255, 255);
-    padding: 55px;
-    border-radius: 4px;
-    background: rgba(156, 163, 36, 0.5);;
-}
-
-.plan__caption {
-    opacity: 1;
-    font-size: 36px;
-    line-height: 1.389;
-    font-weight: 500;
-    margin-bottom: 50px;
-}
-
-.plan__item {
-    font-weight: 300;
-    margin-bottom: 30px;
-    display: flex;
-
-    img {
-        max-height: 24px;
-        margin-right: 15px;
-    }
-}
 
 .merit__subtitle {
     font-size: 36px;
-    color: #9ca324;
+    color: #6b7fe3;
     line-height: 1.389;
     font-weight: 700;
     padding-bottom: 55px;
@@ -529,88 +490,280 @@ h2 {
     }
 
     div {
-        color: #fff;
+        color: #6b7fe3;
     }
 }
 
-// МАКЕТ 01 - end
+@import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
 
-// FOOTER
-footer {
-    padding: 10px 0;
-
-    .logotip {
-        color: #fff;
-        margin-bottom: 50px;
-    }
+@mixin sp-layout {
+  @media screen and (max-width: 750px) {
+    @content;
+  }
 }
 
-.footer__links {
-    color: rgba(255, 255, 255, 0.4);
-    border-bottom: 1px solid rgba(156, 163, 36, 0.4);
-    margin-right: 40px;
-    height: fit-content;
-
-    &:hover {
-        color: rgb(255, 255, 255);
-        border-color: rgb(255, 255, 255);
-    }
+@mixin pc-layout {
+  @media screen and (min-width: 751px) {
+    @content;
+  }
 }
 
-.footer__link-active {
-    display: none;
+p {
+  margin: 0;
 }
 
-.footer__prg {
-    color: rgb(255, 255, 255);
-}
+#burger-toggle {
+  appearance: none;
+  opacity: 0;
 
-.footer__link {
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-    line-height: 1.2;
-    border-bottom: 1px solid #9ca324;
-    margin: 0 0 0 auto;
-    width: fit-content;
-    height: fit-content;
+  &:checked {
+    & ~ .menu {
+      opacity: 1;
+      visibility: visible;
 
-    &:hover {
-        color: #9ca324;
-        border-color: #9ca324;
+      .menu-nav-link span div,
+      img,
+      .title p {
+        transform: translateY(0);
+        transition: 1.2s 0.1s cubic-bezier(0.35, 0, 0.07, 1);
+      }
+
+      .image-link {
+        @for $i from 1 through 4 {
+          &:nth-child(#{$i}) img {
+            transition-delay: 0.1s + 0.08s * $i;
+          }
+        }
+      }
     }
 
-    &_border {
-        max-height: 50px;
-        padding: 8px;
-        color: #9ca324;
-        border: 1px solid #9ca324;
-        transition: .3s;
-        margin-left: auto;
-
-        .footer__link_mobile-text {
-            display: none;
+    & ~ .burger-menu {
+      .line {
+        &::after {
+          transform: translateX(0);
         }
 
-        &:hover {
-            color: rgba(0, 191, 255, 0.45);
-            border-color: rgba(0, 191, 255, 0.45);
+        &:nth-child(1) {
+          transform: translateY(calc(var(--burger-menu-radius) / 5))
+            rotate(45deg);
         }
 
-
-        @media (max-width: 1200px) {
-            .footer__link_desktop-text {
-                display: none;
-
-            }
-
-            .footer__link_mobile-text {
-                display: block;
-            }
+        &:nth-child(2) {
+          transform: scaleX(0);
         }
-        @media (max-width: 992px) {
-            margin: 15px auto 0;
+
+        &:nth-child(3) {
+          transform: translateY(calc(var(--burger-menu-radius) / -5))
+            rotate(-45deg);
         }
+      }
     }
+  }
 }
 
-// FOOTER - end
+.burger-menu {
+  --burger-menu-radius: 4em;
+  position: fixed;
+  top: 1vh;
+  right: 3vw;
+  z-index: 3;
+  display: block;
+  width: var(--burger-menu-radius);
+  height: var(--burger-menu-radius);
+  outline: none;
+  cursor: pointer;
+
+  .line {
+    position: absolute;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: #6b7fe3;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.5s;
+
+    &:nth-child(1) {
+      top: 30%;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+    }
+
+    &:nth-child(3) {
+      top: 70%;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-color-darker);
+      transform: translateX(-100%);
+      transition: 0.25s;
+    }
+
+    @for $i from 2 through 3 {
+      &:nth-child(#{$i})::after {
+        transition-delay: 0.1s * ($i - 1);
+      }
+    }
+  }
+
+  &:hover {
+    .line::after {
+      transform: translateX(0);
+    }
+  }
+}
+
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #6b7fe3;
+  opacity: 0;
+  overflow-x: hidden;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 2;
+
+  @include sp-layout {
+    display: block;
+  }
+
+  &-nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style-type: none;
+
+    @include sp-layout {
+      flex-direction: column;
+    }
+
+    &-item {
+      flex: 1;
+    }
+
+    &-link {
+      position: relative;
+      display: inline-flex;
+      font-size: 2rem;
+      color: white;
+      text-decoration: none;
+
+      span {
+        overflow: hidden;
+
+        div {
+          transform: translateY(102%);
+        }
+      }
+
+      &::after {
+        position: absolute;
+        content: "";
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #6b7fe3;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+  }
+
+  .gallery {
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 24px;
+    color: white;
+    overflow: hidden;
+
+    p {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transform: translateY(102%);
+    }
+  }
+
+  .images {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include sp-layout {
+      justify-content: center;
+    }
+
+    .image-link {
+      width: 15vw;
+      margin: 0 12px;
+      overflow: hidden;
+
+      @include sp-layout {
+        width: 40vw;
+        margin: 0 12px 12px 0;
+      }
+
+      .image {
+        position: relative;
+        transition: 0.6s;
+
+        &::before {
+          position: absolute;
+          content: attr(data-label);
+          top: 0;
+          left: 0;
+          z-index: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          color: white;
+          background:rgba(107, 127, 227, 0.6);;
+          opacity: 0;
+          transition: 0.4s;
+        }
+      }
+
+      &:hover .image {
+        transform: scale(1.3);
+
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+
+    img {
+      min-height: 250px;
+      transform: translateY(102%);
+    }
+  }
+}

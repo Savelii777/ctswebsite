@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use App\Exports\UsersExport;
+use App\Exports\OrderExport;
+use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
@@ -28,13 +30,24 @@ class UserController extends Controller
      */
     public function getXlsxData()
     {
-        
+
         return Excel::download(new UsersExport, 'Прогресс студентов.xlsx');
 
-
-        
     }
-    
+    public function getOrderXlsxData()
+    {
+
+        return Excel::download(new OrderExport, 'Список заказов.xlsx');
+
+    }
+    public function postXlsxData()
+    {
+
+        return Excel::import(new UsersImport, 'C:\Users\savva\Downloads\Список товаров.xlsx');
+
+    }
+
+
     public function index()
     {
         $users = User::sortable()->simplePaginate(20);

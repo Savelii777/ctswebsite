@@ -11,21 +11,9 @@
                 />
             </div>
 
-            <div class="form-group mr-2">
-                <label for="inputStatus2">Статус курса</label>
-                <select
-                    v-model="completed"
-                    id="inputStatus2"
-                    class="form-control custom-select"
-                >
-                    <option value="" selected>Все</option>
-                    <option value="1">Завершен</option>
-                    <option value="2">Не завершен</option>
-                </select>
-            </div>
 
             <div class="form-group mr-2">
-                <label>Курс</label>
+                <label>Город</label>
                 <input
                     v-model="city"
                     name="name"
@@ -35,7 +23,7 @@
             </div>
 
             <div class="form-group mr-2">
-                <label>Группа</label>
+                <label>Место работы</label>
                 <input
                     v-model="placeOfWork"
                     name="name"
@@ -68,13 +56,10 @@
                                 ФИО
                             </th>
                             <th>
-                                Завершено глав
+                                Город
                             </th>
                             <th>
-                                Курс
-                            </th>
-                            <th>
-                                Группа
+                                Место работы
                             </th>
                             <th>
                                 Роли
@@ -90,9 +75,7 @@
                             <td style="max-width: 300px">
                                 {{ user.name }}
                             </td>
-                            <td style="max-width: 300px">
-                                {{ user.completed }} из 9
-                            </td>
+
                             <td style="max-width: 300px">
                                 {{ user.city }}
                             </td>
@@ -108,12 +91,7 @@
                                 </div>
                             </td>
                             <td class="project-actions text-right">
-                                <a
-                                    class="btn btn-info btn-sm"
-                                    :href="`user/${user.id}/course/1/tests`"
-                                >
-                                    <i class="fas fa-check-square"></i> Попытки
-                                </a>
+
                                 <button
                                     type="button"
                                     class="btn btn-info btn-sm"
@@ -181,7 +159,7 @@
                                             }}
                                         </p>
                                         <p>
-                                            <strong>Группа: </strong
+                                            <strong>Город: </strong
                                             >{{
                                                 selectedUser
                                                     ? selectedUser.place_of_work
@@ -190,7 +168,7 @@
                                         </p>
 
                                         <p>
-                                            <strong>Курс: </strong
+                                            <strong>Место работы: </strong
                                             >{{
                                                 selectedUser
                                                     ? selectedUser.city
