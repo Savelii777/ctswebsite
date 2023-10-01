@@ -45,10 +45,10 @@
   <table class="table">
   <thead>
         <tr>
-            <th>Номер заказа</th>
+            <th>@sortablelink('id', 'Номер заказа')</th>
             <th>Товар</th>
             <th>Заказчик</th>
-            <th>Дата заказа</th>
+            <th>@sortablelink('created_at', 'Дата заказа')</th>
         </tr>
     </thead>
     <tbody>

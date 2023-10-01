@@ -40,10 +40,13 @@ class UserController extends Controller
         return Excel::download(new OrderExport, 'Список заказов.xlsx');
 
     }
-    public function postXlsxData()
+    public function postXlsxData(Request $request)
     {
 
-        return Excel::import(new UsersImport, 'C:\Users\savva\Downloads\Список товаров.xlsx');
+        $file = $request->file('xlsxFile');
+        $import = new UsersImport;
+        Excel::import($import, $file);
+        return "File imported successfully"; // Return a string response
 
     }
 

@@ -105,7 +105,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::get('user/{user}/test/{test}/attempts', [UserController::class, 'attempts'])->name('user.test.attempts');
     Route::get('user/export', [UserController::class, 'getXlsxData'])->name('user.export');
     Route::get('order/export', [UserController::class, 'getOrderXlsxData'])->name('order.export');
-    Route::get('user/import', [UserController::class, 'postXlsxData'])->name('user.import');
+    Route::post('user/import', [UserController::class, 'postXlsxData'])->name('user.import');
 
     Route::resource('user', UserController::class);
     Route::get('application/accept/{application}', [ApplicationController::class, 'accept'])->name('application.accept');

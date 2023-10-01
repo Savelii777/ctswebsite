@@ -161,6 +161,9 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    document.getElementById('selectFile').addEventListener('click', function() {
+        document.getElementById('fileInput').click();
+      });
     var items = $('div[id*="materials-item"]');
     var lengthPdf = items.length;
     var index = 0;
@@ -277,7 +280,5 @@ const sliderContainer = document.querySelector('.slider-container');
     }
 
     setInterval(nextSlide1, 5000); // Авто
-
-
 
 

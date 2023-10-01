@@ -474,6 +474,7 @@ redSquare.innerHTML += `${counter}`;
 //   });
 }
 $(document).ready(function() {
+
   var buttons = document.getElementsByClassName("btn-default");
 
   for (var i = 0; i < buttons.length; i++) {

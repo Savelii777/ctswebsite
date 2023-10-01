@@ -9,5 +9,7 @@ class Order extends Model
 {
     use Sortable;
 
-    protected $fillable = ['order_info', 'user_info'];
+    protected $fillable = ['id','order_info', 'user_info', 'created_at'];
+    public $sortable = ['id','created_at'];
+
 }

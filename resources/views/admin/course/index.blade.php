@@ -8,15 +8,22 @@
         <div class="container-fluid">
             <div class="row mb-2" style="display: flex; justify-content: space-between">
                 <div class="col-sm-6">
-                    <h1>Курсы</h1>
+                    <h1>Заказы</h1>
                 </div>
                 <div class="col-sm-6" style="display: flex; justify-content: space-between; margin-right: 0; max-width: 470px">
                 <form style="margin-top: 10px;" action="/admin/course" method="GET">
     <input  type="text" name="keyword" placeholder="Введите ключевое слово">
     <button type="submit">Поиск</button>
 </form>
-                    <a href="{{ route('user.import')}}" class="btn btn-success" style="margin-right: 10px;"><img src="/images/excel.png" width="32" height="32"> Загрузать товар</a>
-            </div>
+<form action="{{ route('user.import') }}" method="POST" enctype="multipart/form-data">
+  @csrf
+  <input type="file" name="xlsxFile" id="fileInput" style="display: none;">
+  <a href="#" id="selectFile" class="btn btn-success" style="margin-right: 10px;">
+    <img src="/images/excel.png" width="32" height="32"> Загрузить товар
+  </a>
+  <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
+         </div>
             @if (session('success'))
                 <div class="alert alert-success" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -99,4 +106,6 @@
 
     <!-- /.content -->
 @endsection
+
+
 
