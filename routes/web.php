@@ -15,6 +15,8 @@ use App\Http\Controllers\TestController as UserTestController;
 use App\Http\Controllers\Admin\Api\UserController as ApiUserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Admin\StoreController;
+
 
 
 
@@ -121,6 +123,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::get('course/{course}/chapters/create', [ChapterController::class, 'createOfCourse'])->name('course.chapters.create');
     Route::get('course/{course}/chapters/edit/{chapter}', [ChapterController::class, 'editOfCourse'])->name('course.chapters.edit');
     Route::resource('course', CourseController::class);
+
+    Route::delete('course', [CourseController::class, 'destroy'])->name('stores.deleteAll');
 
     // Главы
     Route::get('chapter/{chapter}/tests', [ChapterController::class, 'tests'])->name('chapter.tests');

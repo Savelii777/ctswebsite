@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2" style="display: flex; justify-content: space-between">
                 <div class="col-sm-6">
-                    <h1>Заказы</h1>
+                    <h1>Товар</h1>
                 </div>
                 <div class="col-sm-6" style="display: flex; justify-content: space-between; margin-right: 0; max-width: 470px">
                 <form style="margin-top: 10px;" action="/admin/course" method="GET">
@@ -22,6 +22,11 @@
     <img src="/images/excel.png" width="32" height="32"> Загрузить товар
   </a>
   <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
+<form action="{{ route('stores.deleteAll') }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger">Delete All Stores</button>
 </form>
          </div>
             @if (session('success'))

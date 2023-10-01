@@ -194,10 +194,9 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy()
     {
-        $course->delete();
-
-        return redirect()->back()->withSuccess('Курс был успешно удален!');
+        Store::truncate();
+        return redirect()->back()->with('success', 'All stores have been deleted.');
     }
 }

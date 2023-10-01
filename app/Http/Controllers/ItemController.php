@@ -16,6 +16,7 @@ class ItemController extends Controller
         $items = Store::all();
         return view('index', compact('items'));
     }
+
     public function general(Request $request)
     {
         $user = Auth::user();
