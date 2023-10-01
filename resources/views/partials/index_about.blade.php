@@ -2,31 +2,31 @@
 <div class="slider">
     <div class="slider-container">
       <div class="slider-item">
-        <img class="slider-item__image" src="../images/canon.jpg" alt="Image 1">
+        <img class="slider-item__image" src="https://tonerdirect.bg/image/catalog/manufacturer/12.jpg" alt="Image 1">
       </div>
       <div class="slider-item">
-        <img class="slider-item__image" src="../images/image1.jpg" alt="Image 2">
+        <img class="slider-item__image" src="https://tonerdirect.bg/image/catalog/manufacturer/12.jpg" alt="Image 2">
       </div>
       <div class="slider-item">
-        <img class="slider-item__image" src="../images/image1.jpg" alt="Image 3">
+        <img class="slider-item__image" src="https://tonerdirect.bg/image/catalog/manufacturer/12.jpg" alt="Image 3">
       </div>
       <div class="slider-item">
-        <img  class="slider-item__image"src="../images/image1.jpg" alt="Image 4">
+        <img  class="slider-item__image"src="https://tonerdirect.bg/image/catalog/manufacturer/12.jpg" alt="Image 4">
       </div>
       <div class="slider-item">
-        <img  class="slider-item__image"src="../images/image1.jpg" alt="Image 5">
+        <img  class="slider-item__image"src="https://tonerdirect.bg/image/catalog/manufacturer/12.jpg" alt="Image 5">
       </div>
       <div class="slider-item">
-        <img  class="slider-item__image"src="../images/image1.jpg" alt="Image 6">
+        <img  class="slider-item__image"src="https://tonerdirect.bg/image/catalog/manufacturer/12.jpg" alt="Image 6">
       </div>
       <div class="slider-item">
-        <img class="slider-item__image" src="../images/image1.jpg" alt="Image 7">
+        <img class="slider-item__image" src="https://tonerdirect.bg/image/catalog/manufacturer/12.jpg" alt="Image 7">
       </div>
       <div class="slider-item">
-        <img class="slider-item__image" src="../images/image1.jpg" alt="Image 8">
+        <img class="slider-item__image" src="https://tonerdirect.bg/image/catalog/manufacturer/12.jpg" alt="Image 8">
       </div>
       <div class="slider-item">
-        <img  class="slider-item__image"src="../images/image1.jpg" alt="Image 9">
+        <img  class="slider-item__image"src="https://tonerdirect.bg/image/catalog/manufacturer/12.jpg" alt="Image 9">
       </div>
     </div>
 
