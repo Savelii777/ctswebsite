@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" type="image/png">
-    <title>Платформа с тестами</title>
+    <link rel="shortcut icon" href="{{ asset('images/header__logo.png') }}" type="image/png">
+    <title>КТС</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fonts -->
@@ -401,6 +401,7 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script src="{{mix('/js/app.js')}}"></script>
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 <script>
     var buttons = document.getElementsByClassName("btn-default");
 // Проходимся по каждой кнопке и добавляем слушатель клика
@@ -491,6 +492,7 @@ $(document).ready(function() {
     redSquare.style.borderRadius = "0px 5px 5px 0px";
 
     var counter = 0;
+
     var nameOfItem = $(buttons[i]).parent().parent().prev().prev().prev().prev().text().trim();
 
     // Access the jsonData array from local storage
@@ -504,7 +506,11 @@ $(document).ready(function() {
     }
 
     redSquare.innerHTML += `${counter}`;
-
+  if(counter > 0)
+    {
+        redSquare.style.backgroundColor = "green";
+        buttons[i].style.backgroundColor = "green";
+    }
     // Вставляем красный квадрат после кнопки
     buttons[i].append(redSquare);
   }
@@ -557,6 +563,52 @@ var roundedTotalSum = total.toFixed(2);
 var cartSubtotalElement = document.getElementById('cart-subtotal');
 cartSubtotalElement.textContent = roundedTotalSum;
 }
+function downloadToExcel() {
+  // Получение данных из localStorage
+  const jsonData = localStorage.getItem('jsonData');
+
+  // Проверка наличия данных
+  if (!jsonData) {
+    console.error('No data found in localStorage');
+    return;
+  }
+
+  try {
+    // Преобразование JSON в объект JavaScript
+    const data = JSON.parse(jsonData);
+
+    // Создание новой книги Excel
+    const workbook = XLSX.utils.book_new();
+
+    // Создание нового листа в книге
+    const worksheet = XLSX.utils.json_to_sheet(data);
+
+    // Добавление листа в книгу
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Данные');
+
+    // Преобразование книги в бинарный формат
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+
+    // Создание Blob из бинарных данных
+    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+    // Создание ссылки для скачивания файла
+    const url = URL.createObjectURL(blob);
+
+    // Создание ссылки на скачивание файла
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Заказ.xlsx';
+
+    // Добавление ссылки на страницу и эмуляция клика для скачивания файла
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (error) {
+    console.error('Error exporting data to Excel:', error);
+  }
+}
+
 async function sendDataToServer() {
   var data = localStorage.getItem('jsonData');
 
@@ -583,6 +635,7 @@ async function sendDataToServer() {
         reject(response.statusText);
       }
     })
+    .then(alert("Заказ успешно создан"))
     .catch(error => {
       reject(error);
     });
@@ -718,13 +771,13 @@ recalculateCart();
 
   // Выводим обновленный jsonData в консоль для проверки
   console.log(jsonData);
-  sendDataToServer()
-  .then(function(response) {
-    console.log(response); // Обработка успешного ответа от сервера
-  })
-  .catch(function(error) {
-    console.error(error); // Обработка ошибки
-  });
+//   sendDataToServer()
+//   .then(function(response) {
+//     console.log(response); // Обработка успешного ответа от сервера
+//   })
+//   .catch(function(error) {
+//     console.error(error); // Обработка ошибки
+//   });
 }
 
 
@@ -740,21 +793,21 @@ $(function() {
       "          " +
       this.title +
       "        </td>" +
-      "        <td style='max-height:10px;max-width:10px'>$" +
-      this.price +
-      "</td>" +
+      "        <td style='max-height:10px;max-width:10px'>" +
+      this.price.toFixed(2) +
+      " ₽</td>" +
       "        <td style='max-height:10px;max-width:5px'>" +
       '          <input class="input is-primary cart-item-qty" style="" type="number" min="1" value="' +
       this.quantity +
       '" data-price="' +
-      this.price +
+      this.price.toFixed(2) +
       '">' +
       "        </td>" +
-      '        <td style="max-height:10px;max-width:10px" class="cart-item-total">$' +
-      this.total +
-      "</td>" +
+      '        <td style="max-height:10px;max-width:10px" class="cart-item-total">' +
+      this.total.toFixed(2) +
+      " ₽</td>" +
       "        <td style='max-height:10px;max-width:20px'>" +
-      '          <a class="button is-small">Remove</a>' +
+      '          <a class="button is-small">Удалить</a>' +
       "        </td>" +
       "      </tr>";
   });

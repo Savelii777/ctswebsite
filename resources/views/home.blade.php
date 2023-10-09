@@ -142,22 +142,22 @@
   <table class="table is-fullwidth shopping-cart">
     <thead>
       <tr>
-        <th><abbr title="Position"></abbr></th>
-        <th></th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total</th>
+        <th>Наименование</th>
+        <th style="max-width:20px">Цена</th>
+        <th style="max-width:15px">Количество</th>
+        <th style="max-width:20px">Всего</th>
         <th></th>
       </tr>
     </thead>
   </table>
-  <div class="totals">
+  <div class="totals" style="color: #000; margin-top: 20px;">
     <div class="totals-item">
       <label>Итого</label>
       <div class="totals-value" id="cart-subtotal">￥0</div>
     </div>
+    <button onClick="downloadToExcel()" class="btn btn-success float-right" style="color:#fff;  margin-top: 20px;"><img src="/images/excel.png" width="32" height="32">Скачать</button>
   </div>
-  <button onClick="sendDataToServer()" class="checkout">Checkout</button>
+  <button onClick="sendDataToServer()" class="checkout" style="color: #fff; background: #6b7fe3; border-radius:5px; font-size: 16px; min-width:85px; min-height:30px; margin-top: 20px;">Заказать</button>
 </div>
             </div>
         </div>

@@ -8,6 +8,9 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Test;
+use App\Models\Store;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ChapterController extends Controller
 {
@@ -31,7 +34,6 @@ class ChapterController extends Controller
 
     public function index()
     {
-        //
     }
 
     /**
@@ -53,6 +55,10 @@ class ChapterController extends Controller
 
     public function viewChapterCount()
     {
+        $user = Auth::user();
+        if ($user === null) {
+            return redirect('/login');
+        }
         $chapterCount = Chapter::count();
         return view('index', ['chapterCount' => $chapterCount]);
     }

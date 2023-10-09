@@ -126,7 +126,7 @@
   </div>
 </div>
 </a>
-<div style="display:flex; position:fixed; border-radius:10px; top:135px; right:100px;background:#fff; width:400px; height:400px; flex-direction:column; z-index:-10">
+<div style="display:flex; position:fixed; border-radius:10px; top:135px; right:100px;background:#fff; width:400px; height:400px; flex-direction:column; z-index:-10; opacity:0">
 <table class="table is-fullwidth shopping-cart" style="background:none; min-width:100%">
 
 </table>
