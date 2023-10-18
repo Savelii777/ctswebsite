@@ -26,11 +26,6 @@
         @csrf
     </form>
     </li>
-
-
-      <li class="menu-nav-item"><a class="menu-nav-link" style="background:#6b7fe3" href="#"><span>
-            <div>Team</div>
-          </span></a></li>
     </ul>
     <div class="gallery" style="margin-top:0px; margin-bottom: 50px">
       <div class="title">

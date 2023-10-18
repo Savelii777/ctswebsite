@@ -5,6 +5,7 @@
 <section id="entrance" class="account">
     <div class="container" id="app">
     <div class="entrance__block">
+
              <form method="POST" action="{{ route('login') }}" class="auth-block">
                 @csrf
                 <p class="form-title">
@@ -33,17 +34,14 @@
                     </div>
                 </div>
                 <button class="form-btn" type="submit"><a>Войти</a></button>
-               <div class="form-txt">
-               Для восстановления доступа обратитесь к администратору портала</a>
+               <div class="form-txt" style="display: flex; flex-direction: column">
+                   <a href="/register" style="color: #6b7fe3; max-width: max-content; margin-bottom: 15px">Регистрация</a>
+                   @if (Route::has('password.request'))
+                       <a href="{{ route('password.request') }}" style="color: #6b7fe3; max-width: max-content; ">
+                           Восстановить пароль?
+                       </a>
+                   @endif
                </div>
-               <!--<div class="form-links">
-                  @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}">
-                        Восстановить пароль?
-                    </a>
-                @endif
-                  <a href="{{ route('application.create.guest') }}">Отправить заявку на получение доступа</a>
-               </div>-->
              </form>
           </div>
     </div>

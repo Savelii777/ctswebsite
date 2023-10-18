@@ -17,11 +17,12 @@
 </form>
 <form action="{{ route('user.import') }}" method="POST" enctype="multipart/form-data">
   @csrf
-  <input type="file" name="xlsxFile" id="fileInput" style="display: none;">
+    <input type="text" name="dollar" id="dollar" style="display: none;">
+    <input type="file" name="xlsxFile" id="fileInput" style="display: none;">
   <a href="#" id="selectFile" class="btn btn-success" style="margin-right: 10px;">
     <img src="/images/excel.png" width="32" height="32"> Загрузить товар
   </a>
-  <button type="submit" class="btn btn-primary">Отправить</button>
+    <button type="submit" class="btn btn-primary">Отправить</button>
 </form>
 <form action="{{ route('stores.deleteAll') }}" method="POST">
     @csrf

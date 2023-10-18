@@ -16,8 +16,7 @@ use App\Http\Controllers\Admin\Api\UserController as ApiUserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Admin\StoreController;
-
-
+use App\Http\Controllers\Auth\RegisterController;
 
 
 /*
@@ -41,7 +40,7 @@ Route::post('/send-application', SendApplicationController::class)->name('applic
 Route::get('/create-application', [GuestController::class, 'application'])->name('application.create.guest');
 
 Auth::routes(
-    ['register' => false]
+    ['register' => true]
 );
 
 // Auth
@@ -66,7 +65,7 @@ Route::get('/page16', [ItemController::class, 'page16'])->name('page16');
 Route::get('/page17', [ItemController::class, 'page17'])->name('page17');
 Route::get('/page18', [ItemController::class, 'page18'])->name('page18');
 
-
+Route::post('/register-user', [RegisterController::class, 'create'])->name('register');
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

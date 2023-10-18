@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Http\Request;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -63,13 +65,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(Request $data)
     {
-        return User::create([
+         User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'login' => $data['login'],
+            'city' => $data['city'],
+            'birth' => $data['birth'],
+            'sex' => $data['sex'],
+            'place_of_work' => $data['place_of_work'],
             'password' => Hash::make($data['password']),
         ]);
+        return redirect('/'); // Редирект на главную страницу
+
     }
 }

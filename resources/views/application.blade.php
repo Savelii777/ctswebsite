@@ -4,8 +4,8 @@
     @include('partials.header')
     <section id="application" class="account">
         <div class="container">
-        <div class="application__block">
-              <form method="POST" action="{{ route('application.send.guest') }}" class="auth-block">
+        <div class="application__block" >
+              <form method="POST" action="{{ route('application.send.guest') }}" class="auth-block" >
                @csrf
                  <p class="form-title">
                     Отправить заявку

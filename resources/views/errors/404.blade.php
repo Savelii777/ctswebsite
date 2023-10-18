@@ -68,18 +68,17 @@
                   </svg>
                   <p>Вернуться в профиль</p>
                </button> --}}
-               <p class="mistake-prg">
-                  OOOPS ... что-то пошло не так ....
-               </p>
+
             </div>
+             <div class="row">
+                 <button style="background-color: #6b7fe3" class="btn-active test-button mistake-btn">
+                     <a style="border: 2px solid #fff; font-size: 48px; font-weight: 800; padding: 10px; margin-bottom: 40px; border-radius: 10px" href="/">На главную</a>
+                 </button>
+             </div>
             <div class="row mistake-img">
-               <img style="width: 1000px" src="{{ ('images/404.png') }}" alt="courses" class="img-responsive mx-auto d-block">
+               <img style="width: 1000px" src="https://rockinthehouse.com/wp-content/uploads/2021/02/404-error.jpg" alt="courses" class="img-responsive mx-auto d-block">
             </div>
-            <div class="row">
-               <button style="background-color: #6b7fe3" class="btn-active test-button mistake-btn">
-                  <a href="/">На главную</a>
-               </button>
-            </div>
+
          </div>
       </section>
       <footer>
