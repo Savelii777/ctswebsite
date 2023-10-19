@@ -33,7 +33,9 @@ class CourseController extends Controller
         {
             $currentDollar = Store::value('dollar');
         }
-
+        else{
+            $currentDollar = 1.0;
+        }
 
 
         $items = $query->sortable()->simplePaginate(2000);
