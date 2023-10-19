@@ -29,13 +29,11 @@ class CourseController extends Controller
             ->orWhereRaw('LOWER(description) LIKE ?', ["%$keyword%"]);
             // Add more columns as needed
         }
-        if (Store::value('dollar')>0.0)
+        if (Store::value('dollar')>1.0)
         {
             $currentDollar = Store::value('dollar');
         }
-        else{
-            $currentDollar = 0.0;
-        }
+
 
 
         $items = $query->sortable()->simplePaginate(2000);
