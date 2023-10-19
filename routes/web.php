@@ -100,6 +100,7 @@ Route::post('/user/email/update/{user}', [UserComponentController::class, 'updat
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home.admin');
 
+    Route::post('/dollar', [ItemController::class, 'setDollar'])->name('dollar');
 
     // Пользователи
     Route::get('user/{user}/course/{course}/tests', [UserController::class, 'tests'])->name('user.course.tests');
@@ -107,6 +108,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::get('user/export', [UserController::class, 'getXlsxData'])->name('user.export');
     Route::get('order/export', [UserController::class, 'getOrderXlsxData'])->name('order.export');
     Route::post('user/import', [UserController::class, 'postXlsxData'])->name('user.import');
+    Route::get('/order/single-export/{id}', [UserController::class, 'getSingleOrderXlsxData'])->name('single-export');
 
     Route::resource('user', UserController::class);
     Route::get('application/accept/{application}', [ApplicationController::class, 'accept'])->name('application.accept');

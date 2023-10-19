@@ -16,6 +16,36 @@ class ItemController extends Controller
         $items = Store::all();
         return view('index', compact('items'));
     }
+    public function setDollar(Request $request)
+    {
+        // Получаем значение 'dollar' из запроса
+        $newDollar = $request['dollar'];
+
+        // Получаем текущее значение 'dollar' из базы данных
+        $currentDollar = Store::value('dollar');
+        if ($currentDollar !== null) {
+            // Если текущее значение 'dollar' существует, вычисляем коэффициент
+
+            // Обновляем данные в колонках 'retail_price' и 'dealer' с учетом коэффициента
+            Store::query()->update([
+                'retail_price' => \DB::raw("retail_price / $currentDollar * $newDollar"),
+                'dealer' => \DB::raw("dealer / $currentDollar * $newDollar"),
+                'dollar' => $newDollar // Обновляем значение 'dollar'
+            ]);
+        } else {
+            // Если текущее значение 'dollar' отсутствует, просто устанавливаем новое значение
+            Store::query()->update(['dollar' => $newDollar]);
+            Store::query()->update([
+                'retail_price' => \DB::raw("retail_price * $newDollar"),
+                'dealer' => \DB::raw("dealer * $newDollar")
+            ]);
+        }
+
+        // После обновления данных, выполняем редирект
+        return redirect()->back();
+    }
+
+
 
     public function general(Request $request)
     {

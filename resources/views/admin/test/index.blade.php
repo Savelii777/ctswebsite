@@ -86,6 +86,11 @@
 <td>
     {{$question->created_at}}
 </td>
+               <td>
+                       <a href="{{ route('single-export', ['id' => $question->id]) }}" id="selectFile" class="btn btn-success" style="margin-right: 10px;">
+                           <img src="/images/excel.png" width="16" height="16"> Скачать
+                       </a>
+               </td>
            </tr>
         @endforeach
     </tbody>

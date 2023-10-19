@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use App\Exports\UsersExport;
+use App\Exports\SingleOrderExport;
 use App\Exports\OrderExport;
 use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -40,14 +41,17 @@ class UserController extends Controller
         return Excel::download(new OrderExport, 'Список заказов.xlsx');
 
     }
+    public function getSingleOrderXlsxData($id)
+    {
+        return Excel::download(new SingleOrderExport($id), 'Заказ_' . $id . '.xlsx');
+    }
     public function postXlsxData(Request $request)
     {
 
         $file = $request->file('xlsxFile');
         $import = new UsersImport;
         Excel::import($import, $file);
-        return "File imported successfully"; // Return a string response
-
+        return redirect()->back();
     }
 
 
