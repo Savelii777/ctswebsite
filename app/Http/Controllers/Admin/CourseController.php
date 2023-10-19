@@ -29,7 +29,7 @@ class CourseController extends Controller
             ->orWhereRaw('LOWER(description) LIKE ?', ["%$keyword%"]);
             // Add more columns as needed
         }
-        if (Store::value('dollar'))
+        if (Store::value('dollar')>0.0)
         {
             $currentDollar = Store::value('dollar');
         }
