@@ -18,7 +18,7 @@ class CreateStoreTable extends Migration
             $table->string('section');
             $table->string('name');
             $table->float('retail_price');
-            $table->float('dollar')->default(null);
+            $table->double('dollar', 8, 2)->default(null);
             $table->float('dealer');
             $table->string('availability');
             $table->text('description')->nullable();
