@@ -28,6 +28,7 @@ class UsersImport implements ToCollection
             $store->name = $nameOfPosition;
             $store->retail_price = $priseForCommon;
             $store->dealer = $priseForDealer;
+            $store->dollar = 0.0;
             $store->availability = $availability;
             $store->description = $description;
 
