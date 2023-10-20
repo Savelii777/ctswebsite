@@ -33,7 +33,7 @@
 <form action="{{ route('stores.deleteAll') }}" method="POST" style="margin-top: 10px; display: flex; flex-direction: row; height: 46px">
     @csrf
     @method('DELETE')
-    <button type="submit" class="btn btn-danger">Delete All Stores</button>
+    <button type="submit" class="btn btn-danger">Удалить все товары</button>
 </form>
          </div>
             @if (session('success'))

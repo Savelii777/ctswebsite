@@ -37,9 +37,12 @@ class UsersExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
         return [
             'A' => 30,
             'B' => 10,
-            'C' => 10,
-            'D' => 10,
+            'C' => 30,
+            'D' => 20,
             'E' => 10,
+            'F' => 10,
+            'G' => 10,
+            'H' => 10,
 
         ];
     }
@@ -47,12 +50,15 @@ class UsersExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
      public function collection()
     {
         $data = [];
-        $users = User::select('id', 'name','birth','sex', 'city', 'place_of_work')->get();
+        $users = User::select('id', 'name','login','email','phone_number','birth','sex', 'city', 'place_of_work')->get();
         $chapters = Chapter::select('id', 'title')->get();
 
         foreach ($users as $user) {
             $userData = [
                 'name' => $user->name,
+                'login' => $user->login,
+                'email' => $user->email,
+                'phone_number' => $user->phone_number,
                 'birth' => $user->birth,
                 'sex' => $user->sex,
                 'city' => $user->city,
@@ -68,7 +74,7 @@ class UsersExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
 
     public function headings(): array
     {
-        $headings = ['ФИО', 'Дата рождения', 'Пол', 'Город', 'Место работы'];
+        $headings = ['ФИО','Логин','Почта','Телефон', 'Дата рождения', 'Пол', 'Город', 'Место работы'];
 
 
         return $headings;

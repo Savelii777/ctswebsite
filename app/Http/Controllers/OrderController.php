@@ -26,6 +26,7 @@ class OrderController extends Controller
             'city' => $user->city,
             'place_of_work' => $user->place_of_work,
             'email' => $user->email,
+            'phone_number' => $user->phone_number,
 
         ];
 

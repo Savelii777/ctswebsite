@@ -56,7 +56,22 @@
                                 ФИО
                             </th>
                             <th>
+                                Логин
+                            </th>
+                            <th>
+                                Почта
+                            </th>
+                            <th>
+                                Номер телефона
+                            </th>
+                            <th>
                                 Город
+                            </th>
+                            <th>
+                                Дата рождения
+                            </th>
+                            <th>
+                                Пол
                             </th>
                             <th>
                                 Место работы
@@ -75,9 +90,23 @@
                             <td style="max-width: 300px">
                                 {{ user.name }}
                             </td>
-
+                            <td style="max-width: 300px">
+                                {{ user.login }}
+                            </td>
+                            <td style="max-width: 300px">
+                                {{ user.email }}
+                            </td>
+                            <td style="max-width: 300px">
+                                {{ user.phone_number }}
+                            </td>
                             <td style="max-width: 300px">
                                 {{ user.city }}
+                            </td>
+                            <td style="max-width: 300px">
+                                {{ user.birth }}
+                            </td>
+                            <td style="max-width: 300px">
+                                {{ user.sex }}
                             </td>
                             <td style="max-width: 300px">
                                 {{ user.place_of_work }}
@@ -151,6 +180,22 @@
                                             }}
                                         </p>
                                         <p>
+                                            <strong>Логин: </strong
+                                            >{{
+                                                selectedUser
+                                                    ? selectedUser.login
+                                                    : "не указано"
+                                            }}
+                                        </p>
+                                        <p>
+                                            <strong>Телефон: </strong
+                                            >{{
+                                                selectedUser
+                                                    ? selectedUser.phone_number
+                                                    : "не указано"
+                                            }}
+                                        </p>
+                                        <p>
                                             <strong>e-mail: </strong
                                             >{{
                                                 selectedUser
@@ -159,7 +204,7 @@
                                             }}
                                         </p>
                                         <p>
-                                            <strong>Город: </strong
+                                            <strong>Место работы: </strong
                                             >{{
                                                 selectedUser
                                                     ? selectedUser.place_of_work
@@ -168,10 +213,26 @@
                                         </p>
 
                                         <p>
-                                            <strong>Место работы: </strong
+                                            <strong>Город: </strong
                                             >{{
                                                 selectedUser
                                                     ? selectedUser.city
+                                                    : "не указано"
+                                            }}
+                                        </p>
+                                        <p>
+                                            <strong>Дата рождения: </strong
+                                            >{{
+                                                selectedUser
+                                                    ? selectedUser.birth
+                                                    : "не указано"
+                                            }}
+                                        </p>
+                                        <p>
+                                            <strong>Пол: </strong
+                                            >{{
+                                                selectedUser
+                                                    ? selectedUser.sex
                                                     : "не указано"
                                             }}
                                         </p>
@@ -303,7 +364,9 @@ export default {
                         name: this.name,
                         completed: this.completed,
                         city: this.city,
-                        place_of_work: this.placeOfWork
+                        place_of_work: this.placeOfWork,
+                        login: this.login,
+                        phone_number: this.phone_number,
                     }
                 })
                 .then(resp => {
@@ -311,6 +374,7 @@ export default {
                     this.loading = false;
                     this.users = resp.data.data;
                     this.laravelData = resp.data;
+
                 })
                 .catch(function(resp) {
                     this.loading = false;
@@ -336,6 +400,7 @@ export default {
                     $("#accept-remove").modal("hide");
                 });
         }
+
     }
 };
 </script>

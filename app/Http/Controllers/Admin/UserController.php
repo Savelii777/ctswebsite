@@ -32,7 +32,7 @@ class UserController extends Controller
     public function getXlsxData()
     {
 
-        return Excel::download(new UsersExport, 'Прогресс студентов.xlsx');
+        return Excel::download(new UsersExport, 'Список пользователей.xlsx');
 
     }
     public function getOrderXlsxData()
@@ -127,6 +127,7 @@ class UserController extends Controller
             'birth' => $request->get('birth'),
             'sex' => $request->get('sex'),
             'place_of_work' => $request->get('place_of_work'),
+            'phone_number' => $request->get('phone_number'),
         ]);
 
         if ($request->has('application_id')) {
@@ -207,6 +208,8 @@ class UserController extends Controller
 
         $user->name = $request->get('name');
         $user->login = $request->get('login');
+        $user->email = $request->get('email');
+        $user->phone_number = $request->get('phone_number');
         $user->city = $request->get('city');
         $user->birth = $request->get('birth');
         $user->sex = $request->get('sex');

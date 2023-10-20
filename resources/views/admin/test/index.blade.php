@@ -67,9 +67,9 @@
         $itemPrice = $item['price'] * $item['quantity'];
         $totalPrice += $itemPrice;
     @endphp
-    <p><strong>{{ $loop->index + 1 }}</strong> {{ $item['title'] }}, {{ $item['price'] }}, {{ $item['quantity'] }}</p>
+    <p><strong>{{ $loop->index + 1 }})</strong> {{ $item['title'] }}  ({{ $item['quantity'] }} шт.)  {{ $item['price'] * $item['quantity'] }} ₽</p>
     @endforeach
-    <p><strong>Итого: </strong>{{$totalPrice}}</p>
+    <p><strong>Итого: </strong>{{$totalPrice}} ₽</p>
 
 </td>
 <td>
@@ -77,11 +77,15 @@
         $userInfo = json_decode($question->user_info, true);
     @endphp
 
-    @foreach ($userInfo as $key => $value)
-@if ($key == 'name' || $key == 'email' || $key == 'city' || $key == 'place_of_work')
-{{ $value }},
-@endif
-@endforeach
+           @foreach ($userInfo as $key => $value)
+
+                   @if (in_array($key, ['name', 'email', 'phone_number']))
+                    <p>
+                        {{ $value }}
+                    </p>
+                   @endif
+
+               @endforeach
 </td>
 <td>
     {{$question->created_at}}
@@ -90,6 +94,7 @@
                        <a href="{{ route('single-export', ['id' => $question->id]) }}" id="selectFile" class="btn btn-success" style="margin-right: 10px;">
                            <img src="/images/excel.png" width="16" height="16"> Скачать
                        </a>
+
                </td>
            </tr>
         @endforeach

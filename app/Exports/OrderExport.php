@@ -36,32 +36,53 @@ class OrderExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
     {
         $columnWidth = 27;
         return [
-            'A' => 30,
-            'B' => 10,
+            'A' => 10,
+            'B' => 30,
             'C' => 10,
             'D' => 10
         ];
     }
 
-     public function collection()
+    public function collection()
     {
         $data = [];
-        $users = Order::select('id', 'order_info','user_info', 'created_at')->whereBetween('created_at', [now()->subDay(), now()])
-        ->get();
+
+        $users = Order::select('id', 'order_info', 'user_info', 'created_at')
+            ->whereBetween('created_at', [now()->subDay(), now()])
+            ->get();
 
         foreach ($users as $user) {
-            $userData = [
-                'id' => $user->id,
-                'order_info' => $user->order_info,
-                'user_info' => $user->user_info,
-                'created_at' => $user->created_at,
+            $orderInfo = json_decode($user->order_info, true);
 
-            ];
-            $data[] = $userData;
+            if (is_array($orderInfo)) {
+                foreach ($orderInfo as $orderItem) {
+                    $newOrderItem = [];
+
+                    foreach ($orderItem as $key => $value) {
+                        if (empty($newOrderItem)) {
+                            $newOrderItem[$key] = $value;
+                        } else {
+                            $newOrderItem[] = $value;
+                        }
+                    }
+                    $goodOrderItem = array_values($newOrderItem);
+                    $arrString = implode(', ', $goodOrderItem);
+                    $cleanedString = str_replace(['"','\\', '[', ']'], '', $arrString);
+                    $userData = [
+                        'id' => $user->id,
+                        'order_info' => json_encode($cleanedString, JSON_UNESCAPED_UNICODE),
+                        'user_info' => $user->user_info,
+                        'created_at' => $user->created_at,
+                    ];
+                    $data[] = $userData;
+                }
+            }
         }
 
         return new Collection($data);
     }
+
+
 
 
     public function headings(): array

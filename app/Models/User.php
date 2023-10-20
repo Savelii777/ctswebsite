@@ -29,7 +29,8 @@ class User extends Authenticatable
         'birth',
         'sex',
         'place_of_work',
-        'img_url'
+        'img_url',
+        'phone_number'
     ];
 
     protected $sortable = [
@@ -41,7 +42,9 @@ class User extends Authenticatable
         'birth',
         'sex',
         'place_of_work',
-        'img_url'
+        'img_url',
+        'phone_number'
+
     ];
 
     public function scopeWithFilters($query, $filters)

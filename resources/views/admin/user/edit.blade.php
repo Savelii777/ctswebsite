@@ -92,6 +92,22 @@
                                 <input style="height: 46px;" value="{{ old('image') }}" name="image" type="file"
                                        class="form-control">
                             </div>-->
+                                <div class="form-group">
+                                    <label>Номер телефона</label>
+                                    <input value="{{ old('phone_number') }}" name="phone_number" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Почта</label>
+                                    <input value="{{ old('email') }}" name="email" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Дата рождения</label>
+                                    <input value="{{ old('birth') }}" name="birth" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Пол</label>
+                                    <input value="{{ old('sex') }}" name="sex" type="text" class="form-control">
+                                </div>
                             <div class="form-group">
                                 <label>Город</label>
                                 <input value="{{ $user['city'] }}" name="city" type="text" class="form-control">

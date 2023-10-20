@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Attempt;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Order;
+
 
 class HomeController extends Controller
 {
@@ -27,7 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         $users_count = User::count();
-        $users_attempts = Attempt::count();
+        $users_attempts = Order::count();
+
         return view('admin.home.index', [
             'users_count' => $users_count,
             'users_attempts' => $users_attempts

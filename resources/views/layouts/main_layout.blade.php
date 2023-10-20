@@ -577,43 +577,83 @@ function downloadToExcel() {
   }
 
   try {
-    // Преобразование JSON в объект JavaScript
-    const data = JSON.parse(jsonData);
+      const data = JSON.parse(jsonData);
+      const nameOfCustomerDiv = document.querySelector(".person__item > div");
+      const nameOfCustomer = nameOfCustomerDiv.textContent.trim();
 
-    // Создание новой книги Excel
-    const workbook = XLSX.utils.book_new();
+      const personItems = document.querySelectorAll(".person__item");
+      const secondPersonItem = personItems[1];
 
-    // Создание нового листа в книге
-    const worksheet = XLSX.utils.json_to_sheet(data);
+          const phoneNumberDiv = secondPersonItem.querySelector("div");
 
-    // Добавление листа в книгу
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Данные');
+          const phoneNumber = phoneNumberDiv.textContent.trim();
 
-    // Преобразование книги в бинарный формат
-    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+          console.log("Номер телефона:", phoneNumber);
 
-    // Создание Blob из бинарных данных
-    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+// Заголовки столбцов
+      const headers = ["Название", "Цена (шт)", "Количество", "Всего"];
 
-    // Создание ссылки для скачивания файла
-    const url = URL.createObjectURL(blob);
+// Вычисление суммы столбца "Всего"
+      const totalSum = data.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-    // Создание ссылки на скачивание файла
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Заказ.xlsx';
+// Создание новой книги Excel
+      const workbook = XLSX.utils.book_new();
 
-    // Добавление ссылки на страницу и эмуляция клика для скачивания файла
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+// Преобразование данных в двумерный массив, включая заголовки
+      const dataWithHeaders = [headers, ...data.map(item => [item.title, item.price, item.quantity, item.price * item.quantity])];
+
+// Добавление строки "Итого"
+      dataWithHeaders.push(["Итого", "", "", totalSum]);
+
+// Добавление строки с ФИО и значением
+      dataWithHeaders.push(["ФИО", nameOfCustomer, "", ""]);
+      dataWithHeaders.push(["Телефон", phoneNumber, "", ""]);
+
+// Создание нового листа в книге с данными и заголовками
+      const worksheet = XLSX.utils.aoa_to_sheet(dataWithHeaders);
+
+// Добавление листа в книгу
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Данные');
+
+// Преобразование книги в бинарный формат
+      const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+
+// Создание Blob из бинарных данных
+      const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+// Создание ссылки для скачивания файла
+      const url = URL.createObjectURL(blob);
+
+// Создание ссылки на скачивание файла
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Заказ.xlsx';
+
+// Добавление ссылки на страницу и эмуляция клика для скачивания файла
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+
   } catch (error) {
     console.error('Error exporting data to Excel:', error);
   }
 }
 
 async function sendDataToServer() {
+
   var data = localStorage.getItem('jsonData');
+
+    const nameOfCustomerDiv = document.querySelector(".person__item > div");
+    const nameOfCustomer = nameOfCustomerDiv.textContent.trim();
+
+    const personItems = document.querySelectorAll(".person__item");
+    const secondPersonItem = personItems[1];
+
+    const phoneNumberDiv = secondPersonItem.querySelector("div");
+
+    const phoneNumber = phoneNumberDiv.textContent.trim();
+
 
   // Получение CSRF-токена из мета-тега
   var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -656,7 +696,7 @@ async function sendDataToServer() {
         title: nameOfItem,
         price: priceOfItem,
         quantity: inputValue,
-        total: priceOfItem*inputValue
+        total: priceOfItem * inputValue
     };
     if (jsonData === null) {
         jsonData = [];
@@ -807,7 +847,7 @@ $(function() {
       '">' +
       "        </td>" +
       '        <td style="max-height:10px;max-width:10px" class="cart-item-total">' +
-      this.total.toFixed(2) +
+      this.total.toFixed(2)*this.quantity +
       " ₽</td>" +
       "        <td style='max-height:10px;max-width:20px'>" +
       '          <a style="cursor: pointer; width: max-content; margin-right: -100px" class="button is-small"><svg fill="#f00707" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 482.428 482.429" xml:space="preserve" stroke="#f00707"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M381.163,57.799h-75.094C302.323,25.316,274.686,0,241.214,0c-33.471,0-61.104,25.315-64.85,57.799h-75.098 c-30.39,0-55.111,24.728-55.111,55.117v2.828c0,23.223,14.46,43.1,34.83,51.199v260.369c0,30.39,24.724,55.117,55.112,55.117 h210.236c30.389,0,55.111-24.729,55.111-55.117V166.944c20.369-8.1,34.83-27.977,34.83-51.199v-2.828 C436.274,82.527,411.551,57.799,381.163,57.799z M241.214,26.139c19.037,0,34.927,13.645,38.443,31.66h-76.879 C206.293,39.783,222.184,26.139,241.214,26.139z M375.305,427.312c0,15.978-13,28.979-28.973,28.979H136.096 c-15.973,0-28.973-13.002-28.973-28.979V170.861h268.182V427.312z M410.135,115.744c0,15.978-13,28.979-28.973,28.979H101.266 c-15.973,0-28.973-13.001-28.973-28.979v-2.828c0-15.978,13-28.979,28.973-28.979h279.897c15.973,0,28.973,13.001,28.973,28.979 V115.744z"></path> <path d="M171.144,422.863c7.218,0,13.069-5.853,13.069-13.068V262.641c0-7.216-5.852-13.07-13.069-13.07 c-7.217,0-13.069,5.854-13.069,13.07v147.154C158.074,417.012,163.926,422.863,171.144,422.863z"></path> <path d="M241.214,422.863c7.218,0,13.07-5.853,13.07-13.068V262.641c0-7.216-5.854-13.07-13.07-13.07 c-7.217,0-13.069,5.854-13.069,13.07v147.154C228.145,417.012,233.996,422.863,241.214,422.863z"></path> <path d="M311.284,422.863c7.217,0,13.068-5.853,13.068-13.068V262.641c0-7.216-5.852-13.07-13.068-13.07 c-7.219,0-13.07,5.854-13.07,13.07v147.154C298.213,417.012,304.067,422.863,311.284,422.863z"></path> </g> </g> </g></svg></a>' +

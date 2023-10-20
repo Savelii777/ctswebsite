@@ -23,6 +23,8 @@ class UserController extends Controller
             'city' => $request->city,
             'place_of_work' => $request->place_of_work,
             'completed' => $request->completed,
+            'login' => $request->login,
+            'phone_number' => $request->phone_number,
         ];
 
         $users = User::withFilters(

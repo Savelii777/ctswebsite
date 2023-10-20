@@ -68,6 +68,7 @@
                     </span>
                 </div>
             </div>
+
             <div class="row">
                 <div style="margin-bottom: 0" class="form-group  col-md-12">
                     <label>Место работы</label>
@@ -81,6 +82,14 @@
                         <strong>{{ placeOfWorkError }}</strong>
                     </span>
                 </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" v-model="editedUser.email" />
+            </div>
+            <div class="form-group">
+                <label>Номер телефона</label>
+                <input type="tel" class="form-control" v-model="editedUser.phone_number" />
             </div>
             <div v-if="showSavedMessage" style="left:-730px" class="saved-message">Сохранено</div>
         </form>

@@ -22,38 +22,58 @@
                                     {{ Auth::user()->name }}
                                 </div>
                             </li>
-                            <!--<li class="person__item">
-                                <p>
-                                    дата рождения
-                                </p>
-                                <div>
-                                    {{ Auth::user()->birth ? date_format(date_create(Auth::user()->birth), 'd.m.Y') : 'не указана' }}
-                                </div>
-                            </li>-->
-                            <!--<li class="person__item">
-                                <p>
-                                    пол
-                                </p>
-                                <div>
-                                    {{ Auth::user()->sex }}
-                                </div>
-                            </li>-->
                             <li class="person__item">
                                 <p>
-                                    город
+                                    Номер телефона
                                 </p>
                                 <div>
-                                    {{ Auth::user()->city ? Auth::user()->city : 'не указан' }}
+                                    {{ Auth::user()->phone_number }}
                                 </div>
                             </li>
                             <li class="person__item">
                                 <p>
-                                    место работы
+                                    Почта
                                 </p>
-                                <div class="font">
-                                    {{ Auth::user()->place_of_work ? Auth::user()->place_of_work : 'не указано'}}
+                                <div>
+                                    {{ Auth::user()->email }}
                                 </div>
                             </li>
+
+                        </div>
+                        <div class="col-lg-12">
+
+                        <li class="person__item">
+                            <p>
+                                дата рождения
+                            </p>
+                            <div>
+                                {{ Auth::user()->birth ? date_format(date_create(Auth::user()->birth), 'd.m.Y') : 'не указана' }}
+                            </div>
+                        </li>
+                        <li class="person__item">
+                            <p>
+                                пол
+                            </p>
+                            <div>
+                                {{ Auth::user()->sex }}
+                            </div>
+                        </li>
+                        <li class="person__item">
+                            <p>
+                                город
+                            </p>
+                            <div>
+                                {{ Auth::user()->city ? Auth::user()->city : 'не указан' }}
+                            </div>
+                        </li>
+                        <li class="person__item">
+                            <p>
+                                место работы
+                            </p>
+                            <div class="font">
+                                {{ Auth::user()->place_of_work ? Auth::user()->place_of_work : 'не указано'}}
+                            </div>
+                        </li>
                         </div>
 
                     </div>

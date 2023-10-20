@@ -26,6 +26,8 @@ class UserResource extends JsonResource
             'sex' => $this->sex,
             'city' => $this->city,
             'birth' => $this->birth,
+            'phone_number' => $this->phone_number,
+            'login' => $this->login,
             'completed' => $this->courses()->find(1)->pivot->completed ?? 0
         ];
     }

@@ -89,12 +89,28 @@
                                        class="form-control">
                             </div>-->
                             <div class="form-group">
-                                <label>Город</label>
-                                <input value="{{ old('city') }}" name="city" type="text" class="form-control">
+                                <label>Номер телефона</label>
+                                <input value="{{ old('phone_number') }}" name="phone_number" type="text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Место работы</label>
-                                <input value="{{ old('place_of_work') }}" name="place_of_work" type="text"
+                                <label>Почта</label>
+                                <input value="{{ old('email') }}" name="email" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Дата рождения</label>
+                                <input value="{{ old('birth') }}" name="birth" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Пол</label>
+                                <input value="{{ old('sex') }}" name="sex" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Город</label>
+                                <input value="{{ $user['city'] }}" name="city" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Место рыботы</label>
+                                <input value="{{ $user['place_of_work'] }}" name="place_of_work" type="text"
                                        class="form-control">
                             </div>
                            <!-- <div class="form-group">

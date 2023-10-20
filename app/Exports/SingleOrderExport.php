@@ -34,22 +34,46 @@ class SingleOrderExport implements FromCollection, WithHeadings
             ->first();
 
         if ($user) {
-            $userData = [
-                'id' => $user->id,
-                'order_info' => $user->order_info,
-                'user_info' => $user->user_info,
-                'created_at' => $user->created_at,
-            ];
+            $orderInfo = json_decode($user->order_info, true);
+            $userInfo = json_decode($user->user_info, true);
 
-            $data[] = $userData;
+            if (is_array($orderInfo) && is_array($userInfo)) {
+                $orderTotal = 0; // Переменная для суммирования значений в order_info
+
+                foreach ($orderInfo as $orderItem) {
+                    if (is_array($orderItem)) {
+                        $data[] = array_values($orderItem);
+                        if (isset($orderItem['total']) && is_numeric($orderItem['total'])) {
+                            $orderTotal += $orderItem['total'];
+                        }
+                    }
+                }
+
+
+                // Добавьте общую сумму в колонку C (значение $orderTotal)
+                $data[] = ["Итого", $orderTotal];
+
+                foreach ($userInfo as $userItem) {
+                    if (is_array($userItem)) {
+                        $data[] = array_values($userItem);
+                    } else {
+                        $data[] = [$userItem];
+                    }
+                }
+            }
         }
 
         return new Collection($data);
     }
 
+
+
+
+
     public function headings(): array
     {
-        $headings = ['Номер заказа', 'Товары', 'Пользователь', 'Дата заказа'];
+        $headings = ['Цена шт.', 'Наименование', 'Всего', 'Количество' ];
+
 
         return $headings;
     }

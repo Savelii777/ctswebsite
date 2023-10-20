@@ -1,39 +1,49 @@
-<header>
-<a  href="{{ url('/') }}">
+<header style="background: #c2c1f5; padding-bottom: 10px">
+<a style="max-width: 200px" href="{{ url('/') }}">
     <div class="header__logo"></div>
 </a>
+    @auth
 
-<input type="checkbox" id="burger-toggle">
-<label for="burger-toggle" class="burger-menu">
-  <div class="line"></div>
-  <div class="line"></div>
-  <div class="line"></div>
-</label>
-<div class="menu">
-  <div class="menu-inner">
-    <ul class="menu-nav" style="margin-top:150px">
-      <li class="menu-nav-item"><a class="menu-nav-link" style="background:#6b7fe3"  href="{{ url('/') }}"><span>
-            <div style="background:#6b7fe3">На главную</div>
-          </span></a></li>
-      <li class="menu-nav-item"><a class="menu-nav-link" style="background:#6b7fe3" href="{{ route('login') }}"><span>
-            <div>Личный кабинет</div>
-          </span></a></li>
+    <ul class="menu-nav" style=" position:absolute; top:10px; left:200px; margin-top:0; display: flex; justify-content: space-between; min-width: 1600px">
+        <li><a class="menu-nav-link" style="background:#6b7fe3; width:max-content; color: #fff"  href="{{ url('/') }}">
+            <div style="background:#6b7fe3; color:#fff; z-index: 1; font-size: 20px; padding: 10px">На главную</div>
+          </a></li>
+        <li><a class="menu-nav-link" style="background:#6b7fe3" href="{{ route('login') }}">
+            <div style="background:#6b7fe3; color:#fff; z-index: 1; font-size: 20px; padding: 10px">Личный кабинет</div>
+          </a></li>
 
-      <li class="menu-nav-item"><a class="menu-nav-link" style="background:#6b7fe3" href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit(); localStorage.clear();">
-        Выход из личного кабинета
-      </a>
-      <form id="logout-form" action="{{ route('logout') }}" method="POST">
-        @csrf
-    </form>
-    </li>
+        <li><a class="menu-nav-link" style="background:#6b7fe3" href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit(); localStorage.clear();">
+               <div style="background:#6b7fe3; color:#fff; z-index: 1; font-size: 20px; padding: 10px">
+                   Выход из личного кабинета
+               </div>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+            </form>
+        </li>
+        <li>
+            @auth
+                @if(auth()->user()->hasRole('admin'))
+                    <a class="menu-nav-link" style="background:#6b7fe3" href="/admin">
+
+                            <div style="background:#6b7fe3; color:#fff; z-index: 1; font-size: 20px; padding: 10px">Панель администратора</div>
+
+                    </a>
+                @endif
+            @endauth
+        </li>
+
     </ul>
+
+    @endauth
+
+    @if(Request::is('/')) <!-- Проверка, что текущая страница - главная -->
+    <div class="menu">
+  <div class="menu-inner">
     <div class="gallery" style="margin-top:0px; margin-bottom: 50px">
-      <div class="title">
-        <p>Sora Gallery</p>
-      </div>
       <div class="images">
         <a class="image-link" href="{{ route('page1') }}">
-          <div class="image" data-label="Бумага/плёнки/наклейки"><img src="https://rhs.com.ru/files/product-image/ofisnaya_bumaga_svetocopy_a3-25329.jpg" alt=""></div>
+          <div class="image"  data-label="Бумага/плёнки/наклейки"><img src="https://rhs.com.ru/files/product-image/ofisnaya_bumaga_svetocopy_a3-25329.jpg" alt=""></div>
         </a>
         <a class="image-link" href="{{ route('page2') }}">
           <div class="image" data-label="Девелопер"><img src="https://cdn.tze1.ru/a6/63c6ecbd-0b89-11e9-a4ef-e8611f100fce/600K88840.jpg" alt=""></div>
@@ -91,4 +101,6 @@
     </div>
   </div>
 </div>
+    @endif
+
 </header>

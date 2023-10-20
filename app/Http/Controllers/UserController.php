@@ -36,6 +36,9 @@ class UserController extends Controller
         $user->birth = $request->get('birth');
         $user->sex = $request->get('sex');
         $user->place_of_work = $request->get('place_of_work');
+        $user->email = $request->get('email');
+        $user->phone_number = $request->get('phone_number');
+
         $user->save();
 
         return $user;
