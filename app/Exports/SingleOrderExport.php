@@ -28,39 +28,54 @@ class SingleOrderExport implements FromCollection, WithHeadings
 
     public function collection()
     {
-        $data = [];
-        $user = Order::select('id', 'order_info', 'user_info', 'created_at')
-            ->where('id', $this->orderId)
+        $order = Order::select('id', 'order_info', 'user_info', 'created_at')
+            ->where('id', $this->orderId) // Замените $this->orderId на актуальное значение
             ->first();
 
-        if ($user) {
-            $orderInfo = json_decode($user->order_info, true);
-            $userInfo = json_decode($user->user_info, true);
+        if ($order) {
+            // Parse the JSON string into an array
+            $orderInfoArray = json_decode($order->order_info, true);
 
-            if (is_array($orderInfo) && is_array($userInfo)) {
-                $orderTotal = 0; // Переменная для суммирования значений в order_info
+            // Initialize an array for formatted order info
+            $formattedOrderInfo = [];
 
-                foreach ($orderInfo as $orderItem) {
-                    if (is_array($orderItem)) {
-                        $data[] = array_values($orderItem);
-                        if (isset($orderItem['total']) && is_numeric($orderItem['total'])) {
-                            $orderTotal += $orderItem['total'];
-                        }
-                    }
-                }
+            $totalSum = 0; // Для хранения суммы значений $item['total']
 
+            // Loop through the items in the order_info array and format them
+            foreach ($orderInfoArray as $item) {
+                $formattedItem = $item['title'] . ',' . $item['total'] . ',' . $item['quantity'];
+                $formattedOrderInfo[] = $formattedItem;
 
-                // Добавьте общую сумму в колонку C (значение $orderTotal)
-                $data[] = ["Итого", $orderTotal];
-
-                foreach ($userInfo as $userItem) {
-                    if (is_array($userItem)) {
-                        $data[] = array_values($userItem);
-                    } else {
-                        $data[] = [$userItem];
-                    }
-                }
+                // Суммируем значения $item['total']
+                $totalSum += $item['total'];
             }
+
+            // Добавляем строку "Итого" и сумму в конце order_info
+            $totalString = "Итого: {$totalSum}";
+            $formattedOrderInfo[] = $totalString;
+
+            // Parse the JSON string into an array for user_info
+            $userInfoArray = json_decode($order->user_info, true);
+
+            // Extract the values you want from user_info
+            $formattedUserInfo = [
+                $userInfoArray['name'],
+                $userInfoArray['email'],
+                $userInfoArray['phone_number'],
+            ];
+
+            // Формируем данные для экспорта
+            $data = [
+                [
+                    $order->id,
+                    implode("\n", $formattedOrderInfo), // Separate order_info items with new lines
+                    implode(', ', $formattedUserInfo), // Combine user_info values with a comma and space
+                    $order->created_at,
+                ],
+            ];
+        } else {
+            // Если заказ не найден, вернуть пустую коллекцию
+            $data = [];
         }
 
         return new Collection($data);
@@ -72,9 +87,6 @@ class SingleOrderExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        $headings = ['Цена шт.', 'Наименование', 'Всего', 'Количество' ];
-
-
-        return $headings;
+        return ['Номер заказа', 'Заказ', 'Пользователь', 'Дата и время заказа'];
     }
 }

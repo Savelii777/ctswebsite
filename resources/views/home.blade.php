@@ -179,8 +179,10 @@
   </div>
   <button onClick="sendDataToServer()" class="checkout" style="color: #fff; background: #6b7fe3; border-radius:5px; font-size: 24px; min-width:85px; min-height:30px; margin-top: 20px;">Заказать</button>
 </div>
+
             </div>
         </div>
+
     </section>
     @include('partials.footer')
 @endsection
