@@ -175,9 +175,9 @@
       <label>Итого</label>
       <div class="totals-value" id="cart-subtotal">0 ₽</div>
     </div>
-    <button onClick="downloadToExcel()" class="btn btn-success float-right" style="color:#fff;  margin-top: 20px;"><img src="/images/excel.png" width="32" height="32">Скачать</button>
+    <button onClick="downloadToExcel()" class="btn btn-success float-right" style="color:#fff;  margin-top: 20px;"><img src="/images/excel.png" width="16" height="16">Скачать</button>
   </div>
-  <button onClick="sendDataToServer()" class="checkout" style="color: #fff; background: #6b7fe3; border-radius:5px; font-size: 16px; min-width:85px; min-height:30px; margin-top: 20px;">Заказать</button>
+  <button onClick="sendDataToServer()" class="checkout" style="color: #fff; background: #6b7fe3; border-radius:5px; font-size: 24px; min-width:85px; min-height:30px; margin-top: 20px;">Заказать</button>
 </div>
             </div>
         </div>
