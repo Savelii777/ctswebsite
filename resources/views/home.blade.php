@@ -201,7 +201,7 @@
                         <tbody>
                         @foreach ($filteredQuestions as $question)
                             <tr>
-                                <td>
+                                <td style="max-width: 450px; overflow: hidden">
                                     @php
                                         $orderInfo = json_decode($question->order_info, true);
                                         $totalPrice = 0;
