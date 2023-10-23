@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->json('order_info'); // Добавляем поле JSON с названием "order"
             $table->timestamps();
+            $table->varchar('is_ready')->default('В работе'); // Добавляем поле is_ready
             $table->json('user_info'); // Добавляем поле JSON с названием "order"
         });
     }

@@ -93,7 +93,7 @@ Route::post('/user/image/upload/{user}', [UserComponentController::class, 'updat
 Route::post('/user/image/delete/{user}', [UserComponentController::class, 'updateUserProfileImageDelete'])->name('user.image.delete');
 Route::post('/user/password/update/{user}', [UserComponentController::class, 'updateUserPassword'])->name('user.password.update');
 Route::post('/user/email/update/{user}', [UserComponentController::class, 'updateUserEmail'])->name('user.email.update');
-
+Route::get('/order/single-export-user/{id}', [UserController::class, 'getSingleUserOrderXlsxData'])->name('single-export-user');
 
 
 // Admin
@@ -109,6 +109,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::get('order/export', [UserController::class, 'getOrderXlsxData'])->name('order.export');
     Route::post('user/import', [UserController::class, 'postXlsxData'])->name('user.import');
     Route::get('/order/single-export/{id}', [UserController::class, 'getSingleOrderXlsxData'])->name('single-export');
+    Route::patch('/update-status/{id}', [TestController::class, 'updateStatus'])->name('update.status');
+
 
     Route::resource('user', UserController::class);
     Route::get('application/accept/{application}', [ApplicationController::class, 'accept'])->name('application.accept');

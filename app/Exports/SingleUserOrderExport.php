@@ -17,7 +17,7 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class SingleOrderExport implements FromCollection, WithHeadings
+class SingleUserOrderExport implements FromCollection, WithHeadings
 {
     protected $orderId;
 
@@ -67,17 +67,10 @@ class SingleOrderExport implements FromCollection, WithHeadings
             $data[] = []; // Пустая строка для отделения order_info и user_info
 
             $data[] = [
-                'Номер заказа',
-                $order->id
-            ];
-            $data[] = [
                 'Дата и время заказа',
                 $order->created_at
             ];
-            $data[] = [
-                'Пользователь',
-                implode(', ', $formattedUserInfo), // Combine user_info values with a comma and space
-            ];
+
         } else {
             $data = [];
         }

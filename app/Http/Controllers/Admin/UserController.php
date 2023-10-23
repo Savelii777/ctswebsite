@@ -16,6 +16,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use App\Exports\UsersExport;
 use App\Exports\SingleOrderExport;
+use App\Exports\SingleUserOrderExport;
 use App\Exports\OrderExport;
 use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -44,6 +45,10 @@ class UserController extends Controller
     public function getSingleOrderXlsxData($id)
     {
         return Excel::download(new SingleOrderExport($id), 'Заказ_' . $id . '.xlsx');
+    }
+    public function getSingleUserOrderXlsxData($id)
+    {
+        return Excel::download(new SingleUserOrderExport($id), 'Заказ_' . $id . '.xlsx');
     }
     public function postXlsxData(Request $request)
     {

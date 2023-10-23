@@ -32,7 +32,9 @@ class TestController extends Controller
 
     $questions = $questions->get();
 
+
     return view('admin.test.index', compact('questions'));
+
 }
 
     /**
@@ -47,6 +49,20 @@ class TestController extends Controller
         return view('admin.quetions.create');
         // Пример сохранения вопросов в таблицу
 
+    }
+    public function updateStatus($id)
+    {
+        $order = Order::find($id);
+
+        if ($order) {
+            // Если статус "Принят", измените его на "Готов"
+            if ($order->is_ready === 'В работе') {
+                $order->is_ready = 'Готов';
+                $order->save();
+            }
+        }
+
+        return redirect()->back();
     }
     public function testStore(Request $request)
     {

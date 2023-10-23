@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Chapter;
@@ -26,10 +28,33 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function index()
+    public function index(Request $request)
     {
         $courses = Course::all();
-        return view('home', compact('courses'));
+        $userId = auth()->id(); // Получаем ID текущего пользователя
+        $user = User::find($userId);
+        $questions = Order::orderBy('created_at', 'desc');
+
+        $keyword = $request->input('keyword');
+
+        if ($keyword) {
+            $questions = $questions->where(function ($query) use ($keyword) {
+                $query->where('created_at', 'LIKE', "%$keyword%")
+                    ->orWhere('user_info', 'LIKE', "%$keyword%");
+            });
+        }
+
+        $questions = $questions->get();
+
+        // Фильтрация вопросов
+        $filteredQuestions = $questions->filter(function ($question) use ($user) {
+            $userInfo = json_decode($question->user_info, true);
+
+            // Проверяем совпадение имени и номера телефона
+            return $userInfo['name'] === $user->name && $userInfo['phone_number'] === $user->phone_number;
+        });
+
+        return view('home', compact('courses', 'filteredQuestions'));
     }
 
     public function getPhoto($userId, $photoName){

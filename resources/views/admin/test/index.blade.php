@@ -49,6 +49,7 @@
             <th>Товар</th>
             <th>Заказчик</th>
             <th>@sortablelink('created_at', 'Дата заказа')</th>
+            <th>Статус</th>
         </tr>
     </thead>
     <tbody>
@@ -87,9 +88,20 @@
 
                @endforeach
 </td>
+
 <td>
     {{$question->created_at}}
 </td>
+               <td style="color: {{ $question->is_ready === 'В работе' ? 'orange' : ($question->is_ready === 'Готов' ? 'green' : '') }}">
+                   {{ $question->is_ready }}
+                   @if ($question->is_ready === 'В работе')
+                       <form method="post" action="{{ route('update.status', $question->id) }}">
+                           @csrf
+                           @method('patch')
+                           <button style="margin-top: 10px" class="btn btn-success" type="submit">Готов</button>
+                       </form>
+                   @endif
+               </td>
                <td>
                        <a href="{{ route('single-export', ['id' => $question->id]) }}" id="selectFile" class="btn btn-success" style="margin-right: 10px;">
                            <img src="/images/excel.png" width="16" height="16"> Скачать

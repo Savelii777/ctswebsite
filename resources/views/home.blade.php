@@ -151,7 +151,7 @@
             </div>
         </div>
     </section>
-    <section id="courses">
+    <section id="courses" style="display: flex; flex-direction: row; padding-left: 100px;padding-right: 100px;">
         <div class="container" id="app">
             <h2 style="color:#fff">
                Корзина покупок
@@ -164,7 +164,7 @@
       <tr>
         <th>Наименование</th>
         <th style="max-width:20px">Цена</th>
-        <th style="max-width:15px">Количество</th>
+        <th style="max-width:20px">Кол-во</th>
         <th style="max-width:20px">Всего</th>
         <th></th>
       </tr>
@@ -179,6 +179,60 @@
   </div>
   <button onClick="sendDataToServer()" class="checkout" style="color: #fff; background: #6b7fe3; border-radius:5px; font-size: 24px; min-width:85px; min-height:30px; margin-top: 20px;">Заказать</button>
 </div>
+
+            </div>
+        </div>
+        <div class="container" id="app">
+            <h2 style="color:#fff">
+                История заказов
+            </h2>
+
+            <div class="courses__block" style="display:flex; justify-content:center; align-items:center;">
+                <div class="shopping-cart-wrapper" style="min-width: 100%">
+                    <table class="table is-fullwidth">
+                        <thead>
+                        <tr>
+                            <th style="max-width:100px">Заказ</th>
+                            <th style="max-width:25px">Дата</th>
+                            <th style="max-width:25px">Статус</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($filteredQuestions as $question)
+                            <tr>
+                                <td>
+                                    @php
+                                        $orderInfo = json_decode($question->order_info, true);
+                                        $totalPrice = 0;
+                                    @endphp
+                                    @foreach ($orderInfo as $item)
+                                        @php
+                                            $itemPrice = $item['price'] * $item['quantity'];
+                                            $totalPrice += $itemPrice;
+                                        @endphp
+                                        <p><strong>{{ $loop->index + 1 }})</strong> {{ $item['title'] }}  ({{ $item['quantity'] }} шт.)  {{ $item['price'] * $item['quantity'] }} ₽</p>
+                                    @endforeach
+                                    <p><strong>Итого: </strong>{{$totalPrice}} ₽</p>
+
+                                </td>
+                                <td>
+                                    {{$question->created_at}}
+                                </td>
+                                <td style="color: {{ $question->is_ready === 'В работе' ? 'orange' : ($question->is_ready === 'Готов' ? 'green' : '') }}">
+                                    {{ $question->is_ready }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('single-export-user', ['id' => $question->id]) }}" id="selectFile" class="btn btn-success" style="margin-right: 10px; color: #fff">
+                                        <img src="/images/excel.png" width="16" height="16"> Скачать
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
 
             </div>
         </div>
