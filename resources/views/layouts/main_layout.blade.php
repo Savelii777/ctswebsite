@@ -840,7 +840,7 @@ $(function() {
       this.price.toFixed(2) +
       " ₽</td>" +
       "        <td style='max-height:10px;max-width:5px'>" +
-      '          <input class="input is-primary cart-item-qty" style="" type="number" min="1" value="' +
+      '          <input class="input is-primary cart-item-qty" style="max-width: 10px" type="number" min="1" value="' +
       this.quantity +
       '" data-price="' +
       this.price.toFixed(2) +
