@@ -192,16 +192,16 @@
                     <table class="table is-fullwidth">
                         <thead>
                         <tr>
-                            <th style="max-width:100px">Заказ</th>
-                            <th style="max-width:25px">Дата</th>
-                            <th style="max-width:25px">Статус</th>
+                            <th style="max-width:400px">Заказ</th>
+                            <th style="max-width:100px">Дата</th>
+                            <th style="max-width:100px">Статус</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach ($filteredQuestions as $question)
                             <tr>
-                                <td style="max-width: 450px; overflow: hidden">
+                                <td style="max-width: 400px; overflow: hidden">
                                     @php
                                         $orderInfo = json_decode($question->order_info, true);
                                         $totalPrice = 0;
@@ -216,10 +216,10 @@
                                     <p><strong>Итого: </strong>{{$totalPrice}} ₽</p>
 
                                 </td>
-                                <td>
+                                <td style="max-width:100px">
                                     {{$question->created_at}}
                                 </td>
-                                <td style="color: {{ $question->is_ready === 'В работе' ? 'orange' : ($question->is_ready === 'Готов' ? 'green' : '') }}">
+                                <td style="color: {{ $question->is_ready === 'В работе' ? 'orange' : ($question->is_ready === 'Готов' ? 'green' : '') }}; max-width:100px">
                                     {{ $question->is_ready }}
                                 </td>
                                 <td>
