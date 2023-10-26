@@ -39,10 +39,10 @@ class ItemController extends Controller
                 'retail_price' => \DB::raw("retail_price * $newDollar"),
                 'dealer' => \DB::raw("dealer * $newDollar")
             ]);
-        }
 
+        }
         // После обновления данных, выполняем редирект
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Курс доллара успешно обновлен');
     }
 
 

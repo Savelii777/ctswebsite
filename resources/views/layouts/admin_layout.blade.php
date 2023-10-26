@@ -166,6 +166,14 @@
     }
   });
 </script>
+<script>
+    window.onload = function () {
+        var successMessage = "{{ session('success') }}";
+        if (successMessage) {
+            localStorage.clear(); // Очищаем localStorage
+        }
+    }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

@@ -42,10 +42,11 @@ class SingleUserOrderExport implements FromCollection, WithHeadings
                     $item['title'],
                     $item['total'],
                     $item['quantity'],
+                    $item['total']*$item['quantity']
                 ];
                 $formattedOrderInfo[] = $formattedItem;
 
-                $totalSum += $item['total'];
+                $totalSum += $item['total']*$item['quantity'];
             }
 
             $data = [];
@@ -54,8 +55,14 @@ class SingleUserOrderExport implements FromCollection, WithHeadings
             }
 
             // Добавляем строку "Итого" и сумму в конце order_info
-            $totalString = ["Итого:", $totalSum];
-            $data[] = $totalString;
+//            $totalString = ["Итого:", $totalSum];
+//            $data[] = $totalString;
+            $data[] = [
+                'Итого:',
+                '',
+                '',
+                $totalSum
+            ];
 
             $userInfoArray = json_decode($order->user_info, true);
             $formattedUserInfo = [
@@ -84,6 +91,6 @@ class SingleUserOrderExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        return ['Наименование', 'Цена за шт.', 'Количество'];
+        return ['Наименование', 'Цена за шт.', 'Количество', 'Всего'];
     }
 }
