@@ -67,6 +67,11 @@ class RegisterController extends Controller
      */
     protected function create(Request $data)
     {
+        $validatorAll = $this->validator($data->all());
+
+        if ($validatorAll->fails()) {
+            return redirect()->back()->withErrors($validatorAll)->withInput();
+        }
          User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -75,9 +80,12 @@ class RegisterController extends Controller
             'birth' => $data['birth'],
             'sex' => $data['sex'],
             'place_of_work' => $data['place_of_work'],
+            'phone_number' => $data['phone_number'],
             'password' => Hash::make($data['password']),
         ]);
-        return redirect('/'); // Редирект на главную страницу
 
+        return redirect()
+        ->route('home')
+        ->with('success', 'Вопрос успешно добавлен!');
     }
 }

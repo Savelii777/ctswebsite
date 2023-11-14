@@ -4,6 +4,11 @@
 @include('partials.header')
 <section id="entrance" class="account">
     <div class="container" id="app">
+    @if (session('success'))
+<div class="alert alert-success text-center">
+    <h1>Операция выполнена успешно!</h1>
+</div>
+@endif
     <div class="entrance__block">
 
              <form method="POST" action="{{ route('login') }}" class="auth-block">

@@ -397,6 +397,11 @@
     <link rel="stylesheet" href="{{mix('/css/app.css')}}">
 </head>
 <body class="antialiased">
+@if (session('success'))
+<div class="alert alert-success text-center">
+    <h1>Операция выполнена успешно!</h1>
+</div>
+@endif
 @yield('content')
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
