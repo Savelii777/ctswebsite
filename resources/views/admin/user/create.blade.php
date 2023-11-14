@@ -106,11 +106,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Город</label>
-                                <input value="{{old('sex') }}" name="city" type="text" class="form-control">
+                                <input value="{{ old('city') }}" name="city" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Место рыботы</label>
-                                <input value="{{ old('sex') }}" name="place_of_work" type="text"
+                                <input value="{{ old('place_of_work') }}" name="place_of_work" type="text"
                                        class="form-control">
                             </div>
                            <!-- <div class="form-group">
