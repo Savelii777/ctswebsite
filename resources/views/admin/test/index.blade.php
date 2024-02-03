@@ -95,7 +95,7 @@
                <td style="color: {{ $question->is_ready === 'В работе' ? 'orange' : ($question->is_ready === 'Готов' ? 'green' : '') }}">
                    {{ $question->is_ready }}
                    @if ($question->is_ready === 'В работе')
-                       <form method="post" action="{{ route('update.status', $question->id) }}">
+                       <form method="post" action="{{ secure_url('update.status', $question->id) }}">
                            @csrf
                            @method('patch')
                            <button style="margin-top: 10px" class="btn btn-success" type="submit">Готов</button>
