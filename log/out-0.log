@@ -1,0 +1,14 @@
+2024-01-04T20:07:28: Starting Laravel development server: http://10.129.0.19:80
+2024-01-04T20:07:29: [Thu Jan  4 20:07:28 2024] Failed to listen on 10.129.0.19:80 (reason: Permission denied)
+2024-01-04T20:07:30: Starting Laravel development server: http://10.129.0.19:80
+2024-01-04T20:07:30: [Thu Jan  4 20:07:29 2024] Failed to listen on 10.129.0.19:80 (reason: Permission denied)
+2024-01-04T20:09:12: Starting Laravel development server: http://10.129.0.19:80
+2024-01-04T20:09:12: [Thu Jan  4 20:09:12 2024] Failed to listen on 10.129.0.19:80 (reason: Permission denied)
+2024-01-04T20:10:46: Starting Laravel development server: http://10.129.0.19:80
+2024-01-04T20:10:46: [Thu Jan  4 20:10:46 2024] Failed to listen on 10.129.0.19:80 (reason: Permission denied)
+2024-01-04T20:12:23: Starting Laravel development server: http://10.129.0.19:80
+2024-01-04T20:12:23: [Thu Jan  4 20:12:23 2024] Failed to listen on 10.129.0.19:80 (reason: Permission denied)
+2024-01-04T20:12:29: Starting Laravel development server: http://10.129.0.19:80
+2024-01-04T20:12:30: [Thu Jan  4 20:12:29 2024] Failed to listen on 10.129.0.19:80 (reason: Permission denied)
+2024-01-04T20:12:55: Starting Laravel development server: http://10.129.0.19:80
+2024-01-04T20:12:56: [Thu Jan  4 20:12:55 2024] Failed to listen on 10.129.0.19:80 (reason: Permission denied)

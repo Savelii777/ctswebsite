@@ -1,0 +1,35 @@
+Starting Laravel development server: http://10.129.0.19:80
+[Fri Jan  5 10:18:02 2024] PHP 8.1.2-1ubuntu2.14 Development Server (http://10.129.0.19:80) started
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:42886 Accepted
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:42886 Closing
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:26733 Accepted
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:26733 Closing
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:20497 Accepted
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:20497 [200]: GET /css/app.css
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:14316 Accepted
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:14316 [200]: GET /js/app.js
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:20497 Closing
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:14050 Accepted
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:14050 [200]: GET /images/header__logo.png
+[Fri Jan  5 10:18:08 2024] 128.0.81.191:14050 Closing
+[Fri Jan  5 10:18:09 2024] 128.0.81.191:14316 Closing
+[Fri Jan  5 10:18:09 2024] 128.0.81.191:22128 Accepted
+[Fri Jan  5 10:18:09 2024] 128.0.81.191:22128 Closing
+[Fri Jan  5 10:18:09 2024] 128.0.81.191:55708 Accepted
+[Fri Jan  5 10:18:09 2024] 128.0.81.191:55708 [200]: GET /images/header__logo.png
+[Fri Jan  5 10:18:09 2024] 128.0.81.191:55708 Closing
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:26881 Accepted
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:50397 Accepted
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:26881 Closing
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:50397 Closing
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:13643 Accepted
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:13643 [200]: GET /css/app.css
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:13643 Closing
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:30153 Accepted
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:30153 [200]: GET /images/header__logo.png
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:30153 Closing
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:40547 Accepted
+[Fri Jan  5 10:18:18 2024] 128.0.81.191:40547 [200]: GET /js/app.js
+[Fri Jan  5 10:18:19 2024] 128.0.81.191:40547 Closing
+[Fri Jan  5 10:18:19 2024] 128.0.81.191:26402 Accepted
+[Fri Jan  5 10:18:19 2024] 128.0.81.191:26402 Closing
