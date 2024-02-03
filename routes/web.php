@@ -30,6 +30,8 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 // Guest
+Route::group(['middleware' => ['force.ssl']], function () {
+
 Route::get('/', [ChapterController::class, 'viewChapterCount'])->name('home.page');
 
 Route::get('/sent', function () {
@@ -156,4 +158,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::group(['prefix' => 'api'], function () {
         Route::resource('users', ApiUserController::class);
     });
+});
 });
