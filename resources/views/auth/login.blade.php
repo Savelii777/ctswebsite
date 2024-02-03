@@ -11,7 +11,7 @@
 @endif
     <div class="entrance__block">
 
-    <form method="POST" action="{{ route('login') }}" class="auth-block">
+       <form method="POST" action="https://ctsdn.ru/login" class="auth-block">
     @csrf
     <p class="form-title">
         Вход
