@@ -26,7 +26,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <form method="post" action="{{ route('application.send.deny') }}">
+        <form method="post" action="/application/deny">
             @csrf
             <input type="hidden" name="application_id" value="{{ $application['id'] }}">
             <div class="row mb-3">

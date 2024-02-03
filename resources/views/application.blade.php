@@ -5,7 +5,7 @@
     <section id="application" class="account">
         <div class="container">
         <div class="application__block" >
-              <form method="POST" action="{{ route('application.send.guest') }}" class="auth-block" >
+              <form method="POST" action="/send-application" class="auth-block" >
                @csrf
                  <p class="form-title">
                     Отправить заявку
